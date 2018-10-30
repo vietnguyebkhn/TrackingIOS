@@ -28,31 +28,3 @@ let kTrackAppInstall = "track_app_install"
  "track_app_close": Đóng hẳn app (kill)
 
  */
-/*
- //Cac tham so lien quan den gui du lieu ve server
- extern NSString *const kDataServerUrl;
- extern NSInteger *const kDataInterval;
- extern NSInteger *const kDataCacheSize;
- extern NSString *const kDataRetryTimes;
- extern NSString *const kDataRetryFailAfter;
- 
- //Hardware and OS information
- extern NSString *const  kDeviceID;
- extern NSString *const  kBranchName;
- extern NSString *const  kOSVersion;
- extern NSString *const  kOSName;
- extern NSString *const  kSimMisdn;
- extern NSString *const  kSimProvider;
- extern NSString *const  kSimType;
- extern NSString *const  kAppName;
- extern NSString *const  kAppSize;
- extern NSString *const  kAppVersion;
- //Personal infomation
- //Location
- extern NSString *const  kLongtitude;
- extern NSString *const  kLatitude;
- //Personal
- extern NSString *const  kPersonalID;
- extern NSString *const  kPersonalName;
- extern NSString *const  kPersonalEmail;
- */

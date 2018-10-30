@@ -37,6 +37,7 @@
 		1C8C7F5D218841D8003F0C69 /* VTAM.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8C7F0721883D4F003F0C69 /* VTAM.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C8C7F6221884333003F0C69 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C7F6121884333003F0C69 /* EventType.swift */; };
 		1C8C7F6421884CAC003F0C69 /* TrackingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C7F6321884CAC003F0C69 /* TrackingFunction.swift */; };
+		1C8C7FA52188537B003F0C69 /* ConfigFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C7FA42188537B003F0C69 /* ConfigFunction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		1C8C7F5821883DEF003F0C69 /* VTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VTracking.swift; sourceTree = "<group>"; };
 		1C8C7F6121884333003F0C69 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		1C8C7F6321884CAC003F0C69 /* TrackingFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingFunction.swift; sourceTree = "<group>"; };
+		1C8C7FA42188537B003F0C69 /* ConfigFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				1C8C7F5821883DEF003F0C69 /* VTracking.swift */,
 				1C8C7F6121884333003F0C69 /* EventType.swift */,
 				1C8C7F6321884CAC003F0C69 /* TrackingFunction.swift */,
+				1C8C7FA42188537B003F0C69 /* ConfigFunction.swift */,
 			);
 			path = VTAM;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				1C8C7F6221884333003F0C69 /* EventType.swift in Sources */,
 				1C8C7F5921883DEF003F0C69 /* VTracking.swift in Sources */,
 				1C8C7F6421884CAC003F0C69 /* TrackingFunction.swift in Sources */,
+				1C8C7FA52188537B003F0C69 /* ConfigFunction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
