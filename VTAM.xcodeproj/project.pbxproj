@@ -35,6 +35,8 @@
 		1C8C7F5B218840A2003F0C69 /* VTAM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8C7F0721883D4F003F0C69 /* VTAM.framework */; };
 		1C8C7F5C218841D8003F0C69 /* VTAM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8C7F0721883D4F003F0C69 /* VTAM.framework */; };
 		1C8C7F5D218841D8003F0C69 /* VTAM.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8C7F0721883D4F003F0C69 /* VTAM.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C8C7F6221884333003F0C69 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C7F6121884333003F0C69 /* EventType.swift */; };
+		1C8C7F6421884CAC003F0C69 /* TrackingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C7F6321884CAC003F0C69 /* TrackingFunction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		1C8C7F4C21883DC5003F0C69 /* DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITests.swift; sourceTree = "<group>"; };
 		1C8C7F4E21883DC5003F0C69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C8C7F5821883DEF003F0C69 /* VTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VTracking.swift; sourceTree = "<group>"; };
+		1C8C7F6121884333003F0C69 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
+		1C8C7F6321884CAC003F0C69 /* TrackingFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 				1C8C7F0A21883D4F003F0C69 /* VTAM.h */,
 				1C8C7F0B21883D4F003F0C69 /* Info.plist */,
 				1C8C7F5821883DEF003F0C69 /* VTracking.swift */,
+				1C8C7F6121884333003F0C69 /* EventType.swift */,
+				1C8C7F6321884CAC003F0C69 /* TrackingFunction.swift */,
 			);
 			path = VTAM;
 			sourceTree = "<group>";
@@ -456,7 +462,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C8C7F6221884333003F0C69 /* EventType.swift in Sources */,
 				1C8C7F5921883DEF003F0C69 /* VTracking.swift in Sources */,
+				1C8C7F6421884CAC003F0C69 /* TrackingFunction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
