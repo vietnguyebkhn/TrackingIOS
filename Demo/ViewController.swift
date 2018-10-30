@@ -13,9 +13,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-      
+        
+        //demo tracking location
         VTracking.shared().trackingEvent(eventType: kTrackLocation, params: [:])
+        
     }
 
 

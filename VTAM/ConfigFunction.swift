@@ -12,7 +12,7 @@ class ConfigFunction {
     var urlBase = "https://vtam-sdk.viettel.com.vn"
     
     //Ham log ra file, tra ve duong dan file trong local cua may
-    func logToFile() -> String {
+    func logToFile(params: NSDictionary?) -> String {
         
         return ""
     }
