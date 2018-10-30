@@ -1,0 +1,11 @@
+framework module VTAM {
+  umbrella header "VTAM.h"
+
+  export *
+  module * { export * }
+}
+
+module VTAM.Swift {
+    header "VTAM-Swift.h"
+    requires objc
+}

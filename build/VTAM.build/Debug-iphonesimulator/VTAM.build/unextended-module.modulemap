@@ -1,0 +1,10 @@
+framework module VTAM {
+  umbrella header "VTAM.h"
+
+  export *
+  module * { export * }
+}
+
+module VTAM.__Swift {
+    exclude header "VTAM-Swift.h"
+}

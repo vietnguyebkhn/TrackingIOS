@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.2 (swiftlang-1000.11.37.1 clang-1000.11.45.1)"
+options: "d9eee7ed41eab184c63d8e521cab06e5"
+build_time: [1540885072, 508470000]
+inputs:
+  "/Users/babiexcode/coding/ios/VTAM/VTAM/VTracking.swift": [1540884947, 0]
