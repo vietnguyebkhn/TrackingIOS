@@ -14,6 +14,7 @@ let kDataInterval  = "data_interval"
 //cac su kien:
 let kTrackLocation = "track_location"
 let kTrackPersonalInfo = "track_personal_info"
+let kTrackAppInstall = "track_app_install"
 
 /*"track_location": Location
  "track_personal_info": Thông tin cá nhân

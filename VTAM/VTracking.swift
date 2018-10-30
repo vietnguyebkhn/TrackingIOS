@@ -26,6 +26,13 @@ open class VTracking  {
         return sharedVTTracking
     }       
     
+    //Ham thiet lap cac config ban dau cua app
+    open func configure() {
+        //load cac thiet lap config tu file tracking-info.plist
+        
+    }
+    
+    //ham tracking cua app
     open func trackingEvent(eventType: String, params: NSDictionary?) {
         switch eventType {
         case kTrackLocation:
