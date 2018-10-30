@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
        
       
-//        VTracking.shared().hello()
+        VTracking.shared().trackingEvent(eventType: kTrackLocation, params: [:])
     }
 
 

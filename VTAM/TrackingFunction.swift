@@ -9,7 +9,6 @@
 import Foundation
 
 class TrackingFunction {
-    //cac ham:
     //tracking location
      func trackLocation(params: NSDictionary?) {
         let eventType = kTrackLocation
