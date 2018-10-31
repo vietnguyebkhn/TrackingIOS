@@ -11,8 +11,7 @@ import UIKit
 open class VTracking  {
     var mTrackingFunction : TrackingFunction!
     private static var sharedVTTracking: VTracking = {
-       
-        
+    
         let vTracking = VTracking()
         // Configuration
         vTracking.mTrackingFunction = TrackingFunction()
@@ -30,15 +29,22 @@ open class VTracking  {
     open func configure() {
         //load cac thiet lap config tu file tracking-info.plist
         
+//        if let fileUrl = Bundle.main.url(forResource: "SDK-config", withExtension: "plist"),
+//            let data = try? Data(contentsOf: fileUrl) {
+//            if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any] { // [String: Any] which ever it is
+//                print(result)
+//                urlBase = result
+//            }
+//        }
+        
     }
-    
     //ham tracking cua app
     open func trackingEvent(eventType: String, params: NSDictionary?) {
         switch eventType {
         case kTrackLocation:
             mTrackingFunction.trackLocation(params: params)
-        case kTrackPersonalInfo:
-            mTrackingFunction.trackPersonalInfo(params: params)
+        case kTrackDeviceInfo:
+            mTrackingFunction.trackDeviceInfo(params: params)
             break
         default:
             break

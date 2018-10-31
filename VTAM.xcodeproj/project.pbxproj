@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		187A830F21899BD2003FBA65 /* SDK-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187A830E21899BD2003FBA65 /* SDK-config.plist */; };
 		1C8C7F1121883D4F003F0C69 /* VTAM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8C7F0721883D4F003F0C69 /* VTAM.framework */; };
 		1C8C7F1621883D4F003F0C69 /* VTAMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C7F1521883D4F003F0C69 /* VTAMTests.swift */; };
 		1C8C7F1821883D4F003F0C69 /* VTAM.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C8C7F0A21883D4F003F0C69 /* VTAM.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -99,6 +100,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		187A830E21899BD2003FBA65 /* SDK-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SDK-config.plist"; sourceTree = "<group>"; };
 		1C8C7F0721883D4F003F0C69 /* VTAM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VTAM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C8C7F0A21883D4F003F0C69 /* VTAM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VTAM.h; sourceTree = "<group>"; };
 		1C8C7F0B21883D4F003F0C69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -231,10 +233,14 @@
 		1C8C7F2B21883DC3003F0C69 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				A8A3F3732189A5C7004FDAA4 /* ViewController */,
 				A8A3F3702189A04D004FDAA4 /* Utils */,
 				A8A3F36721898C6A004FDAA4 /* component */,
 				A8A3F360218987F2004FDAA4 /* Library */,
+=======
+				187A830E21899BD2003FBA65 /* SDK-config.plist */,
+>>>>>>> 20ed9f47dfaf002c71e38c0944e6ebd7d3a82170
 				1C8C7F2C21883DC3003F0C69 /* AppDelegate.swift */,
 				1C8C7F2E21883DC3003F0C69 /* ViewController.swift */,
 				1C8C7F3021883DC3003F0C69 /* Main.storyboard */,
@@ -502,6 +508,7 @@
 				A8A3F36B21898C7F004FDAA4 /* MenuTableViewCell.xib in Resources */,
 				A8A3F36F218995A2004FDAA4 /* PersonalInforViewController.xib in Resources */,
 				1C8C7F3221883DC3003F0C69 /* Main.storyboard in Resources */,
+				187A830F21899BD2003FBA65 /* SDK-config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

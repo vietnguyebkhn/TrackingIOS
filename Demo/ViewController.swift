@@ -9,6 +9,7 @@
 import UIKit
 import VTAM
 
+<<<<<<< HEAD
 class ViewController: UIViewController {
     
     var index = 0
@@ -27,13 +28,22 @@ class ViewController: UIViewController {
         myBtn.addTarget(self, action:  #selector(self.btnClick(_:)) , for: .touchUpInside)
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: myBtn), animated: true)
         
+=======
+class ViewController: UIViewController{
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+>>>>>>> 20ed9f47dfaf002c71e38c0944e6ebd7d3a82170
         //demo tracking location
         VTracking.shared().trackingEvent(eventType: kTrackLocation, params: [:])
-        
+        VTracking.shared().trackingEvent(eventType: kTrackDeviceInfo , params: [:])
     }
+<<<<<<< HEAD
     
     
 
 
+=======
+>>>>>>> 20ed9f47dfaf002c71e38c0944e6ebd7d3a82170
 }
-
