@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InforAppViewController" customModule="Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="mCloseButton" destination="8hc-SH-ShD" id="vC3-lT-MKW"/>
+                <outlet property="mOKButton" destination="EBb-0h-MDj" id="X0L-lt-BVX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWn-3d-PaR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmc-Y7-gAX">
+                    <rect key="frame" x="37.5" y="208.5" width="300" height="250"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin ứng dụng" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1L9-tW-kiL">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                            <color key="backgroundColor" red="0.18823529410000001" green="0.36862745099999999" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Or3-lI-8KQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjE-fs-Ymd">
+                            <rect key="frame" x="10" y="40" width="280" height="171"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="280" id="9xI-lD-Qdj"/>
+                            </constraints>
+                            <mutableString key="text">Ứng dụng này được tích hợp với thư viện Viettel Analytic for Mobile (VTAM).
+
+VTAM có khả năng tracking các sự kiện trên ứng dụng được tích hợp và gửi thông tin trachking về máy chủ.
+
+Đây là màn hình minh hoạ khar năng ghi nhận sự kiện mở 1 màn hình dưới dạng popup của VTAM SDK.
+</mutableString>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBb-0h-MDj">
+                            <rect key="frame" x="87" y="212" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="EQE-8i-Tek"/>
+                                <constraint firstAttribute="width" constant="30" id="KQl-kr-Oby"/>
+                            </constraints>
+                            <state key="normal" title="OK"/>
+                            <connections>
+                                <action selector="mOKTouched:" destination="-1" eventType="touchUpInside" id="mtV-kD-8IF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hc-SH-ShD">
+                            <rect key="frame" x="154" y="212" width="37" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="37" id="UxM-hH-7K5"/>
+                                <constraint firstAttribute="height" constant="30" id="jFe-P5-UTR"/>
+                            </constraints>
+                            <state key="normal" title="Đóng"/>
+                            <connections>
+                                <action selector="mCloseTouched:" destination="-1" eventType="touchUpInside" id="2jR-g7-sAi"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="EBb-0h-MDj" secondAttribute="bottom" constant="8" id="6op-ht-1gv"/>
+                        <constraint firstItem="1L9-tW-kiL" firstAttribute="centerX" secondItem="gmc-Y7-gAX" secondAttribute="centerX" id="E5T-sB-iyT"/>
+                        <constraint firstAttribute="trailing" secondItem="8hc-SH-ShD" secondAttribute="trailing" constant="109" id="Hbz-2m-KCj"/>
+                        <constraint firstItem="XjE-fs-Ymd" firstAttribute="top" secondItem="1L9-tW-kiL" secondAttribute="bottom" constant="10" id="RvI-4L-vtg"/>
+                        <constraint firstItem="1L9-tW-kiL" firstAttribute="top" secondItem="gmc-Y7-gAX" secondAttribute="top" id="ZdU-FG-xTE"/>
+                        <constraint firstItem="1L9-tW-kiL" firstAttribute="width" secondItem="gmc-Y7-gAX" secondAttribute="width" id="aQB-oo-3nr"/>
+                        <constraint firstAttribute="width" constant="300" id="b6M-ap-t4O"/>
+                        <constraint firstAttribute="bottom" secondItem="8hc-SH-ShD" secondAttribute="bottom" constant="8" id="f6e-Nc-SYe"/>
+                        <constraint firstItem="XjE-fs-Ymd" firstAttribute="centerX" secondItem="gmc-Y7-gAX" secondAttribute="centerX" id="gQA-9t-Jjv"/>
+                        <constraint firstItem="EBb-0h-MDj" firstAttribute="leading" secondItem="gmc-Y7-gAX" secondAttribute="leading" constant="87" id="phc-cR-8Xg"/>
+                        <constraint firstAttribute="height" constant="250" id="w4P-n2-1iX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="KWn-3d-PaR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DgF-9z-Eac"/>
+                <constraint firstAttribute="bottom" secondItem="KWn-3d-PaR" secondAttribute="bottom" id="KLy-Gm-oWo"/>
+                <constraint firstItem="gmc-Y7-gAX" firstAttribute="centerX" secondItem="KWn-3d-PaR" secondAttribute="centerX" id="VeQ-T0-5kV"/>
+                <constraint firstItem="KWn-3d-PaR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jnK-fY-Zf1"/>
+                <constraint firstAttribute="trailing" secondItem="KWn-3d-PaR" secondAttribute="trailing" id="kNT-t9-PS7"/>
+                <constraint firstItem="gmc-Y7-gAX" firstAttribute="centerY" secondItem="KWn-3d-PaR" secondAttribute="centerY" id="oDs-rS-kUR"/>
+            </constraints>
+            <point key="canvasLocation" x="138.40000000000001" y="111.99400299850076"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalInforViewController" customModule="Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="mExitButton" destination="eYO-cS-IfZ" id="eOZ-kc-0NM"/>
+                <outlet property="mImage" destination="8Ar-85-2By" id="jGv-pI-StD"/>
+                <outlet property="mLink" destination="bfc-LU-b6d" id="HEc-cm-jkc"/>
+                <outlet property="mReWrite" destination="YR1-9x-GJV" id="VFp-7N-MYY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="q20-FT-Gbg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin cá nhân" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPk-Bu-Cxs">
+                    <rect key="frame" x="116" y="50" width="143" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIl-Zd-99Q">
+                    <rect key="frame" x="37.5" y="101" width="300" height="107.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="Kgk-ms-JIp"/>
+                    </constraints>
+                    <string key="text">Bạn vừa chọn menu "Thông tin cá nhân". Đây là màn hình mình hoạ hiển thị thông tin cá nhân của ứng dụng. Nó không giống như bạn nghĩ? Không sao, chức năng này được thiết kế chỉ nhằm mục đích minh hoạ việc ghi nhận các sự kiện của VTAM SDK.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuz-w0-fi8">
+                    <rect key="frame" x="36.5" y="228.5" width="302" height="143.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="302" id="Mz8-hO-EyN"/>
+                    </constraints>
+                    <string key="text">VTAM đã ghi nhận được 2 sự kiện:
+1. Sự kiện click menu item: “Thông tin cá nhân”
+2. Sự kiện mở màn hình “THông tin cá nhân”
+
+Hãy tiếp tục click ảnh, link, nút nhân dưới đây để VTAM ghi nhận sự kiện này nhé!!! </string>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lake-placid" translatesAutoresizingMaskIntoConstraints="NO" id="8Ar-85-2By">
+                    <rect key="frame" x="137.5" y="382" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="GE8-88-IEv"/>
+                        <constraint firstAttribute="height" constant="100" id="aW9-Em-hpT"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xem chi tiết" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfc-LU-b6d">
+                    <rect key="frame" x="159" y="487" width="57.5" height="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.36862745099999999" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YR1-9x-GJV">
+                    <rect key="frame" x="116" y="512" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="Tex-W6-kxx"/>
+                        <constraint firstAttribute="height" constant="30" id="TqS-zO-T1S"/>
+                    </constraints>
+                    <state key="normal" title="Ghi lại"/>
+                    <connections>
+                        <action selector="mReWriteTouched:" destination="-1" eventType="touchUpInside" id="QOx-IB-fMY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYO-cS-IfZ">
+                    <rect key="frame" x="212" y="512" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="Ozw-81-Jzj"/>
+                        <constraint firstAttribute="height" constant="30" id="icx-d7-mTY"/>
+                    </constraints>
+                    <state key="normal" title="Thoát"/>
+                    <connections>
+                        <action selector="mExitTouched:" destination="-1" eventType="touchUpInside" id="AbP-vY-dmK"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BI-D1-JNQ">
+                    <rect key="frame" x="103" y="615.5" width="169.5" height="31.5"/>
+                    <string key="text">Copyright @ 2018 by Viettel
+Version 1.0</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="EPk-Bu-Cxs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="3G0-nO-Cd4"/>
+                <constraint firstItem="YR1-9x-GJV" firstAttribute="top" secondItem="8Ar-85-2By" secondAttribute="bottom" constant="30" id="Cb7-1J-HqL"/>
+                <constraint firstItem="EPk-Bu-Cxs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IKe-nj-oaT"/>
+                <constraint firstItem="Tuz-w0-fi8" firstAttribute="top" secondItem="xIl-Zd-99Q" secondAttribute="bottom" constant="20" id="JQ2-Co-bO5"/>
+                <constraint firstItem="eYO-cS-IfZ" firstAttribute="centerY" secondItem="YR1-9x-GJV" secondAttribute="centerY" id="Jfv-N9-70l"/>
+                <constraint firstItem="xIl-Zd-99Q" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RNQ-3C-yi9"/>
+                <constraint firstItem="xIl-Zd-99Q" firstAttribute="top" secondItem="EPk-Bu-Cxs" secondAttribute="bottom" constant="30" id="Te3-Ag-n7T"/>
+                <constraint firstItem="5BI-D1-JNQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="d7m-oz-4K2"/>
+                <constraint firstItem="bfc-LU-b6d" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dgY-5F-Lnw"/>
+                <constraint firstItem="8Ar-85-2By" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dtf-RS-8VN"/>
+                <constraint firstItem="YR1-9x-GJV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="116" id="ejg-or-xkn"/>
+                <constraint firstItem="bfc-LU-b6d" firstAttribute="top" secondItem="8Ar-85-2By" secondAttribute="bottom" constant="5" id="geX-kC-UdH"/>
+                <constraint firstItem="eYO-cS-IfZ" firstAttribute="leading" secondItem="YR1-9x-GJV" secondAttribute="trailing" constant="50" id="pZw-Q6-iUt"/>
+                <constraint firstAttribute="bottom" secondItem="5BI-D1-JNQ" secondAttribute="bottom" constant="20" id="r6f-oe-BSb"/>
+                <constraint firstItem="Tuz-w0-fi8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rNq-Ko-Dc1"/>
+                <constraint firstItem="8Ar-85-2By" firstAttribute="top" secondItem="Tuz-w0-fi8" secondAttribute="bottom" constant="10" id="wag-N4-qKC"/>
+            </constraints>
+            <point key="canvasLocation" x="204" y="165.96701649175412"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="lake-placid" width="1080" height="675"/>
+    </resources>
+</document>

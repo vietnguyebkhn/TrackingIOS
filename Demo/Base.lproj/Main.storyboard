@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="liU-h4-lhv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Reveal View Controller-->
+        <scene sceneID="Ls9-sh-rhb">
+            <objects>
+                <viewController id="liU-h4-lhv" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ozC-H2-Pt7"/>
+                        <viewControllerLayoutGuide type="bottom" id="84s-VU-X9T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gno-IU-zKM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <segue destination="sSH-XN-qXT" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="Acd-TX-TqE"/>
+                        <segue destination="R2t-Ok-Xvh" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="YkR-AT-KYg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lIB-iO-FzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-693" y="-238"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="O31-Fa-9zS">
+            <objects>
+                <viewController id="sSH-XN-qXT" customClass="MenuViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N93-3E-RxM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hig-Fs-LSa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rpL-Hp-Ed5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KCu-dP-9aj">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sSH-XN-qXT" id="9GN-qI-67l"/>
+                                    <outlet property="delegate" destination="sSH-XN-qXT" id="MCk-BZ-Dcd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hig-Fs-LSa" firstAttribute="top" secondItem="KCu-dP-9aj" secondAttribute="bottom" id="7m0-Sq-wi9"/>
+                            <constraint firstItem="KCu-dP-9aj" firstAttribute="leading" secondItem="rpL-Hp-Ed5" secondAttribute="leading" id="NY4-bc-D9T"/>
+                            <constraint firstItem="KCu-dP-9aj" firstAttribute="top" secondItem="N93-3E-RxM" secondAttribute="bottom" id="ZzB-k5-fNn"/>
+                            <constraint firstAttribute="trailing" secondItem="KCu-dP-9aj" secondAttribute="trailing" id="km1-at-CBu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mTableView" destination="KCu-dP-9aj" id="Knv-RY-01Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LBN-sp-UtS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="-599.55022488755628"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -20,11 +80,67 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chào mừng bạn đến với ứng dụng VTAM SDK Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNS-Qd-fex">
+                                <rect key="frame" x="42" y="124" width="291.5" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291.5" id="MgM-MT-Oqd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxD-Xp-t5d">
+                                <rect key="frame" x="42" y="197" width="291.5" height="162.5"/>
+                                <mutableString key="text">Ứng dungj này được tích hợp thư viện Viettel Analytic for mobile(VTAM).                               VTAM có khả năng track các sự kiện trên ứng dụng đươcj tích hợp và gửi thông tin tracking về máy chủ.                                    Hãy lựa chọn các chức năng và kiểm tra kết quả ở phía server.                                             Thanks</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy right @ 2018 by Viettel                  Version 1.0        " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D9-0g-KKv">
+                                <rect key="frame" x="78.5" y="606" width="218.5" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="218.5" id="RXt-zg-jwb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OxD-Xp-t5d" firstAttribute="top" secondItem="YNS-Qd-fex" secondAttribute="bottom" constant="30" id="4ng-rG-ZMs"/>
+                            <constraint firstItem="0D9-0g-KKv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9sX-rx-n9E"/>
+                            <constraint firstItem="OxD-Xp-t5d" firstAttribute="width" secondItem="YNS-Qd-fex" secondAttribute="width" id="I4F-he-lXZ"/>
+                            <constraint firstItem="YNS-Qd-fex" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TFB-jd-uap"/>
+                            <constraint firstItem="g8n-TS-pjD" firstAttribute="top" secondItem="0D9-0g-KKv" secondAttribute="bottom" constant="20" id="YJ3-zA-cRY"/>
+                            <constraint firstItem="OxD-Xp-t5d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w0z-jm-CoC"/>
+                            <constraint firstItem="YNS-Qd-fex" firstAttribute="top" secondItem="ZwX-Nr-luf" secondAttribute="bottom" constant="60" id="wR4-c9-RKL"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="OPr-UL-xYj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="129.08545727136433"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lbW-H8-PYM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R2t-Ok-Xvh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s51-8L-MCm">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ldf-Lq-nvr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZd-Gf-Cts" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="128.18590704647679"/>
         </scene>
     </scenes>
 </document>
