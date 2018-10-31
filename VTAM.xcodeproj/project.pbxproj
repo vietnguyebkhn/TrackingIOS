@@ -233,14 +233,14 @@
 		1C8C7F2B21883DC3003F0C69 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
+
 				A8A3F3732189A5C7004FDAA4 /* ViewController */,
 				A8A3F3702189A04D004FDAA4 /* Utils */,
 				A8A3F36721898C6A004FDAA4 /* component */,
 				A8A3F360218987F2004FDAA4 /* Library */,
-=======
+
 				187A830E21899BD2003FBA65 /* SDK-config.plist */,
->>>>>>> 20ed9f47dfaf002c71e38c0944e6ebd7d3a82170
+
 				1C8C7F2C21883DC3003F0C69 /* AppDelegate.swift */,
 				1C8C7F2E21883DC3003F0C69 /* ViewController.swift */,
 				1C8C7F3021883DC3003F0C69 /* Main.storyboard */,
