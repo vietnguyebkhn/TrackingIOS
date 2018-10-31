@@ -15,8 +15,7 @@ let kDataInterval  = "data_interval"
 public let kTrackLocation = "track_location"
 public let kTrackPersonalInfo = "track_personal_info"
 public let kTrackAppInstall = "track_app_install"
-
-
+public let kTrackDeviceInfo = "track_device_info"
 /*"track_location": Location
  "track_personal_info": Thông tin cá nhân
  "track_app_install": Cài đặt ứng dụng
@@ -29,3 +28,5 @@ public let kTrackAppInstall = "track_app_install"
  "track_app_close": Đóng hẳn app (kill)
 
  */
+
+

@@ -11,8 +11,7 @@ import UIKit
 open class VTracking  {
     var mTrackingFunction : TrackingFunction!
     private static var sharedVTTracking: VTracking = {
-       
-        
+    
         let vTracking = VTracking()
         // Configuration
         vTracking.mTrackingFunction = TrackingFunction()
@@ -31,14 +30,13 @@ open class VTracking  {
         //load cac thiet lap config tu file tracking-info.plist
         
     }
-    
     //ham tracking cua app
     open func trackingEvent(eventType: String, params: NSDictionary?) {
         switch eventType {
         case kTrackLocation:
             mTrackingFunction.trackLocation(params: params)
-        case kTrackPersonalInfo:
-            mTrackingFunction.trackPersonalInfo(params: params)
+        case kTrackDeviceInfo:
+            mTrackingFunction.trackDeviceInfo(params: params)
             break
         default:
             break

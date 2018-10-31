@@ -9,16 +9,13 @@
 import UIKit
 import VTAM
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController{
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //demo tracking location
         VTracking.shared().trackingEvent(eventType: kTrackLocation, params: [:])
-        
+        VTracking.shared().trackingEvent(eventType: kTrackDeviceInfo , params: [:])
     }
-
-
 }
-
