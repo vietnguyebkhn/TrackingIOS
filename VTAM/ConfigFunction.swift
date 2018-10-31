@@ -10,7 +10,6 @@ import Foundation
 
 class ConfigFunction {
     var urlBase = "https://vtam-sdk.viettel.com.vn"
-    
     //ham get currenttime
     func getCurrentTime() ->  Date {
         return Date()

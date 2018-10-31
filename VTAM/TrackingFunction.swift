@@ -10,11 +10,10 @@ import Foundation
 import CoreLocation
 
 class TrackingFunction : NSObject,CLLocationManagerDelegate {
-    var locationManager : CLLocationManager?
-    var currentLocation : CLLocation!
     var mConfigFunction = ConfigFunction()
     //tracking location
      func trackLocation(params: NSDictionary?) {
+        var locationManager : CLLocationManager?
             if locationManager == nil {
                 locationManager = CLLocationManager()
                 locationManager!.delegate = self
@@ -42,7 +41,9 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
 //        dict.setValue(mConfigFunction.getCurrentTime(), forKey: "current_time")
 //
 //        mConfigFunction.logToFile(params: dict)
-        print("longitdude: \(longitude!) latitude: \(latitude!)")
+        if longitude != nil || latitude != nil{
+            print("longitdude: \(longitude!) latitude: \(latitude!)")
+        }
     }
     //tracking device info
     func trackDeviceInfo(params: NSDictionary?){
@@ -52,18 +53,19 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         let appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
+        let deviceModel = withUnsafeBytes(of: &systemInfo.machine) { (rawPtr) -> String in
+            let ptr = rawPtr.baseAddress!.assumingMemoryBound(to: CChar.self)
+            return String(cString: ptr)
+        }
         let iOSVersion = UIDevice.current.systemVersion
-        let deviceModel = UIDevice.current.model
         let dic = [
             "track_branch_name" : build ?? "",
             "track_app_version" : version ?? "",
             "track_app_name" : appName ?? "",
-//            "deviceModel" : deviceModel ?? "",
+            "deviceModel" : "\(UIDevice.current.model) \(deviceModel)" ,
             "track_os_version" : iOSVersion
             ] as [String : Any]
         print("\(dic)")
-        print(systemInfo.machine)
-        print(deviceModel)
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
@@ -71,9 +73,8 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         
     }
     //tracking cai app
-    func trackAppInstall(params: NSDictionary?) {
-        let eventType = kTrackAppInstall
-        
+    var defaults = UserDefaults.standard
+    func checkAppInstall(params: NSDictionary?){
         
     }
     //tracking go app
@@ -94,6 +95,8 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     //"track_event_button_click": Click button, link
     func trackEventButtonClick(params: NSDictionary?) {
+        let eventType = kTrackEventWindowOpen
+        
         
     }
     //"track_event_window_close": Đóng màn hình

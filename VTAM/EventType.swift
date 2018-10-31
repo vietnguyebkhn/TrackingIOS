@@ -16,6 +16,14 @@ public let kTrackLocation = "track_location"
 public let kTrackPersonalInfo = "track_personal_info"
 public let kTrackAppInstall = "track_app_install"
 public let kTrackDeviceInfo = "track_device_info"
+public let kTrackAppInstal = "track_app_install"
+public let kTrackAppStart = "track_app_start"
+public let kTrackAppUninstall = "track_app_uninstall"
+public let kTrackAppCrash = "track_app_crash"
+public let kTrackEventWindowOpen = "track_event_window_open"
+public let kTrackEventButtonClick = "track_event_button_click"
+public let kTrackEventWindowClose = "track_event_window_close"
+public let kTrackAppClose = "track_app_close"
 /*"track_location": Location
  "track_personal_info": Thông tin cá nhân
  "track_app_install": Cài đặt ứng dụng
