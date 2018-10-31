@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>tracking_code</key>
+	<string>123333333</string>
+	<key>data_server_url</key>
+	<string>https://vtam-sdk.viettel.com.vn</string>
+</dict>
+</plist>
