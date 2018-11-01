@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 
 class TrackingFunction : NSObject,CLLocationManagerDelegate {
+     var count = 0
     var mConfigFunction = ConfigFunction()
     //tracking location
      func trackLocation(params: NSDictionary?) {
@@ -94,10 +95,10 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         
     }
     //"track_event_button_click": Click button, link
-    func trackEventButtonClick(params: NSDictionary?) {
-        
-        
-        
+    func trackEventButtonClick(params: NSDictionary?){
+       
+       count = count + 1
+        print("Tap on this button: \(count) times!!")
     }
     //"track_event_window_close": Đóng màn hình
     func trackEventWindowClose(params: NSDictionary?) {

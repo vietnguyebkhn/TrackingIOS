@@ -50,6 +50,9 @@ open class VTracking  {
             mTrackingFunction.trackAppStart(params: params)
         case kTrackAppClose:
             mTrackingFunction.trackAppClose(params: params)
+        case kTrackEventButtonClick:
+            mTrackingFunction.trackEventButtonClick(params: params)
+            break
         default:
             break
         }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VTAM
 
 class CrashViewController: UIViewController {
 
@@ -34,6 +35,7 @@ class CrashViewController: UIViewController {
     }
     
     @IBAction func mCloseTouched(_ sender: Any) {
+        VTracking.shared().trackingEvent(eventType: kTrackEventButtonClick, params: [:])
     }
     
 
