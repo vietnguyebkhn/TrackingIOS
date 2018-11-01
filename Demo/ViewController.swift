@@ -26,8 +26,7 @@ class ViewController: UIViewController {
         myBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         myBtn.addTarget(self, action:  #selector(self.btnClick(_:)) , for: .touchUpInside)
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: myBtn), animated: true)
-        VTracking.shared().trackingEvent(eventType: kTrackLocation, params: [:])
         VTracking.shared().trackingEvent(eventType: kTrackDeviceInfo , params: [:])
-        
+        VTracking.shared().trackingEvent(eventType: kTrackLocation, params: [:])
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 open class VTracking  {
     var mTrackingFunction : TrackingFunction!
+    var mConfigFunction : ConfigFunction?
     private static var sharedVTTracking: VTracking = {
     
         let vTracking = VTracking()
@@ -18,7 +19,7 @@ open class VTracking  {
         return vTracking
     }()
     
-    private init(){}
+//    private init(){}
     
     open class func shared() -> VTracking {
         
@@ -45,6 +46,8 @@ open class VTracking  {
             mTrackingFunction.trackLocation(params: params)
         case kTrackDeviceInfo:
             mTrackingFunction.trackDeviceInfo(params: params)
+        case kTrackAppInstall:
+            mTrackingFunction.trackAppInstall(params: params)
             break
         case kTrackAppStart:
             mTrackingFunction.trackAppStart(params: params)

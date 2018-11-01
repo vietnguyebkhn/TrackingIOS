@@ -28,7 +28,8 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             }
             locationManager!.startUpdatingLocation()
         let longitude = locationManager?.location?.coordinate.longitude
-        let latitude = locationManager?.location?.coordinate.latitude
+//        let longitude = locationManager?.location?.coordinate.longitude
+//        let latitude = locationManager?.location?.coordinate.latitude
 //        let eventType = kTrackLocation
 //        var dict : NSDictionary!
 //        if params != nil {
@@ -42,9 +43,10 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
 //        dict.setValue(mConfigFunction.getCurrentTime(), forKey: "current_time")
 //
 //        mConfigFunction.logToFile(params: dict)
-        if longitude != nil || latitude != nil{
-            print("longitdude: \(longitude!) latitude: \(latitude!)")
-        }
+        print(longitude)
+//        if longitude != nil || latitude != nil{
+//            print("longitdude: \(longitude!) latitude: \(latitude!)")
+//        }
     }
     //tracking device info
     func trackDeviceInfo(params: NSDictionary?){
@@ -59,14 +61,21 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             return String(cString: ptr)
         }
         let iOSVersion = UIDevice.current.systemVersion
-        let dic = [
+        var dict = [
             "track_branch_name" : build ?? "",
             "track_app_version" : version ?? "",
             "track_app_name" : appName ?? "",
             "deviceModel" : "\(UIDevice.current.model) \(deviceModel)" ,
             "track_os_version" : iOSVersion
-            ] as [String : Any]
-        print("\(dic)")
+        ]
+        var itemDeviceInfo = jsonObj["device-info"] as? [[String:Any]] ?? [[String:Any]]()
+        itemDeviceInfo.append(dict)
+        jsonObj["device-info"] = itemDeviceInfo
+        if params == nil {
+            dict = [:]
+        }else{
+             mConfigFunction.logToFile(params: dict as! NSDictionary)
+        }
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
@@ -75,8 +84,28 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     //tracking cai app
     var defaults = UserDefaults.standard
-    func checkAppInstall(params: NSDictionary?){
-        
+    func setFirstLoginStatus(firstLogin: Bool) {
+        defaults.set(firstLogin, forKey: "firstLogin")
+    }
+    func getFirstLoginStatus() -> Bool {
+        return defaults.object(forKey: "firstLogin") as? Bool ?? false
+    }
+    func trackAppInstall(params: NSDictionary?){
+        if getFirstLoginStatus() == false{
+            setFirstLoginStatus(firstLogin: true)
+            let dict = ["tracking_app_install": getFirstLoginStatus()]
+            var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
+            itemEventData.append(dict)
+            jsonObj["event-data"] = itemEventData
+            mConfigFunction.logToFile(params: dict as! NSDictionary)
+        }else{
+            let dict = ["tracking_app_install": getFirstLoginStatus()]
+            var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
+            itemEventData.append(dict)
+            jsonObj["event-data"] = itemEventData
+            mConfigFunction.logToFile(params: dict as! NSDictionary)
+            return
+        }
     }
     //tracking go app
     func trackAppUninstall(params: NSDictionary?) {
