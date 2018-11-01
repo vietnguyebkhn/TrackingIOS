@@ -52,6 +52,7 @@
 		A8A3F37B2189ACBE004FDAA4 /* InforAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A3F3792189ACBE004FDAA4 /* InforAppViewController.xib */; };
 		A8A3F37E2189B2D5004FDAA4 /* CrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A3F37C2189B2D5004FDAA4 /* CrashViewController.swift */; };
 		A8A3F37F2189B2D5004FDAA4 /* CrashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A3F37D2189B2D5004FDAA4 /* CrashViewController.xib */; };
+		A8EE9714218AEF9600CFCFA1 /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EE9713218AEF9600CFCFA1 /* CornerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		A8A3F3792189ACBE004FDAA4 /* InforAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InforAppViewController.xib; sourceTree = "<group>"; };
 		A8A3F37C2189B2D5004FDAA4 /* CrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashViewController.swift; sourceTree = "<group>"; };
 		A8A3F37D2189B2D5004FDAA4 /* CrashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CrashViewController.xib; sourceTree = "<group>"; };
+		A8EE9713218AEF9600CFCFA1 /* CornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 		1C8C7F2B21883DC3003F0C69 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				A8EE9712218AEF5C00CFCFA1 /* Extention */,
 				A8A3F3732189A5C7004FDAA4 /* ViewController */,
 				A8A3F3702189A04D004FDAA4 /* Utils */,
 				A8A3F36721898C6A004FDAA4 /* component */,
@@ -314,6 +317,14 @@
 				A8A3F3752189A5D9004FDAA4 /* AViewController.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A8EE9712218AEF5C00CFCFA1 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				A8EE9713218AEF9600CFCFA1 /* CornerView.swift */,
+			);
+			path = Extention;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -573,6 +584,7 @@
 				1C8C7F2F21883DC3003F0C69 /* ViewController.swift in Sources */,
 				1C8C7F2D21883DC3003F0C69 /* AppDelegate.swift in Sources */,
 				A8A3F364218987FD004FDAA4 /* SWRevealViewController.m in Sources */,
+				A8EE9714218AEF9600CFCFA1 /* CornerView.swift in Sources */,
 				A8A3F36E218995A2004FDAA4 /* PersonalInforViewController.swift in Sources */,
 				A8A3F3722189A056004FDAA4 /* Util.swift in Sources */,
 				A8A3F36621898AE8004FDAA4 /* MenuViewController.swift in Sources */,
