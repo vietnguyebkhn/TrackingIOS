@@ -29,12 +29,22 @@ public let kTrackAppClose = "track_app_close"
  "track_app_install": Cài đặt ứng dụng // da track
  "track_app_uninstall": Gỡ ứng dụng
  "track_app_crash": Crash ứng dụng
- "track_app_start": Mở app chạy mới // dang lam
+ "track_app_start": Mở app chạy mới // xong
  "track_event_window_open": Mở màn hình
  "track_event_button_click": Click button, link
  "track_event_window_close": Đóng màn hình
- "track_app_close": Đóng hẳn app (kill) // dang lam
-
+ "track_app_close": Đóng hẳn app (kill) // xong 
  */
-
+public var device_info = [String:Any]()
+public let event_data = [String:Any]()
+public var jsonObj = [
+    "tracking-code":"tracking-code đã cấu hình",
+    "package-id":"packageID/bundleID của ứng dụng",
+    "request-id":"id của request gửi lên",
+    "tracking-data":[
+        "event-type": "mã event",
+        "object-name": "tên object",
+        "event-time": "thời điểm phát sinh event (YYYYMMDDHH24MISS)"
+    ]
+] as [String : Any]
 

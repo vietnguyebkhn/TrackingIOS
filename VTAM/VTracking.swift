@@ -10,6 +10,7 @@ import UIKit
 
 open class VTracking  {
     var mTrackingFunction : TrackingFunction!
+    var mConfigFunction : ConfigFunction?
     private static var sharedVTTracking: VTracking = {
     
         let vTracking = VTracking()
@@ -18,7 +19,7 @@ open class VTracking  {
         return vTracking
     }()
     
-    private init(){}
+//    private init(){}
     
     open class func shared() -> VTracking {
         
