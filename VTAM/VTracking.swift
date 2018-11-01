@@ -45,6 +45,8 @@ open class VTracking  {
             mTrackingFunction.trackLocation(params: params)
         case kTrackDeviceInfo:
             mTrackingFunction.trackDeviceInfo(params: params)
+        case kTrackAppInstall:
+            mTrackingFunction.trackAppInstall(params: params)
             break
         default:
             break

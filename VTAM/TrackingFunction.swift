@@ -74,8 +74,19 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     //tracking cai app
     var defaults = UserDefaults.standard
-    func checkAppInstall(params: NSDictionary?){
-        
+    func setFirstLoginStatus(firstLogin: Bool) {
+        defaults.set(firstLogin, forKey: "firstLogin")
+    }
+    func getFirstLoginStatus() -> Bool {
+        return defaults.object(forKey: "firstLogin") as? Bool ?? false
+    }
+    func trackAppInstall(params: NSDictionary?){
+        if getFirstLoginStatus() == false{
+            setFirstLoginStatus(firstLogin: true)
+            print(getFirstLoginStatus())
+        }else{
+            return
+        }
     }
     //tracking go app
     func trackAppUninstall(params: NSDictionary?) {
