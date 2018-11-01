@@ -87,7 +87,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     // "track_app_start": Mở app chạy mới
     func trackAppStart(params: NSDictionary?) {
-        
+        print("Mo app")
     }
     //"track_event_window_open": Mở màn hình
     func trackEventWindowOpen(params: NSDictionary?) {
@@ -95,7 +95,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     //"track_event_button_click": Click button, link
     func trackEventButtonClick(params: NSDictionary?) {
-        let eventType = kTrackEventWindowOpen
+        
         
         
     }
@@ -105,6 +105,6 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     //"track_app_close": Đóng hẳn app (kill)
     func trackAppClose(params: NSDictionary?) {
-        
+        print("Dong app")
     }
 }

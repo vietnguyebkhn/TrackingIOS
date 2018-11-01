@@ -46,6 +46,10 @@ open class VTracking  {
         case kTrackDeviceInfo:
             mTrackingFunction.trackDeviceInfo(params: params)
             break
+        case kTrackAppStart:
+            mTrackingFunction.trackAppStart(params: params)
+        case kTrackAppClose:
+            mTrackingFunction.trackAppClose(params: params)
         default:
             break
         }
