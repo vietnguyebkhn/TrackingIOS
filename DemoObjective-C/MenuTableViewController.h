@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MenuTableViewController.h
 //  DemoObjective-C
 //
 //  Created by Nguyễn Việt on 11/3/18.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *mBarButtonBouched;
+@interface MenuTableViewController : UITableViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
