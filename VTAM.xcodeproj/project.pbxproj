@@ -51,6 +51,7 @@
 		A8873638218D46B0003F5AC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8873637218D46B0003F5AC8 /* main.m */; };
 		A887363C218D46E5003F5AC8 /* VTAM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8C7F0721883D4F003F0C69 /* VTAM.framework */; };
 		A887363D218D46E5003F5AC8 /* VTAM.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8C7F0721883D4F003F0C69 /* VTAM.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8873644218D4D31003F5AC8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8873642218D4D31003F5AC8 /* SWRevealViewController.m */; };
 		A8A3F364218987FD004FDAA4 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A3F362218987FD004FDAA4 /* SWRevealViewController.m */; };
 		A8A3F36621898AE8004FDAA4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A3F36521898AE8004FDAA4 /* MenuViewController.swift */; };
 		A8A3F36A21898C7F004FDAA4 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A3F36821898C7F004FDAA4 /* MenuTableViewCell.swift */; };
@@ -64,6 +65,9 @@
 		A8A3F37B2189ACBE004FDAA4 /* InforAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A3F3792189ACBE004FDAA4 /* InforAppViewController.xib */; };
 		A8A3F37E2189B2D5004FDAA4 /* CrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A3F37C2189B2D5004FDAA4 /* CrashViewController.swift */; };
 		A8A3F37F2189B2D5004FDAA4 /* CrashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A3F37D2189B2D5004FDAA4 /* CrashViewController.xib */; };
+		A8C1F789218D53FD000D34B8 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C1F788218D53FD000D34B8 /* MenuTableViewController.m */; };
+		A8C1F78E218D560D000D34B8 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C1F78C218D560D000D34B8 /* MenuTableViewCell.m */; };
+		A8C1F78F218D560D000D34B8 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C1F78D218D560D000D34B8 /* MenuTableViewCell.xib */; };
 		A8EE9714218AEF9600CFCFA1 /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EE9713218AEF9600CFCFA1 /* CornerView.swift */; };
 		DDDB7338F3AF0873699CDDE7 /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85419FBB2DD72503005582D7 /* Pods_DemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -178,6 +182,8 @@
 		A8873634218D46B0003F5AC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8873636218D46B0003F5AC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8873637218D46B0003F5AC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A8873642218D4D31003F5AC8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A8873643218D4D31003F5AC8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		A8A3F361218987FD004FDAA4 /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8A3F362218987FD004FDAA4 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		A8A3F363218987FD004FDAA4 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -193,6 +199,11 @@
 		A8A3F3792189ACBE004FDAA4 /* InforAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InforAppViewController.xib; sourceTree = "<group>"; };
 		A8A3F37C2189B2D5004FDAA4 /* CrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashViewController.swift; sourceTree = "<group>"; };
 		A8A3F37D2189B2D5004FDAA4 /* CrashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CrashViewController.xib; sourceTree = "<group>"; };
+		A8C1F787218D53FD000D34B8 /* MenuTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
+		A8C1F788218D53FD000D34B8 /* MenuTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
+		A8C1F78B218D560D000D34B8 /* MenuTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
+		A8C1F78C218D560D000D34B8 /* MenuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
+		A8C1F78D218D560D000D34B8 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		A8EE9713218AEF9600CFCFA1 /* CornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
 		AA88EE6509F02C33AB45DF12 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF339A63CA3115B778010AA6 /* Pods-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.release.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -359,6 +370,8 @@
 		A8873627218D46AE003F5AC8 /* DemoObjective-C */ = {
 			isa = PBXGroup;
 			children = (
+				A8C1F78A218D55F4000D34B8 /* Component */,
+				A8873641218D4D20003F5AC8 /* Library */,
 				A8873628218D46AE003F5AC8 /* AppDelegate.h */,
 				A8873629218D46AE003F5AC8 /* AppDelegate.m */,
 				A887362B218D46AE003F5AC8 /* ViewController.h */,
@@ -368,8 +381,19 @@
 				A8873633218D46B0003F5AC8 /* LaunchScreen.storyboard */,
 				A8873636218D46B0003F5AC8 /* Info.plist */,
 				A8873637218D46B0003F5AC8 /* main.m */,
+				A8C1F787218D53FD000D34B8 /* MenuTableViewController.h */,
+				A8C1F788218D53FD000D34B8 /* MenuTableViewController.m */,
 			);
 			path = "DemoObjective-C";
+			sourceTree = "<group>";
+		};
+		A8873641218D4D20003F5AC8 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				A8873643218D4D31003F5AC8 /* SWRevealViewController.h */,
+				A8873642218D4D31003F5AC8 /* SWRevealViewController.m */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		A8A3F360218987F2004FDAA4 /* Library */ = {
@@ -412,6 +436,16 @@
 				A8A3F3752189A5D9004FDAA4 /* AViewController.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A8C1F78A218D55F4000D34B8 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				A8C1F78B218D560D000D34B8 /* MenuTableViewCell.h */,
+				A8C1F78C218D560D000D34B8 /* MenuTableViewCell.m */,
+				A8C1F78D218D560D000D34B8 /* MenuTableViewCell.xib */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		A8EE9712218AEF5C00CFCFA1 /* Extention */ = {
@@ -682,6 +716,7 @@
 			files = (
 				A8873635218D46B0003F5AC8 /* LaunchScreen.storyboard in Resources */,
 				A8873632218D46B0003F5AC8 /* Assets.xcassets in Resources */,
+				A8C1F78F218D560D000D34B8 /* MenuTableViewCell.xib in Resources */,
 				A8873630218D46AE003F5AC8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -901,6 +936,9 @@
 				A887362D218D46AE003F5AC8 /* ViewController.m in Sources */,
 				A8873638218D46B0003F5AC8 /* main.m in Sources */,
 				A887362A218D46AE003F5AC8 /* AppDelegate.m in Sources */,
+				A8873644218D4D31003F5AC8 /* SWRevealViewController.m in Sources */,
+				A8C1F78E218D560D000D34B8 /* MenuTableViewCell.m in Sources */,
+				A8C1F789218D53FD000D34B8 /* MenuTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
