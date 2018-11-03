@@ -44,15 +44,19 @@ open class VTracking  {
         switch eventType {
         case kTrackLocation:
             mTrackingFunction.trackLocation(params: params)
+            break
         case kTrackDeviceInfo:
             mTrackingFunction.trackDeviceInfo(params: params)
+            break
         case kTrackAppInstall:
             mTrackingFunction.trackAppInstall(params: params)
             break
         case kTrackAppStart:
             mTrackingFunction.trackAppStart(params: params)
+            break
         case kTrackAppClose:
             mTrackingFunction.trackAppClose(params: params)
+            break
         case kTrackEventButtonClick:
             mTrackingFunction.trackEventButtonClick(params: params)
             break

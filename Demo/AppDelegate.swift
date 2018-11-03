@@ -16,10 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        VTracking.shared().configure()
+    
         VTracking.shared().trackingEvent(eventType: kTrackAppStart, params: [:])
         VTracking.shared().trackingEvent(eventType: kTrackAppInstall, params: [:])
-        VTracking.shared().configure()
-
+        VTracking.shared().trackingEvent(eventType: kTrackDeviceInfo , params: [:])
+        VTracking.shared().trackingEvent(eventType: kTrackLocation, params: [:])
         return true
     }
 
