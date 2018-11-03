@@ -118,7 +118,7 @@ class ConfigFunction {
                 do{
                     try Zip.quickZipFiles([mPathFile!], fileName: mFileName, progress: { (progress) in
                          print("zip progress = \(progress)")
-                        removeFile()
+                        self.removeFile()
                     })
 //                    try Zip.quickZipFiles([mPathFile!], fileName: mFileName
                 }
