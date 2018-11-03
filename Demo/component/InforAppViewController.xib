@@ -43,12 +43,12 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="280" id="9xI-lD-Qdj"/>
                             </constraints>
-                            <mutableString key="text">Ứng dụng này được tích hợp với thư viện Viettel Analytic for Mobile (VTAM).
+                            <string key="text">Ứng dụng này được tích hợp với thư viện Viettel Analytic for Mobile (VTAM).
 
 VTAM có khả năng tracking các sự kiện trên ứng dụng được tích hợp và gửi thông tin trachking về máy chủ.
 
 Đây là màn hình minh hoạ khar năng ghi nhận sự kiện mở 1 màn hình dưới dạng popup của VTAM SDK.
-</mutableString>
+</string>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@ VTAM có khả năng tracking các sự kiện trên ứng dụng được tích
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="EBb-0h-MDj" secondAttribute="bottom" constant="8" id="6op-ht-1gv"/>
                         <constraint firstItem="1L9-tW-kiL" firstAttribute="centerX" secondItem="gmc-Y7-gAX" secondAttribute="centerX" id="E5T-sB-iyT"/>
@@ -90,6 +90,14 @@ VTAM có khả năng tracking các sự kiện trên ứng dụng được tích
                         <constraint firstItem="EBb-0h-MDj" firstAttribute="leading" secondItem="gmc-Y7-gAX" secondAttribute="leading" constant="87" id="phc-cR-8Xg"/>
                         <constraint firstAttribute="height" constant="250" id="w4P-n2-1iX"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
