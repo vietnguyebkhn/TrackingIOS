@@ -92,7 +92,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxD-Xp-t5d">
                                 <rect key="frame" x="42" y="197" width="291.5" height="162.5"/>
-                                <mutableString key="text">Ứng dungj này được tích hợp thư viện Viettel Analytic for mobile(VTAM).                               VTAM có khả năng track các sự kiện trên ứng dụng đươcj tích hợp và gửi thông tin tracking về máy chủ.                                    Hãy lựa chọn các chức năng và kiểm tra kết quả ở phía server.                                             Thanks</mutableString>
+                                <string key="text">Ứng dungj này được tích hợp thư viện Viettel Analytic for mobile(VTAM).                               VTAM có khả năng track các sự kiện trên ứng dụng đươcj tích hợp và gửi thông tin tracking về máy chủ.                                    Hãy lựa chọn các chức năng và kiểm tra kết quả ở phía server.                                             Thanks</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -106,19 +106,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3R-Uh-fai">
+                                <rect key="frame" x="112.5" y="389.5" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fPg-ik-EBw"/>
+                                    <constraint firstAttribute="width" constant="150" id="ucI-8O-fEa"/>
+                                </constraints>
+                                <state key="normal" title="Check Location"/>
+                                <connections>
+                                    <action selector="mCheckLocationTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aKX-5G-Yjf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="OxD-Xp-t5d" firstAttribute="top" secondItem="YNS-Qd-fex" secondAttribute="bottom" constant="30" id="4ng-rG-ZMs"/>
                             <constraint firstItem="0D9-0g-KKv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9sX-rx-n9E"/>
+                            <constraint firstItem="a3R-Uh-fai" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HMh-vd-nc5"/>
                             <constraint firstItem="OxD-Xp-t5d" firstAttribute="width" secondItem="YNS-Qd-fex" secondAttribute="width" id="I4F-he-lXZ"/>
                             <constraint firstItem="YNS-Qd-fex" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TFB-jd-uap"/>
                             <constraint firstItem="g8n-TS-pjD" firstAttribute="top" secondItem="0D9-0g-KKv" secondAttribute="bottom" constant="20" id="YJ3-zA-cRY"/>
+                            <constraint firstItem="a3R-Uh-fai" firstAttribute="top" secondItem="OxD-Xp-t5d" secondAttribute="bottom" constant="30" id="aQq-w0-wfP"/>
                             <constraint firstItem="OxD-Xp-t5d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w0z-jm-CoC"/>
                             <constraint firstItem="YNS-Qd-fex" firstAttribute="top" secondItem="ZwX-Nr-luf" secondAttribute="bottom" constant="60" id="wR4-c9-RKL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OPr-UL-xYj"/>
+                    <connections>
+                        <outlet property="mCheckLocationButton" destination="a3R-Uh-fai" id="xPB-OS-pcy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

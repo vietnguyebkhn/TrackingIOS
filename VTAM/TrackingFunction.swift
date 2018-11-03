@@ -97,13 +97,13 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
             itemEventData.append(dict)
             jsonObj["event-data"] = itemEventData
-            mConfigFunction.logToFile(params: dict as! NSDictionary)
+            mConfigFunction.logToFile(params: dict as NSDictionary)
         }else{
             let dict = ["tracking_app_install": getFirstLoginStatus()]
             var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
             itemEventData.append(dict)
             jsonObj["event-data"] = itemEventData
-            mConfigFunction.logToFile(params: dict as! NSDictionary)
+            mConfigFunction.logToFile(params: dict as NSDictionary)
             return
         }
     }

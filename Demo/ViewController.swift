@@ -8,8 +8,14 @@
 
 import UIKit
 import VTAM
+import CoreLocation
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var mCheckLocationButton: UIButton!
+    var mLocationManager: CLLocationManager?
+
     
     var index = 0
     var mPersonalInforViewController: PersonalInforViewController?
@@ -18,9 +24,17 @@ class ViewController: UIViewController {
         view.endEditing(true)
         self.revealViewController().revealToggle(sender)
     }
-
+    
+    
+    @IBAction func mCheckLocationTouched(_ sender: Any) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        mLocationManager = CLLocationManager()
+        mLocationManager?.delegate = self
+        mLocationManager?.requestAlwaysAuthorization()
         let myBtn : UIButton = UIButton()
         myBtn.setImage(UIImage(named: "menu"), for: .normal)
         myBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
@@ -28,5 +42,10 @@ class ViewController: UIViewController {
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: myBtn), animated: true)
         VTracking.shared().trackingEvent(eventType: kTrackDeviceInfo , params: [:])
         VTracking.shared().trackingEvent(eventType: kTrackLocation, params: [:])
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways {
+            
+        }
     }
 }
