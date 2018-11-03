@@ -26,12 +26,12 @@ public let kTrackEventWindowClose = "track_event_window_close"
 public let kTrackAppClose = "track_app_close"
 /*"track_location": Location
  "track_personal_info": Thông tin cá nhân //K track duoc
- "track_app_install": Cài đặt ứng dụng // da track
+ "track_app_install": Cài đặt ứng dụng // xong
  "track_app_uninstall": Gỡ ứng dụng
  "track_app_crash": Crash ứng dụng
  "track_app_start": Mở app chạy mới // xong
  "track_event_window_open": Mở màn hình
- "track_event_button_click": Click button, link
+ "track_event_button_click": Click button, link // xong
  "track_event_window_close": Đóng màn hình
  "track_app_close": Đóng hẳn app (kill) // xong 
  */

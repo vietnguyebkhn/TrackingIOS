@@ -10,8 +10,9 @@ import Foundation
 import CoreLocation
 
 class TrackingFunction : NSObject,CLLocationManagerDelegate {
-     var count = 0
     var mConfigFunction = ConfigFunction()
+    var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
+    var itemDeviceInfo = jsonObj["device-info"] as? [[String:Any]] ?? [[String:Any]]()
     //tracking location
      func trackLocation(params: NSDictionary?) {
         var locationManager : CLLocationManager?
@@ -68,13 +69,12 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "deviceModel" : "\(UIDevice.current.model) \(deviceModel)" ,
             "track_os_version" : iOSVersion
         ]
-        var itemDeviceInfo = jsonObj["device-info"] as? [[String:Any]] ?? [[String:Any]]()
         itemDeviceInfo.append(dict)
         jsonObj["device-info"] = itemDeviceInfo
         if params == nil {
             dict = [:]
         }else{
-             mConfigFunction.logToFile(params: dict as! NSDictionary)
+            mConfigFunction.logToFile(params: dict as NSDictionary)
         }
     }
     //tracking thong tin ca nhan
@@ -84,27 +84,29 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     //tracking cai app
     var defaults = UserDefaults.standard
-    func setFirstLoginStatus(firstLogin: Bool) {
-        defaults.set(firstLogin, forKey: "firstLogin")
+    func setFirstInstallStatus(firstInstall: Bool) {
+        defaults.set(firstInstall, forKey: "firstInstall")
     }
-    func getFirstLoginStatus() -> Bool {
-        return defaults.object(forKey: "firstLogin") as? Bool ?? false
+    func getFirstInstallStatus() -> Bool {
+        return defaults.object(forKey: "firstInstall") as? Bool ?? false
     }
     func trackAppInstall(params: NSDictionary?){
-        if getFirstLoginStatus() == false{
-            setFirstLoginStatus(firstLogin: true)
-            let dict = ["tracking_app_install": getFirstLoginStatus()]
+        if getFirstInstallStatus() == false {
+            setFirstInstallStatus(firstInstall: true)
+            let dict = ["tracking_app_install": getFirstInstallStatus()]
             var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
             itemEventData.append(dict)
             jsonObj["event-data"] = itemEventData
             mConfigFunction.logToFile(params: dict as NSDictionary)
         }else{
-            let dict = ["tracking_app_install": getFirstLoginStatus()]
+
+            let dict = ["tracking_app_install": getFirstInstallStatus()]
             var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
             itemEventData.append(dict)
             jsonObj["event-data"] = itemEventData
             mConfigFunction.logToFile(params: dict as NSDictionary)
             return
+               
         }
     }
     //tracking go app
@@ -116,17 +118,31 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         
     }
     // "track_app_start": Mở app chạy mới
+    func setAppStartStatus(appStart: Bool) {
+        defaults.set(appStart, forKey: "appStart")
+    }
+    func getAppStartStatus() -> Bool {
+        return defaults.object(forKey: "appStart") as? Bool ?? false
+    }
     func trackAppStart(params: NSDictionary?) {
-        print("Mo app")
+        setAppStartStatus(appStart: true)
+        let dict = ["track-app-start":getAppStartStatus()]
+        itemEventData.append(dict)
+        jsonObj["event-data"] = itemEventData
+        mConfigFunction.logToFile(params: dict as NSDictionary)
     }
     //"track_event_window_open": Mở màn hình
     func trackEventWindowOpen(params: NSDictionary?) {
         
     }
     //"track_event_button_click": Click button, link
+    var count = 0
     func trackEventButtonClick(params: NSDictionary?){
-       
-       count = count + 1
+        count = count + 1
+        let dict = ["track_event_button_click":"tap \(count) times!!"]
+        itemEventData.append(dict)
+        jsonObj["event-data"] = itemEventData
+        mConfigFunction.logToFile(params: dict as NSDictionary)
         print("Tap on this button: \(count) times!!")
     }
     //"track_event_window_close": Đóng màn hình
@@ -134,7 +150,24 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         
     }
     //"track_app_close": Đóng hẳn app (kill)
+    func setAppCloseStatus(appStart: Bool) {
+        defaults.set(appStart, forKey: "appStart")
+    }
+    func getAppCloseStatus() -> Bool {
+        return defaults.object(forKey: "appStart") as? Bool ?? false
+    }
     func trackAppClose(params: NSDictionary?) {
-        print("Dong app")
+        setAppCloseStatus(appStart: true)
+        let dict = ["track-app-close":getAppCloseStatus()]
+        itemEventData.append(dict)
+        jsonObj["event-data"] = itemEventData
+        mConfigFunction.logToFile(params: dict as NSDictionary)
+        
+        
+        setAppStartStatus(appStart: false)
+        let dic = ["track-app-start":getAppStartStatus()]
+        itemEventData.append(dic)
+        jsonObj["event-data"] = itemEventData
+        mConfigFunction.logToFile(params: dic as NSDictionary)
     }
 }
