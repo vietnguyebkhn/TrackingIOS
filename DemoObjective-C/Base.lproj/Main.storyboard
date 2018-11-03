@@ -36,7 +36,55 @@
                     <view key="view" contentMode="scaleToFill" id="KbJ-my-myi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chào mừng bạn đến với ứng dụng VTAM SDK Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5M-Sz-1mG">
+                                <rect key="frame" x="42" y="94" width="291.5" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291.5" id="A3O-EP-RZM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4O1-Ee-SgY">
+                                <rect key="frame" x="42" y="167" width="291.5" height="162.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291.5" id="ZFA-Qm-8x3"/>
+                                </constraints>
+                                <string key="text">Ứng dungj này được tích hợp thư viện Viettel Analytic for mobile(VTAM).                               VTAM có khả năng track các sự kiện trên ứng dụng đươcj tích hợp và gửi thông tin tracking về máy chủ.                                    Hãy lựa chọn các chức năng và kiểm tra kết quả ở phía server.                                             Thanks</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy right @ 2018 by Viettel                  Version 1.0        " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5l-oU-g5m">
+                                <rect key="frame" x="78.5" y="606" width="218.5" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="218.5" id="Cep-Qt-p0j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJW-EI-YYb">
+                                <rect key="frame" x="112.5" y="359.5" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Hcu-7w-J3F"/>
+                                    <constraint firstAttribute="height" constant="30" id="mts-as-EIH"/>
+                                </constraints>
+                                <state key="normal" title="Check Location"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FJW-EI-YYb" firstAttribute="top" secondItem="4O1-Ee-SgY" secondAttribute="bottom" constant="30" id="7qU-ba-fmg"/>
+                            <constraint firstItem="n5M-Sz-1mG" firstAttribute="centerX" secondItem="poT-fa-75r" secondAttribute="centerX" id="AR8-T9-weJ"/>
+                            <constraint firstItem="n5M-Sz-1mG" firstAttribute="top" secondItem="poT-fa-75r" secondAttribute="top" constant="30" id="MoW-jr-HDl"/>
+                            <constraint firstItem="4O1-Ee-SgY" firstAttribute="centerX" secondItem="n5M-Sz-1mG" secondAttribute="centerX" id="Nr9-ff-DoG"/>
+                            <constraint firstItem="poT-fa-75r" firstAttribute="bottom" secondItem="r5l-oU-g5m" secondAttribute="bottom" constant="20" id="PuJ-wC-FFi"/>
+                            <constraint firstItem="r5l-oU-g5m" firstAttribute="centerX" secondItem="poT-fa-75r" secondAttribute="centerX" id="X5j-Ly-Agg"/>
+                            <constraint firstItem="4O1-Ee-SgY" firstAttribute="top" secondItem="n5M-Sz-1mG" secondAttribute="bottom" constant="30" id="b6Q-qR-lwx"/>
+                            <constraint firstItem="FJW-EI-YYb" firstAttribute="centerX" secondItem="poT-fa-75r" secondAttribute="centerX" id="s1V-tP-SOb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="poT-fa-75r"/>
                     </view>
                     <navigationItem key="navigationItem" id="s9M-q4-V3B">
@@ -44,6 +92,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mBarButtonBouched" destination="0P9-fW-rgE" id="ly2-2G-RdK"/>
+                        <outlet property="mCheckLocation" destination="FJW-EI-YYb" id="7rU-6z-Suv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJ2-mZ-L5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
