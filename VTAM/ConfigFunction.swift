@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Zip
 
 class ConfigFunction {
     var urlBase = "https://vtam-sdk.viettel.com.vn"
@@ -45,8 +44,6 @@ class ConfigFunction {
             }
         }
         
-        
-        
         if FileManager.default.fileExists(atPath: file.path) == false {
             do
             {
@@ -77,8 +74,6 @@ class ConfigFunction {
 //            print(error)
 //        }
         
-        
-       
         return DocURL.path
     }
     
@@ -94,40 +89,7 @@ class ConfigFunction {
     
     //Ham zip file
     func zipFile(password: String)  {
-        if password != "" {
-            if mPathZip != nil || mPathFile != nil{
-                let zipFilePath = mPathZip!.appendingPathComponent(mFileName + ".zip")
-                do {
-                    //                let filePath = Bundle.main.url(forResource: "file", withExtension: "zip")!
-                    //                let documentsDirectory = FileManager.default.urls(for:.documentDirectory, in: .userDomainMask)[0]
-                    //                try Zip.unzipFile(filePath, destination: documentsDirectory, overwrite: true, password: "password", progress: { (progress) -> () in
-                    //                    print(progress)
-                    //                }) // Unzip
-                    
-                    print("password = \(password)")
-                    try Zip.zipFiles(paths: [mPathFile!], zipFilePath: zipFilePath, password: "abc", progress: { (progress) -> () in
-                        print("zip progress = \(progress)")
-                    }) //Zip
-                }
-                catch {
-                    print("Something went wrong")
-                }
-            }
-        } else {
-            if mPathFile != nil{
-                do{
-                    try Zip.quickZipFiles([mPathFile!], fileName: mFileName, progress: { (progress) in
-                         print("zip progress = \(progress)")
-                        self.removeFile()
-                    })
-//                    try Zip.quickZipFiles([mPathFile!], fileName: mFileName
-                }
-                catch {
-                    print("Something went wrong")
-                }
-            }
-
-        }
+        
     }
     
     // tra ve duong dan trong local may
