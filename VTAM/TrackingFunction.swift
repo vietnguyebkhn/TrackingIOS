@@ -15,22 +15,26 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     var itemDeviceInfo = VEventType.jsonObj["device-info"] as? [[String:Any]] ?? [[String:Any]]()
     //tracking location
      func trackLocation(params: NSDictionary?) {
-        var locationManager : CLLocationManager?
-            if locationManager == nil {
-                locationManager = CLLocationManager()
-                locationManager!.delegate = self
-                locationManager!.desiredAccuracy = kCLLocationAccuracyBest
-                if CLLocationManager.locationServicesEnabled() == false {
-                    print("Your location service is not enabled, So go to Settings>Location Services")
-                    
-                } else {
-                    print("Your location service is enabled")
-                    locationManager!.startUpdatingLocation()
-                    let longitude = locationManager?.location?.coordinate.longitude
-                    print(longitude)
-                }
-//                locationManager!.requestWhenInUseAuthorization()
-            }
+        let dict = [VEventType.kTrackLocation:params]
+        itemEventData.append(dict)
+        VEventType.jsonObj["event-data"] = itemEventData
+        mConfigFunction.logToFile(params: dict as NSDictionary)
+//        var locationManager : CLLocationManager?
+//            if locationManager == nil {
+//                locationManager = CLLocationManager()
+//                locationManager!.delegate = self
+//                locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+//                if CLLocationManager.locationServicesEnabled() == false {
+//                    print("Your location service is not enabled, So go to Settings>Location Services")
+//
+//                } else {
+//                    print("Your location service is enabled")
+//                    locationManager!.startUpdatingLocation()
+//                    let longitude = locationManager?.location?.coordinate.longitude
+//                    print(longitude)
+//                }
+////                locationManager!.requestWhenInUseAuthorization()
+//            }
         
 //        let longitude = locationManager?.location?.coordinate.longitude
 //        let latitude = locationManager?.location?.coordinate.latitude
