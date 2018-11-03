@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "VTAM.h"
 #import "SWRevealViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface ViewController ()
 
@@ -20,11 +21,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     _mBarButtonBouched.target = self.revealViewController;
     _mBarButtonBouched.action = @selector(revealToggle:);
-    
+    [_mCheckLocation addTarget:self action:@selector(checkLocation) forControlEvents: UIControlEventTouchUpInside];
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     [[VTracking shared] trackingEventWithEventType:VEventType.kTrackLocation params:nil];
+}
+
+-(void) checkLocation: (UIButton*) sender {
 }
 
 @end

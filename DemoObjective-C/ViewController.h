@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mBarButtonBouched;
+@property (weak, nonatomic) IBOutlet UIButton *mCheckLocation;
+@property(nonatomic, nonnull) CLLocation *locationManager;
 
 @end
 

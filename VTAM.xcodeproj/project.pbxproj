@@ -64,6 +64,8 @@
 		A8C1F789218D53FD000D34B8 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C1F788218D53FD000D34B8 /* MenuTableViewController.m */; };
 		A8C1F78E218D560D000D34B8 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C1F78C218D560D000D34B8 /* MenuTableViewCell.m */; };
 		A8C1F78F218D560D000D34B8 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C1F78D218D560D000D34B8 /* MenuTableViewCell.xib */; };
+		A8C1F796218D6479000D34B8 /* UserInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C1F794218D6479000D34B8 /* UserInforViewController.m */; };
+		A8C1F797218D6479000D34B8 /* UserInforViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C1F795218D6479000D34B8 /* UserInforViewController.xib */; };
 		A8EE9714218AEF9600CFCFA1 /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EE9713218AEF9600CFCFA1 /* CornerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +189,9 @@
 		A8C1F78B218D560D000D34B8 /* MenuTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
 		A8C1F78C218D560D000D34B8 /* MenuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
 		A8C1F78D218D560D000D34B8 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		A8C1F793218D6479000D34B8 /* UserInforViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInforViewController.h; sourceTree = "<group>"; };
+		A8C1F794218D6479000D34B8 /* UserInforViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInforViewController.m; sourceTree = "<group>"; };
+		A8C1F795218D6479000D34B8 /* UserInforViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInforViewController.xib; sourceTree = "<group>"; };
 		A8EE9713218AEF9600CFCFA1 /* CornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -411,6 +416,9 @@
 				A8C1F78B218D560D000D34B8 /* MenuTableViewCell.h */,
 				A8C1F78C218D560D000D34B8 /* MenuTableViewCell.m */,
 				A8C1F78D218D560D000D34B8 /* MenuTableViewCell.xib */,
+				A8C1F793218D6479000D34B8 /* UserInforViewController.h */,
+				A8C1F794218D6479000D34B8 /* UserInforViewController.m */,
+				A8C1F795218D6479000D34B8 /* UserInforViewController.xib */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -658,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8873635218D46B0003F5AC8 /* LaunchScreen.storyboard in Resources */,
+				A8C1F797218D6479000D34B8 /* UserInforViewController.xib in Resources */,
 				A8873632218D46B0003F5AC8 /* Assets.xcassets in Resources */,
 				A8C1F78F218D560D000D34B8 /* MenuTableViewCell.xib in Resources */,
 				A8873630218D46AE003F5AC8 /* Main.storyboard in Resources */,
@@ -745,6 +754,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A887362D218D46AE003F5AC8 /* ViewController.m in Sources */,
+				A8C1F796218D6479000D34B8 /* UserInforViewController.m in Sources */,
 				A8873638218D46B0003F5AC8 /* main.m in Sources */,
 				A887362A218D46AE003F5AC8 /* AppDelegate.m in Sources */,
 				A8873644218D4D31003F5AC8 /* SWRevealViewController.m in Sources */,
