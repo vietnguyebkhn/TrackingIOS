@@ -22,13 +22,16 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
                 locationManager!.desiredAccuracy = kCLLocationAccuracyBest
                 if CLLocationManager.locationServicesEnabled() == false {
                     print("Your location service is not enabled, So go to Settings>Location Services")
+                    
                 } else {
                     print("Your location service is enabled")
+                    locationManager!.startUpdatingLocation()
+                    let longitude = locationManager?.location?.coordinate.longitude
+                    print(longitude)
                 }
-                locationManager!.requestWhenInUseAuthorization()
+//                locationManager!.requestWhenInUseAuthorization()
             }
-            locationManager!.startUpdatingLocation()
-        let longitude = locationManager?.location?.coordinate.longitude
+        
 //        let longitude = locationManager?.location?.coordinate.longitude
 //        let latitude = locationManager?.location?.coordinate.latitude
 //        let eventType = kTrackLocation
@@ -44,7 +47,6 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
 //        dict.setValue(mConfigFunction.getCurrentTime(), forKey: "current_time")
 //
 //        mConfigFunction.logToFile(params: dict)
-        print(longitude)
 //        if longitude != nil || latitude != nil{
 //            print("longitdude: \(longitude!) latitude: \(latitude!)")
 //        }
@@ -98,15 +100,15 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             itemEventData.append(dict)
             VEventType.jsonObj["event-data"] = itemEventData
             mConfigFunction.logToFile(params: dict as NSDictionary)
-        }else{
+        } else {
+
 
             let dict = ["tracking_app_install": getFirstInstallStatus()]
             var itemEventData = VEventType.jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
             itemEventData.append(dict)
             VEventType.jsonObj["event-data"] = itemEventData
             mConfigFunction.logToFile(params: dict as NSDictionary)
-            return
-               
+            return               
         }
     }
     //tracking go app
