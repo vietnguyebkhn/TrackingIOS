@@ -24,7 +24,7 @@ class ConfigFunction {
         let file = DocURL.appendingPathComponent("demo").appendingPathExtension("js")
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: jsonObj, options: [])
+            let data = try JSONSerialization.data(withJSONObject: VEventType.jsonObj, options: [])
             let fileHandle = try FileHandle(forWritingTo: file)
             fileHandle.seekToEndOfFile()
             fileHandle.write(data)

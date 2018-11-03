@@ -35,7 +35,7 @@ class CrashViewController: UIViewController {
     }
     
     @IBAction func mCloseTouched(_ sender: Any) {
-        VTracking.shared().trackingEvent(eventType: kTrackEventButtonClick, params: [:])
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackEventButtonClick, params: [:])
     }
     
 

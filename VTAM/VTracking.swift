@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class VTracking  {
+@objc open class VTracking : NSObject  {
     var mTrackingFunction : TrackingFunction!
     var mConfigFunction : ConfigFunction?
     private static var sharedVTTracking: VTracking = {
@@ -21,13 +21,13 @@ open class VTracking  {
     
 //    private init(){}
     
-    open class func shared() -> VTracking {
+    @objc open class func shared() -> VTracking {
         
         return sharedVTTracking
     }       
     
     //Ham thiet lap cac config ban dau cua app
-    open func configure() {
+    @objc open func configure() {
         //load cac thiet lap config tu file tracking-info.plist
         
 //        if let fileUrl = Bundle.main.url(forResource: "SDK-config", withExtension: "plist"),
@@ -40,24 +40,24 @@ open class VTracking  {
         
     }
     //ham tracking cua app
-    open func trackingEvent(eventType: String, params: NSDictionary?) {
+    @objc open func trackingEvent(eventType: String, params: NSDictionary?) {
         switch eventType {
-        case kTrackLocation:
+        case VEventType.kTrackLocation:
             mTrackingFunction.trackLocation(params: params)
             break
-        case kTrackDeviceInfo:
+        case VEventType.kTrackDeviceInfo:
             mTrackingFunction.trackDeviceInfo(params: params)
             break
-        case kTrackAppInstall:
+        case VEventType.kTrackAppInstall:
             mTrackingFunction.trackAppInstall(params: params)
             break
-        case kTrackAppStart:
+        case VEventType.kTrackAppStart:
             mTrackingFunction.trackAppStart(params: params)
             break
-        case kTrackAppClose:
+        case VEventType.kTrackAppClose:
             mTrackingFunction.trackAppClose(params: params)
             break
-        case kTrackEventButtonClick:
+        case VEventType.kTrackEventButtonClick:
             mTrackingFunction.trackEventButtonClick(params: params)
             break
         default:

@@ -11,8 +11,8 @@ import CoreLocation
 
 class TrackingFunction : NSObject,CLLocationManagerDelegate {
     var mConfigFunction = ConfigFunction()
-    var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
-    var itemDeviceInfo = jsonObj["device-info"] as? [[String:Any]] ?? [[String:Any]]()
+    var itemEventData = VEventType.jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
+    var itemDeviceInfo = VEventType.jsonObj["device-info"] as? [[String:Any]] ?? [[String:Any]]()
     //tracking location
      func trackLocation(params: NSDictionary?) {
         var locationManager : CLLocationManager?
@@ -70,7 +70,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "track_os_version" : iOSVersion
         ]
         itemDeviceInfo.append(dict)
-        jsonObj["device-info"] = itemDeviceInfo
+        VEventType.jsonObj["device-info"] = itemDeviceInfo
         if params == nil {
             dict = [:]
         }else{
@@ -79,7 +79,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
-        let eventType = kTrackPersonalInfo
+        let eventType = VEventType.kTrackPersonalInfo
         
     }
     //tracking cai app
@@ -94,16 +94,16 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         if getFirstInstallStatus() == false {
             setFirstInstallStatus(firstInstall: true)
             let dict = ["tracking_app_install": getFirstInstallStatus()]
-            var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
+            var itemEventData = VEventType.jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
             itemEventData.append(dict)
-            jsonObj["event-data"] = itemEventData
+            VEventType.jsonObj["event-data"] = itemEventData
             mConfigFunction.logToFile(params: dict as NSDictionary)
         }else{
 
             let dict = ["tracking_app_install": getFirstInstallStatus()]
-            var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
+            var itemEventData = VEventType.jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
             itemEventData.append(dict)
-            jsonObj["event-data"] = itemEventData
+            VEventType.jsonObj["event-data"] = itemEventData
             mConfigFunction.logToFile(params: dict as NSDictionary)
             return
                
@@ -128,7 +128,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         setAppStartStatus(appStart: true)
         let dict = ["track-app-start":getAppStartStatus()]
         itemEventData.append(dict)
-        jsonObj["event-data"] = itemEventData
+        VEventType.jsonObj["event-data"] = itemEventData
         mConfigFunction.logToFile(params: dict as NSDictionary)
     }
     //"track_event_window_open": Mở màn hình
@@ -141,7 +141,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         count = count + 1
         let dict = ["track_event_button_click":"tap \(count) times!!"]
         itemEventData.append(dict)
-        jsonObj["event-data"] = itemEventData
+        VEventType.jsonObj["event-data"] = itemEventData
         mConfigFunction.logToFile(params: dict as NSDictionary)
         print("Tap on this button: \(count) times!!")
     }
@@ -160,14 +160,14 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         setAppCloseStatus(appStart: true)
         let dict = ["track-app-close":getAppCloseStatus()]
         itemEventData.append(dict)
-        jsonObj["event-data"] = itemEventData
+        VEventType.jsonObj["event-data"] = itemEventData
         mConfigFunction.logToFile(params: dict as NSDictionary)
         
         
         setAppStartStatus(appStart: false)
         let dic = ["track-app-start":getAppStartStatus()]
         itemEventData.append(dic)
-        jsonObj["event-data"] = itemEventData
+        VEventType.jsonObj["event-data"] = itemEventData
         mConfigFunction.logToFile(params: dic as NSDictionary)
     }
 }

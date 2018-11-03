@@ -55,7 +55,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if let location = locations.last {
             mLocationManager?.requestAlwaysAuthorization()
             print("New location is \(location)")
-            VTracking.shared().trackingEvent(eventType: kTrackLocation, params: ["location": location])
+            VTracking.shared().trackingEvent(eventType: VEventType.kTrackLocation, params: ["location": location])
         }
     }
 }
