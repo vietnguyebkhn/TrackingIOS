@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,11 +13,14 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RoP-j7-Umw"/>
+                        <viewControllerLayoutGuide type="bottom" id="DeH-4n-KbV"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <segue destination="ass-Vs-Pcj" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="hsG-Pu-Fsw"/>
@@ -33,6 +35,10 @@
         <scene sceneID="uyW-DH-if1">
             <objects>
                 <viewController id="K4j-eR-U94" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Fz-1f-lTw"/>
+                        <viewControllerLayoutGuide type="bottom" id="taJ-uL-y8J"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KbJ-my-myi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,15 +83,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FJW-EI-YYb" firstAttribute="top" secondItem="4O1-Ee-SgY" secondAttribute="bottom" constant="30" id="7qU-ba-fmg"/>
-                            <constraint firstItem="n5M-Sz-1mG" firstAttribute="centerX" secondItem="poT-fa-75r" secondAttribute="centerX" id="AR8-T9-weJ"/>
-                            <constraint firstItem="n5M-Sz-1mG" firstAttribute="top" secondItem="poT-fa-75r" secondAttribute="top" constant="30" id="MoW-jr-HDl"/>
+                            <constraint firstItem="n5M-Sz-1mG" firstAttribute="centerX" secondItem="KbJ-my-myi" secondAttribute="centerX" id="AR8-T9-weJ"/>
+                            <constraint firstItem="n5M-Sz-1mG" firstAttribute="top" secondItem="5Fz-1f-lTw" secondAttribute="bottom" constant="30" id="MoW-jr-HDl"/>
                             <constraint firstItem="4O1-Ee-SgY" firstAttribute="centerX" secondItem="n5M-Sz-1mG" secondAttribute="centerX" id="Nr9-ff-DoG"/>
-                            <constraint firstItem="poT-fa-75r" firstAttribute="bottom" secondItem="r5l-oU-g5m" secondAttribute="bottom" constant="20" id="PuJ-wC-FFi"/>
-                            <constraint firstItem="r5l-oU-g5m" firstAttribute="centerX" secondItem="poT-fa-75r" secondAttribute="centerX" id="X5j-Ly-Agg"/>
+                            <constraint firstItem="taJ-uL-y8J" firstAttribute="top" secondItem="r5l-oU-g5m" secondAttribute="bottom" constant="20" id="PuJ-wC-FFi"/>
+                            <constraint firstItem="r5l-oU-g5m" firstAttribute="centerX" secondItem="KbJ-my-myi" secondAttribute="centerX" id="X5j-Ly-Agg"/>
                             <constraint firstItem="4O1-Ee-SgY" firstAttribute="top" secondItem="n5M-Sz-1mG" secondAttribute="bottom" constant="30" id="b6Q-qR-lwx"/>
-                            <constraint firstItem="FJW-EI-YYb" firstAttribute="centerX" secondItem="poT-fa-75r" secondAttribute="centerX" id="s1V-tP-SOb"/>
+                            <constraint firstItem="FJW-EI-YYb" firstAttribute="centerX" secondItem="KbJ-my-myi" secondAttribute="centerX" id="s1V-tP-SOb"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="poT-fa-75r"/>
                     </view>
                     <navigationItem key="navigationItem" id="s9M-q4-V3B">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="menu" landscapeImage="menu" largeContentSizeImage="menu" id="0P9-fW-rgE"/>
@@ -137,6 +142,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="menu" width="37.5" height="37.5"/>
+        <image name="menu" width="25" height="25"/>
     </resources>
 </document>
