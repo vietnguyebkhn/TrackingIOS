@@ -9,7 +9,7 @@
 import Foundation
 
 class TrackingVO {
-
+    var baseUrl = "https://vtam-sdk.viettel.com.vn"
     var trackingCode = ""
    var  PackageId = ""
     var RequestId = ""

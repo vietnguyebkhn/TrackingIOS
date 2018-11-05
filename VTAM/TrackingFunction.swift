@@ -13,10 +13,12 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     var mConfigFunction = ConfigFunction()
     //tracking location
      func trackLocation(params: NSDictionary?) {
-        let dict = [VEventType.kTrackLocation:params]
-        VEventType.itemEventData.append(dict)
-        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-        mConfigFunction.logToFile(params: dict as NSDictionary)
+        mConfigFunction.logToFile(key: VEventType.kTrackLocation, params: params)
+        
+//        let dict = [VEventType.kTrackLocation:params]
+//        VEventType.itemEventData.append(dict)
+//        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
+        
 //        var locationManager : CLLocationManager?
 //            if locationManager == nil {
 //                locationManager = CLLocationManager()
@@ -54,7 +56,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
 //        }
     }
     //tracking device info
-    func trackDeviceInfo(params: NSDictionary?){
+    func trackDeviceInfo() {
         var systemInfo = utsname()
         uname(&systemInfo)
         
@@ -66,6 +68,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             return String(cString: ptr)
         }
         let iOSVersion = UIDevice.current.systemVersion
+        
         var dict = [
             "track_branch_name" : build ?? "",
             "track_app_version" : version ?? "",
@@ -73,13 +76,9 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "deviceModel" : "\(UIDevice.current.model) \(deviceModel)" ,
             "track_os_version" : iOSVersion
         ]
-        VEventType.itemDeviceInfo.append(dict)
-        VEventType.jsonObj["device-info"] = VEventType.itemDeviceInfo
-        if params == nil {
-            dict = [:]
-        }else{
-            mConfigFunction.logToFile(params: dict as NSDictionary)
-        }
+        
+         mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: dict as NSDictionary)
+        
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
@@ -100,17 +99,19 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     func trackAppInstall(params: NSDictionary?){
         if getFirstInstallStatus() == false {
             setFirstInstallStatus(firstInstall: true)
-            let dict = ["tracking_app_install": getFirstInstallStatus()]
-            VEventType.itemEventData.append(dict)
-            VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-            mConfigFunction.logToFile(params: dict as NSDictionary)
-        } else {
-            let dict = ["tracking_app_install": getFirstInstallStatus()]
-            VEventType.itemEventData.append(dict)
-            VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-            mConfigFunction.logToFile(params: dict as NSDictionary)
-            return               
+//            let dict = ["tracking_app_install": getFirstInstallStatus()]
+//            VEventType.itemEventData.append(dict)
+//            VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
+            mConfigFunction.logToFile(key: VEventType.kTrackAppInstall, params: params)
         }
+//        else {
+//            let dict = ["tracking_app_install": getFirstInstallStatus()]
+//            VEventType.itemEventData.append(dict)
+//            VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
+//            mConfigFunction.logToFile(key: VEventType.kTrackAppInstall, params: dict as NSDictionary)
+//            return
+//        }
+        
     }
     
     //tracking go app
@@ -132,10 +133,11 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     func trackAppStart(params: NSDictionary?) {
         setAppStartStatus(appStart: true)
-        let dict = ["track-app-start":getAppStartStatus()]
-        VEventType.itemEventData.append(dict)
-        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-        mConfigFunction.logToFile(params: dict as NSDictionary)
+        mConfigFunction.logToFile(key: VEventType.kTrackAppStart, params: params)
+//        let dict = ["track-app-start":getAppStartStatus()]
+//        VEventType.itemEventData.append(dict)
+//        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
+//        mConfigFunction.logToFile(key: VEventType.kTrackAppStart, params: dict as NSDictionary)
     }
     
     //"track_event_window_open": Mở màn hình
@@ -144,14 +146,15 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     
     //"track_event_button_click": Click button, link
-    var count = 0
+//    var count = 0
     func trackEventButtonClick(params: NSDictionary?){
-        count = count + 1
-        let dict = ["track_event_button_click":"tap \(count) times!!"]
-        VEventType.itemEventData.append(dict)
-        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-        mConfigFunction.logToFile(params: dict as NSDictionary)
-        print("Tap on this button: \(count) times!!")
+        mConfigFunction.logToFile(key: VEventType.kTrackEventButtonClick, params: params)
+//        count = count + 1
+//        let dict = ["track_event_button_click":"tap \(count) times!!"]
+//        VEventType.itemEventData.append(dict)
+//        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
+//        mConfigFunction.logToFile(key: VEventType.kTrackEventButtonClick, params: dict as NSDictionary)
+//        print("Tap on this button: \(count) times!!")
     }
     
     //"track_event_window_close": Đóng màn hình
@@ -167,17 +170,19 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         return defaults.object(forKey: "appStart") as? Bool ?? false
     }
     func trackAppClose(params: NSDictionary?) {
-        setAppCloseStatus(appStart: true)
-        let dict = ["track-app-close":getAppCloseStatus()]
-        VEventType.itemEventData.append(dict)
-        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-        mConfigFunction.logToFile(params: dict as NSDictionary)
+        mConfigFunction.logToFile(key: VEventType.kTrackAppClose, params: params)
+        
+//        setAppCloseStatus(appStart: true)
+//        let dict = ["track-app-close":getAppCloseStatus()]
+//        VEventType.itemEventData.append(dict)
+//        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
         
         
-        setAppStartStatus(appStart: false)
-        let dic = ["track-app-start":getAppStartStatus()]
-        VEventType.itemEventData.append(dic)
-        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-        mConfigFunction.logToFile(params: dic as NSDictionary)
+        
+//        setAppStartStatus(appStart: false)
+//        let dic = ["track-app-start":getAppStartStatus()]
+//        VEventType.itemEventData.append(dic)
+//        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
+//        mConfigFunction.logToFile(params: dic as NSDictionary)
     }
 }

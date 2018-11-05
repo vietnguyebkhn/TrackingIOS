@@ -57,47 +57,64 @@ class ConfigFunction {
 //        return trackingData
 //    }
     
-    private func fillData(params: NSDictionary, data: TrackingVO) -> TrackingVO {
+    private func fillData(key: String, params: NSDictionary?, data: TrackingVO) -> TrackingVO {
         let tempData = data
-        let keys = params.allKeys
-        
-        
-        for key in keys {
-            print("key = \(key)")
-            let key = key as! String
-            switch key {
-            case VEventType.kTrackingCode:
-                tempData.trackingCode = params.value(forKey: VEventType.kTrackingCode) as! String
-                break
-            case VEventType.kTrackDeviceInfo:
-                tempData.deviceInfos = DeviceVO(data: params as! [String : AnyObject])
-                
-                break
-                
-            default:
-                break
-            }
+        switch key {
+        case VEventType.kTrackingConfig:
+            tempData.trackingCode = params?.value(forKey: VEventType.kTrackingCode) as! String
+            break
+        case VEventType.kTrackDeviceInfo:
+            tempData.deviceInfos = DeviceVO(data: params as! [String : AnyObject])
+            break
+        case VEventType.kTrackLocation:
+            let trackingData = TrackingDataVO()
+            trackingData.eventType = VEventType.kTrackLocation
+            trackingData.eventTime = getCurrentTime()
+            //lay event
+            let eventData = EventDataVO()
+            eventData.data = params ?? [:]
+            trackingData.eventDatas.append(eventData)
+            tempData.trackingDatas.append(trackingData)
+            break
+        default:
+            print("params = \(params)")
+            break
         }
+        
+//        let keys = params!.allKeys
+//
+//
+//        for key in keys {
+//            print("key = \(key)")
+//            let key = key as! String
+//            switch key {
+//            case VEventType.kTrackingCode:
+////                tempData.trackingCode = params.value(forKey: VEventType.kTrackingCode) as! String
+//                break
+//            case VEventType.kTrackDeviceInfo:
+//                tempData.deviceInfos = DeviceVO(data: params as! [String : AnyObject])
+//
+//                break
+//
+//            default:
+//                break
+//            }
+//        }
         
         return tempData
     }
     
     //Ham log ra file, tra ve duong dan file trong local cua may
-    func logToFile(params: NSDictionary?) -> String {
+    func logToFile(key: String, params: NSDictionary?) {
         //doc json tu file ra VO
         if mFileName == "" {
             //tao vo moi
             var trackingData = TrackingVO()
-            if params != nil {
-                trackingData = fillData(params: params!, data: trackingData)
-            }
+           trackingData = fillData(key: key, params: params, data: trackingData)
             
-            
-            
-            
-            return ""
-            
+            return
         }
+        
         //lay data moi params append vao vo
         //ghi de vo vao file
         
@@ -146,7 +163,7 @@ class ConfigFunction {
 //            print(error)
 //        }
         
-        return DocURL.path
+//        return DocURL.path
     }
     
     //True can phai zip, failed: van co the ghi dc
