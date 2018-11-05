@@ -36,18 +36,9 @@ import Foundation
      "track_event_window_close": Đóng màn hình
      "track_app_close": Đóng hẳn app (kill) // xong
      */
-    public static var device_info = [String:Any]()
-    public static let event_data = [String:Any]()
-    public static var jsonObj = [
-        "tracking-code":"tracking-code đã cấu hình",
-        "package-id":"packageID/bundleID của ứng dụng",
-        "request-id":"id của request gửi lên",
-        "tracking-data":[
-            "event-type": "mã event",
-            "object-name": "tên object",
-            "event-time": "thời điểm phát sinh event (YYYYMMDDHH24MISS)"
-        ]
-        ] as [String : Any]
+    public static var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
+     public static var itemDeviceInfo = jsonObj["device-info"] as? [[String:Any]] ?? [[String:Any]]()
+    public static var jsonObj = [String:Any]()
 }
 
 
