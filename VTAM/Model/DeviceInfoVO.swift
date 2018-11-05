@@ -19,6 +19,7 @@ class DeviceVO{
    var track_app_name = ""
    var track_app_size = ""
    var track_app_version = ""
+    var trackDeviceMode = ""
     init() {}
     
     init(data: [String: AnyObject]) {
@@ -32,7 +33,7 @@ class DeviceVO{
         track_app_name = data ["track_app_name"] as? String ?? ""
         track_app_size = data ["track_app_size"] as? String ?? ""
         track_app_version = data ["track_app_version"] as? String ?? ""
-
+        trackDeviceMode = data ["deviceModel"] as? String ?? ""
     }
     
     func toJsonString() -> [String: Any] {

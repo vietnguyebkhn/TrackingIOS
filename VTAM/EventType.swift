@@ -15,9 +15,8 @@ import Foundation
     //cac su kien:
     @objc public static let kTrackLocation = "track_location"
     @objc public static let kTrackPersonalInfo = "track_personal_info"
+    @objc public static let kTrackDeviceInfo = "device-info"
     @objc public static let kTrackAppInstall = "track_app_install"
-    @objc public static let kTrackDeviceInfo = "track_device_info"
-    @objc public static let kTrackAppInstal = "track_app_install"
     @objc public static let kTrackAppStart = "track_app_start"
     @objc public static let kTrackAppUninstall = "track_app_uninstall"
     @objc public static let kTrackAppCrash = "track_app_crash"
@@ -28,7 +27,9 @@ import Foundation
     
     
     //config
-    @objc public static let kTrackingCode = "tracking_code"
+    @objc static let kTrackingConfig = "tracking_config"
+    @objc static let kTrackingCode = "tracking_code"
+//    @objc static let kTrackDeviceInfo = "device-info"
     
     /*"track_location": Location
      "track_personal_info": Thông tin cá nhân //K track duoc

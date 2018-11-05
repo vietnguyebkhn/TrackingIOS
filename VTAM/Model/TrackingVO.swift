@@ -9,7 +9,7 @@
 import Foundation
 
 class TrackingVO {
-
+    var baseUrl = "https://vtam-sdk.viettel.com.vn"
     var trackingCode = ""
    var  PackageId = ""
     var RequestId = ""
@@ -80,8 +80,13 @@ class TrackingVO {
         parameters["tracking-code"] = trackingCode
         parameters["package-id"] = PackageId
         parameters["request-id"] = RequestId
-        parameters["device-info"] = deviceInfos
-        parameters["tracking-data"] = trackingDatas
+        parameters["device-info"] = deviceInfos.toJsonString()
+        
+        var trackingDataJson = [[String : Any]]()
+        trackingDatas.forEach { (obj) in
+            trackingDataJson.append(obj.toJsonString())
+        }        
+        parameters["tracking-data"] = trackingDataJson
 
         return parameters
     }

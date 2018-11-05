@@ -34,8 +34,10 @@ import UIKit
         if let fileUrl = Bundle.main.url(forResource: "SDK-config", withExtension: "plist"),
             let data = try? Data(contentsOf: fileUrl) {
             if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! NSDictionary { // [String: Any] which ever it is
-                print(result)                
-                mConfigFunction?.logToFile(params: result)
+                print(result)
+                mConfigFunction?.logToFile(key: VEventType.kTrackingConfig, params: result)
+                
+               
 //                urlBase = result
             }
         }
@@ -48,7 +50,7 @@ import UIKit
             mTrackingFunction.trackLocation(params: params)
             break
         case VEventType.kTrackDeviceInfo:
-            mTrackingFunction.trackDeviceInfo(params: params)
+            mTrackingFunction.trackDeviceInfo()
             break
         case VEventType.kTrackAppInstall:
             mTrackingFunction.trackAppInstall(params: params)
