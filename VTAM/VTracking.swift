@@ -16,6 +16,7 @@ import UIKit
         let vTracking = VTracking()
         // Configuration
         vTracking.mTrackingFunction = TrackingFunction()
+        vTracking.mConfigFunction = ConfigFunction()
         return vTracking
     }()
     
@@ -30,13 +31,14 @@ import UIKit
     @objc open func configure() {
         //load cac thiet lap config tu file tracking-info.plist
         
-//        if let fileUrl = Bundle.main.url(forResource: "SDK-config", withExtension: "plist"),
-//            let data = try? Data(contentsOf: fileUrl) {
-//            if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any] { // [String: Any] which ever it is
-//                print(result)
+        if let fileUrl = Bundle.main.url(forResource: "SDK-config", withExtension: "plist"),
+            let data = try? Data(contentsOf: fileUrl) {
+            if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! NSDictionary { // [String: Any] which ever it is
+                print(result)                
+                mConfigFunction?.logToFile(params: result)
 //                urlBase = result
-//            }
-//        }
+            }
+        }
         
     }
     //ham tracking cua app

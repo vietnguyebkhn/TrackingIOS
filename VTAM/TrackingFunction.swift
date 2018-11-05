@@ -85,6 +85,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     func trackPersonalInfo(params: NSDictionary?) {
         let eventType = VEventType.kTrackPersonalInfo
         
+        
     }
     
     

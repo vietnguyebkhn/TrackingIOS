@@ -53,16 +53,51 @@ class ConfigFunction {
     //Ham doc json tu file
 //    func readFromFile() -> TrackingVO {
 //        //read json from file
-//        
-//        var trackingData = TrackingVO(data: <#T##[String : AnyObject]#>)
-//        
-//        
+
 //        return trackingData
 //    }
     
+    private func fillData(params: NSDictionary, data: TrackingVO) -> TrackingVO {
+        let tempData = data
+        let keys = params.allKeys
+        
+        
+        for key in keys {
+            print("key = \(key)")
+            let key = key as! String
+            switch key {
+            case VEventType.kTrackingCode:
+                tempData.trackingCode = params.value(forKey: VEventType.kTrackingCode) as! String
+                break
+            case VEventType.kTrackDeviceInfo:
+                tempData.deviceInfos = DeviceVO(data: params as! [String : AnyObject])
+                
+                break
+                
+            default:
+                break
+            }
+        }
+        
+        return tempData
+    }
+    
     //Ham log ra file, tra ve duong dan file trong local cua may
-    func logToFile(params: NSDictionary) -> String {
-        //doc json tu file ra vo
+    func logToFile(params: NSDictionary?) -> String {
+        //doc json tu file ra VO
+        if mFileName == "" {
+            //tao vo moi
+            var trackingData = TrackingVO()
+            if params != nil {
+                trackingData = fillData(params: params!, data: trackingData)
+            }
+            
+            
+            
+            
+            return ""
+            
+        }
         //lay data moi params append vao vo
         //ghi de vo vao file
         
@@ -116,7 +151,7 @@ class ConfigFunction {
     
     //True can phai zip, failed: van co the ghi dc
     func checkSizeLogFile() -> Bool {
-        return true
+        return false
     }
     
     //ham xoa file
@@ -149,7 +184,7 @@ class ConfigFunction {
         // Lay timestamp -> chuyen thanh string
         let ticks = Int(Date().timeIntervalSince1970)
         mFileName = String(ticks)
-        let defaults = UserDefaults.standard
-        defaults.set(mFileName, forKey: "fileName")
+//        let defaults = UserDefaults.standard
+//        defaults.set(mFileName, forKey: "fileName")
     }
 }

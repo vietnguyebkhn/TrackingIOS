@@ -19,6 +19,7 @@ class  EventDataVO{
    var  track_app_close = ""
     
     init() {}
+
     init(data: [String: AnyObject]) {
         track_app_install = data["track_app_install"] as? String ?? ""
         track_app_uninstall = data["track_app_uninstall"] as? String ?? ""

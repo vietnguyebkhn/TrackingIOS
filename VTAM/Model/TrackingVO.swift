@@ -10,18 +10,20 @@ import Foundation
 
 class TrackingVO {
 
-    var TrackingCode = ""
+    var trackingCode = ""
    var  PackageId = ""
     var RequestId = ""
-   var  DeviceInfos = [DeviceVO]()
-   var TrackingDatas = [TrackingDataVO]()
+   var  deviceInfos = DeviceVO()
+   var trackingDatas = [TrackingDataVO]()
+    
+    init(){}
     
     init(data: [String: AnyObject]) {
-        TrackingCode = data["tracking-code"] as? String ?? ""
+        trackingCode = data["tracking-code"] as? String ?? ""
         PackageId = data["package-id"] as? String ?? ""
         RequestId = data["RequestId"] as? String ?? ""
         
-        guard let DeviceInfosArr = data["device-info"] as? [[String: Any]] ?? nil else {
+        guard let deviceInfosArr = data["device-info"] as? [String: Any] ?? nil else {
             print("Khong the doc")
             return
         }
@@ -31,20 +33,30 @@ class TrackingVO {
             return
         }
         
-        
-        for item in DeviceInfosArr {
-            do {
-                let DataDeviceInfo = try  JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
-                let DataDeviceInfoJson = try JSONSerialization.jsonObject(with: DataDeviceInfo, options: .mutableLeaves)
-                let result = DataDeviceInfoJson as? [String: AnyObject] ?? nil
-                let  DeviceInfo = DeviceVO(data: result!)
-                DeviceInfos.append(DeviceInfo)
-            } catch {
-                
-            }
+        do {
+            let DataDeviceInfo = try  JSONSerialization.data(withJSONObject: deviceInfosArr, options: .prettyPrinted)
+            let DataDeviceInfoJson = try JSONSerialization.jsonObject(with: DataDeviceInfo, options: .mutableLeaves)
+            let result = DataDeviceInfoJson as? [String: AnyObject] ?? nil
+              deviceInfos = DeviceVO(data: result!)
+//            DeviceInfos.append(DeviceInfo)
+        } catch {
             
         }
+
         
+//        for item in DeviceInfosArr {
+//            do {
+//                let DataDeviceInfo = try  JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
+//                let DataDeviceInfoJson = try JSONSerialization.jsonObject(with: DataDeviceInfo, options: .mutableLeaves)
+//                let result = DataDeviceInfoJson as? [String: AnyObject] ?? nil
+//                let  DeviceInfo = DeviceVO(data: result!)
+//                DeviceInfos.append(DeviceInfo)
+//            } catch {
+//
+//            }
+//
+//        }
+//
         for item in TrackingDatasArr {
             do {
                 let DataTrackingData = try  JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
@@ -52,7 +64,7 @@ class TrackingVO {
                 let result = DataTrackingDataJson as? [String: AnyObject] ?? nil
                 let  TrackingData = TrackingDataVO(data: result!)
                 //  tripnearbys.append(tripnearby)
-                TrackingDatas.append(TrackingData)
+                trackingDatas.append(TrackingData)
             } catch {
                 
             }
@@ -64,11 +76,13 @@ class TrackingVO {
     func toJsonSTring() -> [String: Any] {
         
         var parameters = [String: Any]()
-        parameters["tracking-code"] = TrackingCode
-       parameters["package-id"] = PackageId
+
+        parameters["tracking-code"] = trackingCode
+        parameters["package-id"] = PackageId
         parameters["request-id"] = RequestId
-        parameters["device-info"] = DeviceInfos
-        parameters["tracking-data"] = TrackingDatas
+        parameters["device-info"] = deviceInfos
+        parameters["tracking-data"] = trackingDatas
+
         return parameters
     }
 }

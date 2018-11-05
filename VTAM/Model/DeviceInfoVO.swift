@@ -20,6 +20,7 @@ class DeviceVO{
    var track_app_size = ""
    var track_app_version = ""
     init() {}
+    
     init(data: [String: AnyObject]) {
         track_deviceid = data["track_deviceid"] as? String ?? ""
         track_branch_name = data ["track_branch_name"] as? String ?? ""
@@ -31,27 +32,25 @@ class DeviceVO{
         track_app_name = data ["track_app_name"] as? String ?? ""
         track_app_size = data ["track_app_size"] as? String ?? ""
         track_app_version = data ["track_app_version"] as? String ?? ""
-        
-        func toJsonString() -> [String: Any] {
-            var parameters = [String: Any]()
-            parameters["track_deviceid"] = track_deviceid
-            parameters["track_branch_name"] = track_branch_name
-            parameters["track_os_version"] = track_os_version
-            parameters["track_os_name"] = track_os_name
-            parameters["track_sim_misdn"] = track_sim_misdn
-            parameters["track_sim_provider"] = track_sim_provider
-            parameters["track_sim_type"] = track_sim_type
-            parameters["track_app_name"] = track_app_name
-            parameters["track_app_size"] = track_app_size
-            parameters["track_app_version"] = track_app_version
-
-            return parameters
-            
-        }
-
 
     }
     
+    func toJsonString() -> [String: Any] {
+        var parameters = [String: Any]()
+        parameters["track_deviceid"] = track_deviceid
+        parameters["track_branch_name"] = track_branch_name
+        parameters["track_os_version"] = track_os_version
+        parameters["track_os_name"] = track_os_name
+        parameters["track_sim_misdn"] = track_sim_misdn
+        parameters["track_sim_provider"] = track_sim_provider
+        parameters["track_sim_type"] = track_sim_type
+        parameters["track_app_name"] = track_app_name
+        parameters["track_app_size"] = track_app_size
+        parameters["track_app_version"] = track_app_version
+        
+        return parameters
+        
+    }
 }
 
 //track_deviceid
