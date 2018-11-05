@@ -28,8 +28,45 @@ class ConfigFunction {
         return dateString
     }
     
+    private func readJson() {
+        do {
+            if let file = Bundle.main.url(forResource: "points", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if let object = json as? [String: Any] {
+                    // json is a dictionary
+                    print(object)
+                } else if let object = json as? [Any] {
+                    // json is an array
+                    print(object)
+                } else {
+                    print("JSON is invalid")
+                }
+            } else {
+                print("no file")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    //Ham doc json tu file
+    func readFromFile() -> TrackingVO {
+        //read json from file
+        
+        var trackingData = TrackingVO(data: <#T##[String : AnyObject]#>)
+        
+        
+        return trackingData
+    }
+    
     //Ham log ra file, tra ve duong dan file trong local cua may
     func logToFile(params: NSDictionary) -> String {
+        //doc json tu file ra vo
+        //lay data moi params append vao vo
+        //ghi de vo vao file
+        
+        
         let DocURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
        mPathZip = DocURL
         var file = DocURL.appendingPathComponent(mFileName).appendingPathExtension("js")
