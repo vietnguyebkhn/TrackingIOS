@@ -16,8 +16,6 @@ class TrackingVO {
    var  DeviceInfos = [DeviceVO]()
    var TrackingDatas = [TrackingDataVO]()
     
-    init() {}
-    
     init(data: [String: AnyObject]) {
         TrackingCode = data["tracking-code"] as? String ?? ""
         PackageId = data["package-id"] as? String ?? ""
@@ -64,13 +62,13 @@ class TrackingVO {
     }
     
     func toJsonSTring() -> [String: Any] {
+        
         var parameters = [String: Any]()
         parameters["tracking-code"] = TrackingCode
-        parameters["package-id"] = PackageId
+       parameters["package-id"] = PackageId
         parameters["request-id"] = RequestId
         parameters["device-info"] = DeviceInfos
         parameters["tracking-data"] = TrackingDatas
-
         return parameters
     }
 }
