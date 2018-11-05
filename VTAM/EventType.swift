@@ -25,6 +25,11 @@ import Foundation
     @objc public static let kTrackEventButtonClick = "track_event_button_click"
     @objc public static let kTrackEventWindowClose = "track_event_window_close"
     @objc public static let kTrackAppClose = "track_app_close"
+    
+    
+    //config
+    @objc public static let kTrackingCode = "tracking_code"
+    
     /*"track_location": Location
      "track_personal_info": Thông tin cá nhân //K track duoc
      "track_app_install": Cài đặt ứng dụng // xong
