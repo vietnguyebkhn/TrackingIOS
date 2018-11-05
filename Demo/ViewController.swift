@@ -15,7 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mCheckLocationButton: UIButton!
     var mLocationManager: CLLocationManager?
-
+    var mLastLocation: CLLocation?
     
     var index = 0
     var mPersonalInforViewController: PersonalInforViewController?
@@ -37,6 +37,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         mLocationManager = CLLocationManager()
         mLocationManager?.delegate = self
+        mLocationManager?.startUpdatingLocation()
+        
         let myBtn : UIButton = UIButton()
         myBtn.setImage(UIImage(named: "menu"), for: .normal)
         myBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
@@ -44,6 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: myBtn), animated: true)
         
     }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways {
            // VTracking.shared().trackingEvent(eventType: kTrackLocation, params: [:])
@@ -51,11 +54,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
     }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            mLocationManager?.requestAlwaysAuthorization()
-            print("New location is \(location)")
-            VTracking.shared().trackingEvent(eventType: VEventType.kTrackLocation, params: ["location": location])
+        if let lastLocation = mLastLocation, let newLocation = locations.last {
+            if (lastLocation.distance(from: newLocation) < manager.distanceFilter) {
+                return
+            }
         }
+        
+        print("locations \(locations)")
+        mLastLocation =  locations.last
+        let params : NSDictionary = ["latitude": mLastLocation?.coordinate.latitude ?? 0,
+                                     "longitude": mLastLocation?.coordinate.longitude ?? 0]
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackLocation, params: params)
     }
 }
