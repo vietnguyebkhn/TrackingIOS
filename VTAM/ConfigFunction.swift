@@ -51,14 +51,14 @@ class ConfigFunction {
     }
     
     //Ham doc json tu file
-    func readFromFile() -> TrackingVO {
-        //read json from file
-        
-        var trackingData = TrackingVO(data: <#T##[String : AnyObject]#>)
-        
-        
-        return trackingData
-    }
+//    func readFromFile() -> TrackingVO {
+//        //read json from file
+//        
+//        var trackingData = TrackingVO(data: <#T##[String : AnyObject]#>)
+//        
+//        
+//        return trackingData
+//    }
     
     //Ham log ra file, tra ve duong dan file trong local cua may
     func logToFile(params: NSDictionary) -> String {

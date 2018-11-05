@@ -9,7 +9,7 @@
 import Foundation
 
 class TrackingVO {
-    let trackingData : TrackingDataVO
+//    let trackingData : TrackingDataVO
     
     init(data: [String: AnyObject]) {
         
