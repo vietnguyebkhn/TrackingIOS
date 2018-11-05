@@ -67,5 +67,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let params : NSDictionary = ["latitude": mLastLocation?.coordinate.latitude ?? 0,
                                      "longitude": mLastLocation?.coordinate.longitude ?? 0]
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackLocation, params: params)
+        mLocationManager?.stopUpdatingLocation()
     }
 }
