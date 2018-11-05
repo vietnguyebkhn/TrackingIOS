@@ -51,18 +51,18 @@ class ConfigFunction {
     }
     
     //Ham doc json tu file
-    func readFromFile() -> TrackingVO {
-        //read json from file
-        
-        var trackingData = TrackingVO(data: <#T##[String : AnyObject]#>)
-        
-        
-        return trackingData
-    }
+//    func readFromFile() -> TrackingVO {
+//        //read json from file
+//
+////        var trackingData = TrackingVO(data: <#T##[String : AnyObject]#>)
+//
+//
+//        return trackingData
+//    }
     
     //Ham log ra file, tra ve duong dan file trong local cua may
     func logToFile(params: NSDictionary) -> String {
-        //doc json tu file ra vo
+        //doc json tu file ra VO
         //lay data moi params append vao vo
         //ghi de vo vao file
         
@@ -116,7 +116,7 @@ class ConfigFunction {
     
     //True can phai zip, failed: van co the ghi dc
     func checkSizeLogFile() -> Bool {
-        return true
+        return false
     }
     
     //ham xoa file

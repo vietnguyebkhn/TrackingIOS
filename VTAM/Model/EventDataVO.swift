@@ -12,7 +12,6 @@ class  EventDataVO{
     var property = ""
     var value = ""
     
-    
     init(data: [String: AnyObject]) {
         property = data["property"] as? String ?? ""
         value = data["value"] as? String ?? ""
