@@ -75,7 +75,6 @@ class ConfigFunction {
                     print("trackingData = \(trackingData.toJsonSTring())")
                     return trackingData
                 }
-                
             } catch {
                 // handle error
             }
@@ -95,6 +94,7 @@ class ConfigFunction {
             let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
             let fileURL = documentDirectory.appendingPathComponent(fileName).appendingPathExtension("json")
             print("data ghi = \(data.toJsonSTring())")
+            print(documentDirectory.path)
             let data = try JSONSerialization.data(withJSONObject: data.toJsonSTring(), options: [])
             
             try! data.write(to: fileURL)
@@ -153,7 +153,7 @@ class ConfigFunction {
        
     }
     
-    func makeFileName() {
+    private func makeFileName() {
         // Lay timestamp -> chuyen thanh string
         let ticks = Int(Date().timeIntervalSince1970)
         mFileName = String(ticks)

@@ -48,6 +48,7 @@ class DeviceVO{
         parameters["track_app_name"] = track_app_name
         parameters["track_app_size"] = track_app_size
         parameters["track_app_version"] = track_app_version
+        parameters["deviceModel"] = trackDeviceMode
         
         return parameters
     }

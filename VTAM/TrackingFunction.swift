@@ -70,20 +70,15 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         }
         var iOSVersion = UIDevice.current.systemVersion
         
-        let device = DeviceVO()
-        appName = device.track_app_name
-        
-        
         let deviceInfo = [
             "track_branch_name" : build ?? "",
             "track_app_version" : version ?? "",
             "track_app_name" : appName ?? "",
-            "deviceModel" : "\(UIDevice.current.model) \(deviceModel)" ,
+            "deviceModel" :  deviceModel ,
             "track_os_version" : iOSVersion
         ]
         
         mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
-        
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
@@ -103,10 +98,10 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     func trackAppInstall(params: NSDictionary?){
         if getFirstInstallStatus() == false {
             setFirstInstallStatus(firstInstall: true)
-//            let dict = ["tracking_app_install": getFirstInstallStatus()]
+            let dict = ["tracking_app_install": getFirstInstallStatus()]
 //            VEventType.itemEventData.append(dict)
 //            VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-            mConfigFunction.logToFile(key: VEventType.kTrackAppInstall, params: params)
+            mConfigFunction.logToFile(key: VEventType.kTrackAppInstall, params: dict as NSDictionary)
         }
 //        else {
 //            let dict = ["tracking_app_install": getFirstInstallStatus()]
@@ -189,4 +184,48 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
 //        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
 //        mConfigFunction.logToFile(params: dic as NSDictionary)
     }
+     func bytesIn(directory: String) -> Float64? {
+        let fm = FileManager.default
+        guard let subdirectories = try? fm.subpathsOfDirectory(atPath: directory) as NSArray else {
+            return nil
+        }
+        let enumerator = subdirectories.objectEnumerator()
+        var size: UInt64 = 0
+        while let fileName = enumerator.nextObject() as? String {
+            do {
+                let fileDictionary = try fm.attributesOfItem(atPath: directory.appending("/" + fileName)) as NSDictionary
+                size += fileDictionary.fileSize()
+            } catch let err {
+                print("err getting attributes of file \(fileName): \(err.localizedDescription)")
+            }
+        }
+        return Float64(size)
+    }
+    
+    func appSizeInMegaBytes() -> Float64 {
+        // create list of directories
+        var paths = [Bundle.main.bundlePath]
+        let docDirDomain = FileManager.SearchPathDirectory.documentDirectory
+        let docDirs = NSSearchPathForDirectoriesInDomains(docDirDomain, .userDomainMask, true)
+        if let docDir = docDirs.first {
+            paths.append(docDir) // documents directory
+        }
+        let libDirDomain = FileManager.SearchPathDirectory.libraryDirectory
+        let libDirs = NSSearchPathForDirectoriesInDomains(libDirDomain, .userDomainMask, true)
+        if let libDir = libDirs.first {
+            paths.append(libDir) // library directory
+        }
+        paths.append(NSTemporaryDirectory() as String) // temp directory
+        
+        // combine sizes
+        var totalSize: Float64 = 0
+        for path in paths {
+            if let size = bytesIn(directory: path) {
+                totalSize += size
+            }
+        }
+        print(totalSize)
+        return totalSize
+    }
+
 }

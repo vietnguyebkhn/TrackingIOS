@@ -24,7 +24,7 @@ import Foundation
     @objc public static let kTrackEventButtonClick = "track_event_button_click"
     @objc public static let kTrackEventWindowClose = "track_event_window_close"
     @objc public static let kTrackAppClose = "track_app_close"
-    
+    @objc public static let kTrackAppSize = "track_app_size"
     
     //config
     @objc static let kTrackingConfig = "tracking_config"

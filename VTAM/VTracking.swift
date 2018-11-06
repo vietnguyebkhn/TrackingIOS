@@ -64,6 +64,9 @@ import UIKit
         case VEventType.kTrackEventButtonClick:
             mTrackingFunction.trackEventButtonClick(params: params)
             break
+        case VEventType.kTrackAppSize:
+            mTrackingFunction.appSizeInMegaBytes()
+            break
         default:
             break
         }

@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 //        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppStart, params: [:])
 //        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppInstall, params: [:])
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppSize , params: [:])
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackDeviceInfo , params: [:])
         return true
     }

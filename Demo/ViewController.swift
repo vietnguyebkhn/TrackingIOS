@@ -35,6 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         mLocationManager = CLLocationManager()
         mLocationManager?.delegate = self
         mLocationManager?.startUpdatingLocation()
