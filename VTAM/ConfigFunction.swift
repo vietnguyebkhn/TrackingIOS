@@ -14,6 +14,8 @@ class ConfigFunction {
     var mPathZip : URL?
     var mFileName = ""
     
+    
+    
     init() {
         let defaults = UserDefaults.standard
         mFileName = defaults.object(forKey: "fileName") as? String ?? ""
@@ -28,14 +30,15 @@ class ConfigFunction {
         return dateString
     }
     
-    private func readJson() {
+    private func readJson(fileName: URL) -> [String:AnyObject]{
         do {
-            if let file = Bundle.main.url(forResource: "points", withExtension: "json") {
+            if let file : URL = fileName {
                 let data = try Data(contentsOf: file)
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
-                if let object = json as? [String: Any] {
+                if let object = json as? [String : AnyObject] {
                     // json is a dictionary
                     print(object)
+                    return object
                 } else if let object = json as? [Any] {
                     // json is an array
                     print(object)
@@ -48,15 +51,9 @@ class ConfigFunction {
         } catch {
             print(error.localizedDescription)
         }
+        return [String:AnyObject]()
     }
-    
-    //Ham doc json tu file
-//    func readFromFile() -> TrackingVO {
-//        //read json from file
-
-//        return trackingData
-//    }
-    
+   
     private func fillData(key: String, params: NSDictionary?, data: TrackingVO) -> TrackingVO {
         let tempData = data
         switch key {
@@ -105,40 +102,59 @@ class ConfigFunction {
     }
     
     //Ham log ra file, tra ve duong dan file trong local cua may
+    let DocURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     func logToFile(key: String, params: NSDictionary?) {
-        //doc json tu file ra VO
-        let DocURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        //neu chua co file
+        
+//        if (true) {
+//            //neu co
+//            dataffomFile = //doc tu json
+//            trackingData = TrackingVO(data: dataffomFile)
+//
+//        } else {
+//            //
+//            trackingData = TrackingVO()
+//        }
+//
+//        //ghifile
+//        trackingData?.toJsonSTring()
+       
         let file = DocURL.appendingPathComponent(mFileName).appendingPathExtension("js")
-        if FileManager.default.fileExists(atPath: file.path) {
-            //neu ton tai file
+        //doc json tu file ra VO
+//        readJson(fileName: mFileName)
+        if FileManager.default.fileExists(atPath: file.path) == false {
+            var trackingData = TrackingVO()
             do
             {
-                let data = try JSONSerialization.data(withJSONObject: VEventType.jsonObj, options: [])
+                let data = try JSONSerialization.data(withJSONObject: trackingData.toJsonSTring(), options: [])
                 try! data.write(to: file)
             }catch{
                 print(error)
             }
         } else {
-            var trackingData = TrackingVO()
-            trackingData = fillData(key: key, params: params, data: trackingData)
-            //tao filename de ghi data vao
-            print("data = \(trackingData.toJsonSTring())")
-            makeFileName()
-            let DocURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            mPathZip = DocURL
-            
-            //tao va ghi ra file
-            let file = DocURL.appendingPathComponent(mFileName).appendingPathExtension("js")
-            do {
-                let data = try JSONSerialization.data(withJSONObject: VEventType.jsonObj, options: [])
-                let fileHandle = try FileHandle(forWritingTo: file)
-                fileHandle.seekToEndOfFile()
-                fileHandle.write(data)
-                fileHandle.closeFile()
-                print("pathfile = \(DocURL.path)")
-            } catch {
+            var dataFromFile = [String:AnyObject]()
+            dataFromFile = readJson(fileName: file)
+            let trackingData = TrackingVO(data: dataFromFile)
+            do
+            {
+                let data = try JSONSerialization.data(withJSONObject: trackingData.toJsonSTring(), options: [])
+                try! data.write(to: file)
+                print(DocURL.path)
+            }catch{
                 print(error)
             }
+            
+//            //ghi de vao file da co
+//            do {
+//                let data = try JSONSerialization.data(withJSONObject: trackingData.toJsonSTring(), options: [])
+//                let fileHandle = try FileHandle(forWritingTo: file)
+//                fileHandle.write(data)
+//                fileHandle.closeFile()
+//                print(trackingData.toJsonSTring())
+//                print("pathfile = \(DocURL.path)")
+//            } catch {
+//                print(error)
+//            }
         }
         
         

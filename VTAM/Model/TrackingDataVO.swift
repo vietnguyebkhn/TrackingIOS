@@ -29,21 +29,19 @@ class TrackingDataVO {
                 let DataEventData = try  JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
                 let DataEventDataJson = try JSONSerialization.jsonObject(with: DataEventData, options: .mutableLeaves)
                 let result = DataEventDataJson as? [String: AnyObject] ?? nil
-                let  eventData = EventDataVO(data: result!)
-                //  tripnearbys.append(tripnearby)
+                let eventData = EventDataVO(data: result!)
                 eventDatas.append(eventData)
             } catch {
                 
             }
-            
         }
     }
     
     func toJsonString() -> [String: Any] {
         var parameters = [String: Any]()
         parameters["event-type"] = eventType
-        parameters["object-name"] = eventType
-        parameters["event-time"] = eventType
+        parameters["object-name"] = objectName
+        parameters["event-time"] = eventTime
         parameters["event-data"] = eventDatas
 
         return parameters

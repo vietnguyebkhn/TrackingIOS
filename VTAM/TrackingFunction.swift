@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 
 class TrackingFunction : NSObject,CLLocationManagerDelegate {
+    
     var mConfigFunction = ConfigFunction()
     //tracking location
      func trackLocation(params: NSDictionary?) {
@@ -60,16 +61,20 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         var systemInfo = utsname()
         uname(&systemInfo)
         
-        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        let appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
-        let deviceModel = withUnsafeBytes(of: &systemInfo.machine) { (rawPtr) -> String in
+        var build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+        var version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        var appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
+        var deviceModel = withUnsafeBytes(of: &systemInfo.machine) { (rawPtr) -> String in
             let ptr = rawPtr.baseAddress!.assumingMemoryBound(to: CChar.self)
             return String(cString: ptr)
         }
-        let iOSVersion = UIDevice.current.systemVersion
+        var iOSVersion = UIDevice.current.systemVersion
         
-        var dict = [
+        let device = DeviceVO()
+        appName = device.track_app_name
+        
+        
+        let deviceInfo = [
             "track_branch_name" : build ?? "",
             "track_app_version" : version ?? "",
             "track_app_name" : appName ?? "",
@@ -77,13 +82,12 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "track_os_version" : iOSVersion
         ]
         
-         mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: dict as NSDictionary)
+        mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
         
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
         let eventType = VEventType.kTrackPersonalInfo
-        
         
     }
     

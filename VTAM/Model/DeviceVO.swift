@@ -10,15 +10,15 @@ import Foundation
 
 class DeviceVO{
     var track_deviceid = ""
-  var  track_branch_name = ""
-  var  track_os_version = ""
-  var  track_os_name = ""
-   var track_sim_misdn = ""
-   var track_sim_provider = ""
+    var  track_branch_name = ""
+    var  track_os_version = ""
+    var  track_os_name = ""
+    var track_sim_misdn = ""
+    var track_sim_provider = ""
     var track_sim_type = ""
-   var track_app_name = ""
-   var track_app_size = ""
-   var track_app_version = ""
+    var track_app_name = ""
+    var track_app_size = ""
+    var track_app_version = ""
     var trackDeviceMode = ""
     init() {}
     
@@ -50,7 +50,6 @@ class DeviceVO{
         parameters["track_app_version"] = track_app_version
         
         return parameters
-        
     }
 }
 

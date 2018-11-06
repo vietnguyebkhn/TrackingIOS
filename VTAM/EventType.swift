@@ -42,9 +42,6 @@ import Foundation
      "track_event_window_close": Đóng màn hình
      "track_app_close": Đóng hẳn app (kill) // xong
      */
-    public static var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
-     public static var itemDeviceInfo = jsonObj["device-info"] as? [[String:Any]] ?? [[String:Any]]()
-    public static var jsonObj = [String:Any]()
 }
 
 
