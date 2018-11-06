@@ -78,6 +78,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         ]
         
          mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: dict as NSDictionary)
+       // print("dict: \(dict)")
         
     }
     //tracking thong tin ca nhan
