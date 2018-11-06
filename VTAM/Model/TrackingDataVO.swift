@@ -38,13 +38,19 @@ class TrackingDataVO {
             
         }
     }
-    
+ 
     func toJsonString() -> [String: Any] {
         var parameters = [String: Any]()
         parameters["event-type"] = eventType
-        parameters["object-name"] = eventType
-        parameters["event-time"] = eventType
-        parameters["event-data"] = eventDatas
+        parameters["object-name"] = objectName
+        parameters["event-time"] = eventTime
+        
+        var eventDataJson = [[String : Any]]()
+        eventDatas.forEach { (obj) in
+            eventDataJson.append(obj.toJsonString())
+        }
+        
+        parameters["event-data"] = eventDataJson
 
         return parameters
     }

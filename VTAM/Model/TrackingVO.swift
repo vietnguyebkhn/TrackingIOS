@@ -38,25 +38,9 @@ class TrackingVO {
             let DataDeviceInfoJson = try JSONSerialization.jsonObject(with: DataDeviceInfo, options: .mutableLeaves)
             let result = DataDeviceInfoJson as? [String: AnyObject] ?? nil
               deviceInfos = DeviceVO(data: result!)
-//            DeviceInfos.append(DeviceInfo)
         } catch {
             
         }
-
-        
-//        for item in DeviceInfosArr {
-//            do {
-//                let DataDeviceInfo = try  JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
-//                let DataDeviceInfoJson = try JSONSerialization.jsonObject(with: DataDeviceInfo, options: .mutableLeaves)
-//                let result = DataDeviceInfoJson as? [String: AnyObject] ?? nil
-//                let  DeviceInfo = DeviceVO(data: result!)
-//                DeviceInfos.append(DeviceInfo)
-//            } catch {
-//
-//            }
-//
-//        }
-//
         for item in TrackingDatasArr {
             do {
                 let DataTrackingData = try  JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
