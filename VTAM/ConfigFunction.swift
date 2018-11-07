@@ -22,12 +22,14 @@ class ConfigFunction {
     
     //ham get currenttime
     func getCurrentTime() ->  String {
+    
         let date = Date()
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = dateFormatter.string(from: date)
         return dateString
     }
+    
     
     private func fillData(key: String, params: NSDictionary?, data: TrackingVO) -> TrackingVO {
         let tempData = data

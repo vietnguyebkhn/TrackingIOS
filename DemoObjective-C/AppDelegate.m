@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import <VTAM/VTAM.h>
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -17,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [VTracking shared].configure;
     return YES;
 }
 
