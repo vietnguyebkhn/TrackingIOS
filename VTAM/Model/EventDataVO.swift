@@ -18,15 +18,15 @@ class  EventDataVO {
         let keys = data.keys
         for key in keys {
             property = key
-            value = data[property] as? String ?? ""
+            value = data[key] as? String ?? ""
         }
     }
     
     func toJsonString() -> [String : Any] {
         var parameters =  [String : Any]()
         
-        parameters[property] = property
-        parameters[value] = value
+        parameters[property] = value
+        
 
         return parameters
     }

@@ -24,7 +24,7 @@ import Foundation
     @objc public static let kTrackEventButtonClick = "track_event_button_click"
     @objc public static let kTrackEventWindowClose = "track_event_window_close"
     @objc public static let kTrackAppClose = "track_app_close"
-    
+    @objc public static let kTrackAppSize = "track_app_size"
     
     //config
     @objc static let kTrackingConfig = "tracking_config"
@@ -42,9 +42,6 @@ import Foundation
      "track_event_window_close": Đóng màn hình
      "track_app_close": Đóng hẳn app (kill) // xong
      */
-    public static var itemEventData = jsonObj["event-data"] as? [[String:Any]] ?? [[String:Any]]()
-     public static var itemDeviceInfo = jsonObj["device-info"] as? [[String:Any]] ?? [[String:Any]]()
-    public static var jsonObj = [String:Any]()
 }
 
 

@@ -24,7 +24,7 @@
 		187A830F21899BD2003FBA65 /* SDK-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187A830E21899BD2003FBA65 /* SDK-config.plist */; };
 		189E8932218FFD88003B0E4A /* TrackingDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E8931218FFD88003B0E4A /* TrackingDataVO.swift */; };
 		189E8934218FFE55003B0E4A /* EventDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E8933218FFE55003B0E4A /* EventDataVO.swift */; };
-		189E893621900077003B0E4A /* DeviceInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E893521900077003B0E4A /* DeviceInfoVO.swift */; };
+		189E893621900077003B0E4A /* DeviceVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E893521900077003B0E4A /* DeviceVO.swift */; };
 		189E893821900089003B0E4A /* TrackingVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E893721900089003B0E4A /* TrackingVO.swift */; };
 		1C8C7F1121883D4F003F0C69 /* VTAM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8C7F0721883D4F003F0C69 /* VTAM.framework */; };
 		1C8C7F1621883D4F003F0C69 /* VTAMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C7F1521883D4F003F0C69 /* VTAMTests.swift */; };
@@ -140,7 +140,7 @@
 		187A830E21899BD2003FBA65 /* SDK-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SDK-config.plist"; sourceTree = "<group>"; };
 		189E8931218FFD88003B0E4A /* TrackingDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDataVO.swift; sourceTree = "<group>"; };
 		189E8933218FFE55003B0E4A /* EventDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataVO.swift; sourceTree = "<group>"; };
-		189E893521900077003B0E4A /* DeviceInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoVO.swift; sourceTree = "<group>"; };
+		189E893521900077003B0E4A /* DeviceVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceVO.swift; sourceTree = "<group>"; };
 		189E893721900089003B0E4A /* TrackingVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingVO.swift; sourceTree = "<group>"; };
 		1C8C7F0721883D4F003F0C69 /* VTAM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VTAM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C8C7F0A21883D4F003F0C69 /* VTAM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VTAM.h; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 			children = (
 				189E8931218FFD88003B0E4A /* TrackingDataVO.swift */,
 				189E8933218FFE55003B0E4A /* EventDataVO.swift */,
-				189E893521900077003B0E4A /* DeviceInfoVO.swift */,
+				189E893521900077003B0E4A /* DeviceVO.swift */,
 				189E893721900089003B0E4A /* TrackingVO.swift */,
 			);
 			path = Model;
@@ -716,7 +716,7 @@
 				1C8C7F6221884333003F0C69 /* EventType.swift in Sources */,
 				1C8C7F5921883DEF003F0C69 /* VTracking.swift in Sources */,
 				189E893821900089003B0E4A /* TrackingVO.swift in Sources */,
-				189E893621900077003B0E4A /* DeviceInfoVO.swift in Sources */,
+				189E893621900077003B0E4A /* DeviceVO.swift in Sources */,
 				1C8C7F6421884CAC003F0C69 /* TrackingFunction.swift in Sources */,
 				1C8C7FA52188537B003F0C69 /* ConfigFunction.swift in Sources */,
 				189E8934218FFE55003B0E4A /* EventDataVO.swift in Sources */,

@@ -11,10 +11,10 @@ import Foundation
 class TrackingVO {
     var baseUrl = "https://vtam-sdk.viettel.com.vn"
     var trackingCode = ""
-   var  PackageId = ""
+    var  PackageId = ""
     var RequestId = ""
-   var  deviceInfos = DeviceVO()
-   var trackingDatas = [TrackingDataVO]()
+    var  deviceInfos = DeviceVO()
+    var trackingDatas = [TrackingDataVO]()
     
     init(){}
     
@@ -37,7 +37,7 @@ class TrackingVO {
             let DataDeviceInfo = try  JSONSerialization.data(withJSONObject: deviceInfosArr, options: .prettyPrinted)
             let DataDeviceInfoJson = try JSONSerialization.jsonObject(with: DataDeviceInfo, options: .mutableLeaves)
             let result = DataDeviceInfoJson as? [String: AnyObject] ?? nil
-              deviceInfos = DeviceVO(data: result!)
+            deviceInfos = DeviceVO(data: result!)
         } catch {
             
         }
@@ -53,9 +53,8 @@ class TrackingVO {
             } catch {
                 
             }
-            
         }
-
+        
     }
     
     func toJsonSTring() -> [String: Any] {
@@ -70,9 +69,9 @@ class TrackingVO {
         var trackingDataJson = [[String : Any]]()
         trackingDatas.forEach { (obj) in
             trackingDataJson.append(obj.toJsonString())
-        }        
+        }
         parameters["tracking-data"] = trackingDataJson
-
+        
         return parameters
     }
 }
