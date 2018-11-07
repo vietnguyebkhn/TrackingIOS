@@ -44,13 +44,16 @@ class ConfigFunction {
             trackingData.eventType = VEventType.kTrackLocation
             trackingData.eventTime = getCurrentTime()
             //lay event
+            
             var eventData : EventDataVO?
             if params != nil {
-                eventData = EventDataVO(data: params! as! [String : AnyObject])
-            } else {
+                eventData = EventDataVO(data: params as! [String: AnyObject])
+            }
+            else {
                 eventData = EventDataVO()
             }
             trackingData.eventDatas.append(eventData!)
+         //   print(eventData?.toJsonString())
             tempData.trackingDatas.append(trackingData)
             break
         default:

@@ -11,24 +11,31 @@ import Foundation
 class  EventDataVO {
     var property = ""
     var value = ""
+    //var tempData: [[String: AnyObject]]?
+    var keys: [String]?
+    var values: [String]?
+    var params = [String: AnyObject]()
+
     
     init() {}
 
     init(data: [String: AnyObject]) {
-        let keys = data.keys
-        for key in keys {
-            property = key
-            value = data[key] as? String ?? ""
-        }
+        
+            for key in data.keys {
+                property = key
+                value = data[property] as? String ?? ""
+                keys?.append(key)
+                values?.append(value)
+                for (key,value) in data {
+                    params[key] = value
+                }
+                print(" params = \(params)")
+            }
     }
     
     func toJsonString() -> [String : Any] {
-        var parameters =  [String : Any]()
         
-        parameters[property] = value
-        
-
-        return parameters
+        return params
     }
 }
 

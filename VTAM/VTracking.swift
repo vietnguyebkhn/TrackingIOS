@@ -48,7 +48,7 @@ import UIKit
         switch eventType {
         case VEventType.kTrackLocation:
             mTrackingFunction.trackLocation(params: params)
-            //print("hihi")
+            print("hihi")
             break
         case VEventType.kTrackDeviceInfo:
             mTrackingFunction.trackDeviceInfo()
