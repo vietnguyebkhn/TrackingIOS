@@ -8,6 +8,7 @@
 
 import UIKit
 import VTAM
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,11 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         VTracking.shared().configure()
-    
+       // var mLocationManager: CLLocationManager?
+        var mLastLocation: CLLocation?
 //        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppStart, params: [:])
 //        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppInstall, params: [:])
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppSize , params: [:])
+        
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackDeviceInfo , params: [:])
+        
+        let params : NSDictionary = ["lat": String(mLastLocation?.coordinate.latitude ?? 0),
+                                     "lng": String(mLastLocation?.coordinate.longitude ?? 0)]
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackLocation, params: params)
         return true
     }
 

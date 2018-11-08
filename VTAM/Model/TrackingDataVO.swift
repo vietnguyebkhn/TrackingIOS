@@ -26,12 +26,14 @@ class TrackingDataVO {
         
         for item in eventDataArr {
             do {
-                let DataEventData = try  JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
-                let DataEventDataJson = try JSONSerialization.jsonObject(with: DataEventData, options: .mutableLeaves)
-                let result = DataEventDataJson as? [String: AnyObject] ?? nil
-                let  eventData = EventDataVO(data: result!)
-                //  tripnearbys.append(tripnearby)
-                eventDatas.append(eventData)
+                
+                    let DataEventData = try  JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
+                    let DataEventDataJson = try JSONSerialization.jsonObject(with: DataEventData, options: .mutableLeaves)
+                    let result = DataEventDataJson as? [String: AnyObject] ?? nil
+                    let  eventData = EventDataVO(data: result!)
+                    
+                    //  tripnearbys.append(tripnearby)
+                
             } catch {
                 
             }

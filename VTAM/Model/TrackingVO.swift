@@ -16,7 +16,7 @@ class TrackingVO {
     var  deviceInfos = DeviceVO()
     var trackingDatas = [TrackingDataVO]()
     
-    init() {}
+    init(){}
     
     init(data: [String: AnyObject]) {
         trackingCode = data["tracking-code"] as? String ?? ""
@@ -41,6 +41,7 @@ class TrackingVO {
         } catch {
             
         }
+
         for item in TrackingDatasArr {
             do {
                 let DataTrackingData = try  JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
@@ -57,7 +58,9 @@ class TrackingVO {
     }
     
     func toJsonSTring() -> [String: Any] {
+        
         var parameters = [String: Any]()
+
         parameters["tracking-code"] = trackingCode
         parameters["package-id"] = PackageId
         parameters["request-id"] = RequestId

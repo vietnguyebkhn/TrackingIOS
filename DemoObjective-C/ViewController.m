@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "VTAM.h"
+#import <VTAM/VTAM.h>
 #import "SWRevealViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
