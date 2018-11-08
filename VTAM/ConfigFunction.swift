@@ -8,7 +8,6 @@
 
 import Foundation
 import Zip
-import Compression
 
 class ConfigFunction {
     var urlBase = "https://vtam-sdk.viettel.com.vn"
@@ -84,13 +83,13 @@ class ConfigFunction {
     let DocURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     private func readDataFromFile(fileName: String) -> TrackingVO? {
         let file = DocURL.appendingPathComponent(fileName).appendingPathExtension("json")
-        if FileManager.default.fileExists(atPath: file.path) {
+        if FileManager.default.fileExists(atPath: file.path) == true {
             print("ton tai file \(file.path)")
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: file.path), options: .mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 if let trackingDataJson = jsonResult as? [String : AnyObject] {
-                    // doc data tu json vao obbject
+                    // doc data tu json vao object
                     let trackingData = TrackingVO(data: trackingDataJson)
                     print("trackingData = \(trackingData.toJsonSTring())")
                     return trackingData
@@ -99,7 +98,23 @@ class ConfigFunction {
                 // handle error
             }
         } else {
-            print("khong ton tai file nay")
+            makeFileName()
+            let DocURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let file = DocURL.appendingPathComponent(mFileName).appendingPathExtension("json")
+            do{
+                let dataTrack = TrackingVO()
+                let data = try JSONSerialization.data(withJSONObject: dataTrack.toJsonSTring(), options: [])
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                try! data.write(to: file)
+                if let trackingDataJson = jsonResult as? [String : AnyObject] {
+                    // doc data tu json vao object
+                    let trackingData = TrackingVO(data: trackingDataJson)
+                    print("trackingData = \(trackingData.toJsonSTring())")
+                    return trackingData
+                }
+            }catch{
+                print(error)
+            }
         }
         return nil
     }
@@ -117,6 +132,7 @@ class ConfigFunction {
             print(documentDirectory.path)
             let data = try JSONSerialization.data(withJSONObject: data.toJsonSTring(), options: [])
             try! data.write(to: fileURL)
+            checkSizeLogFile(file: fileURL)
         } catch {
             print(error)
         }
@@ -133,43 +149,52 @@ class ConfigFunction {
             //neu da co file thi doc data tu file vao vo
             data = readDataFromFile(fileName: mFileName)
         }
-       
         if data != nil {
             //apend vao data
             data = fillData(key: key, params: params, data: data!)
             //ghi du lieu moi vao file
             writeToFile(data: data!, fileName: mFileName)
         }
-        checkSizeLogFile()
     }
     
     //True can phai zip, failed: van co the ghi dc
-    func checkSizeLogFile() -> Bool {
-        let file = DocURL.appendingPathComponent(mFileName).appendingPathExtension("json")
+    func checkSizeLogFile(file: URL) {
         var logFileSize : UInt64 = 0
         let fm = FileManager.default
         do{
             let fileDic = try fm.attributesOfItem(atPath: file.path) as NSDictionary
             logFileSize += fileDic.fileSize()
             if logFileSize >= 102400 {
-                return true
+                zipFile(file: file)
+                removeFile(file: file)
             }else{
                 print("Log file chua du size")
             }
         }catch{
             print(error)
         }
-        return false
     }
     
     //ham xoa file
-    func removeFile() {
-        
+    func removeFile(file: URL) {
+        do{
+            try FileManager.default.removeItem(at: file)
+        }catch{
+            print("Khong xoa duoc")
+        }
     }
     
     //Ham zip file
-    func zipFile()  {
-        
+    func zipFile(file: URL)  {
+            do {
+                let zipFilePath = DocURL.appendingPathComponent("\(mFileName).zip")
+                try Zip.zipFiles(paths: [file], zipFilePath: zipFilePath, password: nil, progress: { (progress) -> () in
+                    print(progress)
+                })
+            }
+            catch {
+                print("Something went wrong")
+            }
     }
     // tra ve duong dan trong local may
     func getZipFile() -> String {
