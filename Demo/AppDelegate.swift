@@ -29,6 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let params : NSDictionary = ["lat": String(mLastLocation?.coordinate.latitude ?? 0),
                                      "lng": String(mLastLocation?.coordinate.longitude ?? 0)]
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackLocation, params: params)
+        
+        let paramsButton: NSDictionary = ["hihi": 1,
+                                          "haha": 2,
+                                          "huhu": 3,
+                                          "ahihi": 4,
+                                          "alskjdasd":5]
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackEventButtonClick, params: paramsButton)
         return true
     }
 

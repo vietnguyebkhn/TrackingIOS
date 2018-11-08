@@ -51,7 +51,9 @@ class ConfigFunction {
             } else {
                 eventData = EventDataVO()
             }
-            trackingData.eventDatas.append(eventData!)
+            trackingData.eventDatas = eventData!
+            //    trackingData.eventDatas.append(eventData!)
+
             tempData.trackingDatas.append(trackingData)
             break
         case VEventType.kTrackEventButtonClick:
@@ -67,7 +69,9 @@ class ConfigFunction {
             else {
                 eventData = EventDataVO()
             }
-            trackingData.eventDatas.append(eventData!)
+            trackingData.eventDatas = eventData!
+
+//            trackingData.eventDatas.append(eventData!)
             //   print(eventData?.toJsonString())
             tempData.trackingDatas.append(trackingData)
             break

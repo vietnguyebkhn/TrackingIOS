@@ -147,9 +147,9 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     //"track_event_button_click": Click button, link
 //    var count = 0
     func trackEventButtonClick(params: NSDictionary?){
-      //  mConfigFunction.logToFile(key: VEventType.kTrackEventButtonClick, params: params)
-        let dict = [String: AnyObject]()
-        dict["haha"] = ["hihi"]
+        mConfigFunction.logToFile(key: VEventType.kTrackEventButtonClick, params: params)
+//        var dict = [String: AnyObject]()
+//        dict["haha"] = ["hihi"] as AnyObject
 //        count = count + 1
 //        let dict = ["track_event_button_click":"tap \(count) times!!"]
 //        VEventType.itemEventData.append(dict)
