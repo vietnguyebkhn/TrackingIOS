@@ -45,7 +45,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         myBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         myBtn.addTarget(self, action:  #selector(self.btnClick(_:)) , for: .touchUpInside)
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: myBtn), animated: true)
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

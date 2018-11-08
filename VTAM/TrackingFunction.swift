@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import zlib
 
 class TrackingFunction : NSObject,CLLocationManagerDelegate {
     
@@ -77,7 +78,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "deviceModel" :  deviceModel ,
             "track_os_version" : iOSVersion
         ]
-        
+        mConfigFunction.zipFile()
         mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
     }
     //tracking thong tin ca nhan
@@ -201,7 +202,6 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         }
         return Float64(size)
     }
-    
     func appSizeInMegaBytes() -> Float64 {
         // create list of directories
         var paths = [Bundle.main.bundlePath]
