@@ -78,7 +78,6 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "deviceModel" :  deviceModel ,
             "track_os_version" : iOSVersion
         ]
-        mConfigFunction.zipFile()
         mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
     }
     //tracking thong tin ca nhan
@@ -199,7 +198,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             } catch let err {
                 print("err getting attributes of file \(fileName): \(err.localizedDescription)")
             }
-        }
+        } 
         return Float64(size)
     }
     func appSizeInMegaBytes() -> Float64 {
