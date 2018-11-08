@@ -26,7 +26,7 @@ class  EventDataVO {
                 for (key,value) in data {
                     params[key] = value
                 }
-                print(" params = \(params)")
+              //  print(" params = \(params)")
             }
     }
     func toJsonString() -> [String : Any] {

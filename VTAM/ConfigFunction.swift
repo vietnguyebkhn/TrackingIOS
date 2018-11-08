@@ -53,7 +53,7 @@ class ConfigFunction {
                
             }
             
-            VEventType
+//            VEventType
             break
         case VEventType.kTrackDeviceInfo:
             tempData.deviceInfos = DeviceVO(data: params as! [String : AnyObject])
@@ -208,7 +208,7 @@ class ConfigFunction {
     func sendDataToServer(){
         var data: TrackingVO?
         data = readDataFromFile(fileName: mFileName)
-       print(data?.toJsonSTring())
+      // print(data?.toJsonSTring())
 //        let DataTrackingData = try?  JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
 //        let DataTrackingDataJson = try? JSONSerialization.jsonObject(with: DataTrackingData!, options: .mutableLeaves)
 //        let result = DataTrackingDataJson as? [String: AnyObject] ?? nil
