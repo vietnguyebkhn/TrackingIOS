@@ -28,7 +28,7 @@ import Foundation
     
     //config
     @objc static let kTrackingConfig = "tracking_config"
-    @objc static let kTrackingCode = "tracking_code"
+    @objc static let kTrackingCode = "trackingCode"
 //    @objc static let kTrackDeviceInfo = "device-info"
     
     /*"track_location": Location

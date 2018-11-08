@@ -16,10 +16,10 @@ class TrackingDataVO {
     init(){}
     
     init(data: [String: AnyObject]) {
-        eventType = data["event-type"] as? String ?? ""
-        objectName = data["object-name"] as? String ?? ""
-        eventTime = data["event-time"] as? String ?? ""
-        guard let eventDataArr = data["event-data"] as? [String : AnyObject] ?? nil else {
+        eventType = data["eventType"] as? String ?? ""
+        objectName = data["objectName"] as? String ?? ""
+        eventTime = data["eventTime"] as? String ?? ""
+        guard let eventDataArr = data["eventData"] as? [String : AnyObject] ?? nil else {
             print("Khong the doc")
             return
         }
@@ -36,19 +36,36 @@ class TrackingDataVO {
         
     }
  
-    func toJsonString() -> [String: Any] {
+//    func toJsonString() -> [String: Any] {
+//        var parameters = [String: Any]()
+//        parameters["event-type"] = eventType
+//        parameters["object-name"] = objectName
+//        parameters["event-time"] = eventTime
+//        
+//      //  var eventDataJson = [[String : Any]]()
+////        eventDatas.forEach { (obj) in
+////            eventDataJson.append(obj.toJsonString())
+////        }
+//        
+//        parameters["event-data"] = eventDatas.toJsonString()
+//
+//        return parameters
+//    }
+    
+    func toJsonString1() -> [String: Any] {
         var parameters = [String: Any]()
-        parameters["event-type"] = eventType
-        parameters["object-name"] = objectName
-        parameters["event-time"] = eventTime
+        parameters["eventType"] = eventType
+        parameters["objectName"] = objectName
+        parameters["eventTime"] = eventTime
         
-      //  var eventDataJson = [[String : Any]]()
-//        eventDatas.forEach { (obj) in
-//            eventDataJson.append(obj.toJsonString())
-//        }
+        //  var eventDataJson = [[String : Any]]()
+        //        eventDatas.forEach { (obj) in
+        //            eventDataJson.append(obj.toJsonString())
+        //        }
         
-        parameters["event-data"] = eventDatas.toJsonString()
-
+        parameters["eventData"] = eventDatas.toJsonString()
+        
         return parameters
     }
+
 }

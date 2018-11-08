@@ -43,7 +43,7 @@ class ConfigFunction {
                    // print(result)
                     
                    // print(result["tracking_code"])
-                    trackingCode["tracking_code"] = result["tracking_code"] as AnyObject
+                    trackingCode["trackingCode"] = result["tracking_code"] as AnyObject
                     print(trackingCode)
                     mConfigFunction?.logToFile(key: VEventType.kTrackingConfig, params: result)
                     tempData.trackingCode = (result["tracking_code"] as AnyObject) as! String
@@ -114,7 +114,7 @@ class ConfigFunction {
                 if let trackingDataJson = jsonResult as? [String : AnyObject] {
                     // doc data tu json vao object
                     let trackingData = TrackingVO(data: trackingDataJson)
-                    print("trackingData = \(trackingData.toJsonSTring())")
+                    print("trackingData = \(trackingData.toJsonSTring1())")
                     return trackingData
                 }
             } catch {
@@ -126,13 +126,13 @@ class ConfigFunction {
             let file = DocURL.appendingPathComponent(mFileName).appendingPathExtension("json")
             do{
                 let dataTrack = TrackingVO()
-                let data = try JSONSerialization.data(withJSONObject: dataTrack.toJsonSTring(), options: [])
+                let data = try JSONSerialization.data(withJSONObject: dataTrack.toJsonSTring1(), options: [])
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 try! data.write(to: file)
                 if let trackingDataJson = jsonResult as? [String : AnyObject] {
                     // doc data tu json vao object
                     let trackingData = TrackingVO(data: trackingDataJson)
-                    print("trackingData = \(trackingData.toJsonSTring())")
+                    print("trackingData = \(trackingData.toJsonSTring1())")
                     return trackingData
                 }
             }catch{
@@ -151,9 +151,9 @@ class ConfigFunction {
         do {
             let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
             let fileURL = documentDirectory.appendingPathComponent(fileName).appendingPathExtension("json")
-            print("data ghi = \(data.toJsonSTring())")
+            print("data ghi = \(data.toJsonSTring1())")
             print(documentDirectory.path)
-            let data = try JSONSerialization.data(withJSONObject: data.toJsonSTring(), options: [])
+            let data = try JSONSerialization.data(withJSONObject: data.toJsonSTring1(), options: [])
             try! data.write(to: fileURL)
             checkSizeLogFile(file: fileURL)
         } catch {
@@ -219,7 +219,7 @@ class ConfigFunction {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: data?.toJsonSTring(), options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+            request.httpBody = try JSONSerialization.data(withJSONObject: data?.toJsonSTring1(), options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
             
         } catch let error {
             print(error.localizedDescription)

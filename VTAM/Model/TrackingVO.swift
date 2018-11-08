@@ -19,16 +19,16 @@ class TrackingVO {
     init(){}
     
     init(data: [String: AnyObject]) {
-        trackingCode = data["tracking-code"] as? String ?? ""
-        PackageId = data["package-id"] as? String ?? ""
-        RequestId = data["RequestId"] as? String ?? ""
+        trackingCode = data["trackingCode"] as? String ?? ""
+        PackageId = data["packageId"] as? String ?? ""
+        RequestId = data["requestId"] as? String ?? ""
         
-        guard let deviceInfosArr = data["device-info"] as? [String: Any] ?? nil else {
+        guard let deviceInfosArr = data["deviceInfo"] as? [String: Any] ?? nil else {
             print("Khong the doc")
             return
         }
         
-        guard let TrackingDatasArr = data["tracking-data"] as? [[String: Any]] ?? nil else {
+        guard let TrackingDatasArr = data["trackingData"] as? [[String: Any]] ?? nil else {
             print("Khong the doc")
             return
         }
@@ -57,20 +57,38 @@ class TrackingVO {
         
     }
     
-    func toJsonSTring() -> [String: Any] {
+//    func toJsonSTring() -> [String: Any] {
+//        
+//        var parameters = [String: Any]()
+//
+//        parameters["tracking-code"] = trackingCode
+//        parameters["package-id"] = PackageId
+//        parameters["request-id"] = RequestId
+//        parameters["device-info"] = deviceInfos.toJsonString()
+//        
+//        var trackingDataJson = [[String : Any]]()
+//        trackingDatas.forEach { (obj) in
+//            trackingDataJson.append(obj.toJsonString())
+//        }
+//        parameters["tracking-data"] = trackingDataJson
+//        
+//        return parameters
+//    }
+//    
+    func toJsonSTring1() -> [String: Any] {
         
         var parameters = [String: Any]()
-
-        parameters["tracking-code"] = trackingCode
-        parameters["package-id"] = PackageId
-        parameters["request-id"] = RequestId
-        parameters["device-info"] = deviceInfos.toJsonString()
+        
+        parameters["trackingCode"] = trackingCode
+        parameters["packageId"] = PackageId
+        parameters["requestId"] = RequestId
+        parameters["deviceInfo"] = deviceInfos.toJsonString1()
         
         var trackingDataJson = [[String : Any]]()
         trackingDatas.forEach { (obj) in
-            trackingDataJson.append(obj.toJsonString())
+            trackingDataJson.append(obj.toJsonString1())
         }
-        parameters["tracking-data"] = trackingDataJson
+        parameters["trackingData"] = trackingDataJson
         
         return parameters
     }

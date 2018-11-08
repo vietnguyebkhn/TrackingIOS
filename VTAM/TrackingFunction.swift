@@ -72,12 +72,12 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         var iOSVersion = UIDevice.current.systemVersion
         
         let deviceInfo = [
-            "track_branch_name" : build ?? "",
-            "track_app_version" : version ?? "",
-            "track_app_name" : appName ?? "",
+            "branchName" : build ?? "",
+            "appVersion" : version ?? "",
+            "appName" : appName ?? "",
             "deviceModel" :  deviceModel ,
-            "track_os_version" : iOSVersion,
-            "track_app_size": appSizeInMegaBytes()
+            "osVersion" : iOSVersion,
+            "appSize": appSizeInMegaBytes()
             ] as [String : Any]
         mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
     }

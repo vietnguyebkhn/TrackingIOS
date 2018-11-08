@@ -37,8 +37,8 @@ import UIKit
             if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! NSDictionary { // [String: Any] which ever it is
                 print(result)
                 
-                print(result["tracking_code"])
-                trackingCode["tracking_code"] = result["tracking_code"] as AnyObject
+                print(result["trackingCode"])
+                trackingCode["trackingCode"] = result["tracking_code"] as AnyObject
                 print(trackingCode)
                 mConfigFunction?.logToFile(key: VEventType.kTrackingConfig, params: result)
                 
