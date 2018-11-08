@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Zip
 
 class ConfigFunction {
     var urlBase = "https://vtam-sdk.viettel.com.vn"
