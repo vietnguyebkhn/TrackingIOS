@@ -8,6 +8,7 @@
 
 import Foundation
 import Zip
+import Compression
 
 class ConfigFunction {
     var urlBase = "https://vtam-sdk.viettel.com.vn"
@@ -30,7 +31,6 @@ class ConfigFunction {
         return dateString
     }
     
-    
     private func fillData(key: String, params: NSDictionary?, data: TrackingVO) -> TrackingVO {
         let tempData = data
         switch key {
@@ -46,16 +46,13 @@ class ConfigFunction {
             trackingData.eventType = VEventType.kTrackLocation
             trackingData.eventTime = getCurrentTime()
             //lay event
-            
             var eventData : EventDataVO?
             if params != nil {
-                eventData = EventDataVO(data: params as! [String: AnyObject])
-            }
-            else {
+                eventData = EventDataVO(data: params! as! [String : AnyObject])
+            } else {
                 eventData = EventDataVO()
             }
             trackingData.eventDatas.append(eventData!)
-         //   print(eventData?.toJsonString())
             tempData.trackingDatas.append(trackingData)
             break
         case VEventType.kTrackEventButtonClick:
@@ -84,8 +81,8 @@ class ConfigFunction {
     }
     
     //ham doc json tu file
+    let DocURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     private func readDataFromFile(fileName: String) -> TrackingVO? {
-        let DocURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let file = DocURL.appendingPathComponent(fileName).appendingPathExtension("json")
         if FileManager.default.fileExists(atPath: file.path) {
             print("ton tai file \(file.path)")
@@ -119,7 +116,6 @@ class ConfigFunction {
             print("data ghi = \(data.toJsonSTring())")
             print(documentDirectory.path)
             let data = try JSONSerialization.data(withJSONObject: data.toJsonSTring(), options: [])
-            
             try! data.write(to: fileURL)
         } catch {
             print(error)
@@ -141,14 +137,28 @@ class ConfigFunction {
         if data != nil {
             //apend vao data
             data = fillData(key: key, params: params, data: data!)
+            //ghi du lieu moi vao file
+            writeToFile(data: data!, fileName: mFileName)
         }
-        
-        //ghi du lieu moi vao file
-        writeToFile(data: data!, fileName: mFileName)
+        checkSizeLogFile()
     }
     
     //True can phai zip, failed: van co the ghi dc
     func checkSizeLogFile() -> Bool {
+        let file = DocURL.appendingPathComponent(mFileName).appendingPathExtension("json")
+        var logFileSize : UInt64 = 0
+        let fm = FileManager.default
+        do{
+            let fileDic = try fm.attributesOfItem(atPath: file.path) as NSDictionary
+            logFileSize += fileDic.fileSize()
+            if logFileSize >= 102400 {
+                return true
+            }else{
+                print("Log file chua du size")
+            }
+        }catch{
+            print(error)
+        }
         return false
     }
     
@@ -158,10 +168,9 @@ class ConfigFunction {
     }
     
     //Ham zip file
-    func zipFile(password: String)  {
+    func zipFile()  {
         
     }
-    
     // tra ve duong dan trong local may
     func getZipFile() -> String {
 //        do {
