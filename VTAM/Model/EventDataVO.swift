@@ -12,8 +12,6 @@ class  EventDataVO {
     var property = ""
     var value = ""
     //var tempData: [[String: AnyObject]]?
-    var keys: [String]?
-    var values: [String]?
     var params = [String: AnyObject]()
 
     
@@ -24,8 +22,6 @@ class  EventDataVO {
             for key in data.keys {
                 property = key
                 value = data[property] as? String ?? ""
-                keys?.append(key)
-                values?.append(value)
                 for (key,value) in data {
                     params[key] = value
                 }
