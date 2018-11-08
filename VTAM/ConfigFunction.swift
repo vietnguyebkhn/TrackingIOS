@@ -140,9 +140,10 @@ class ConfigFunction {
         if data != nil {
             //apend vao data
             data = fillData(key: key, params: params, data: data!)
-            //ghi du lieu moi vao file
-            writeToFile(data: data!, fileName: mFileName)
         }
+        
+        //ghi du lieu moi vao file
+        writeToFile(data: data!, fileName: mFileName)
     }
     
     //True can phai zip, failed: van co the ghi dc
