@@ -76,8 +76,9 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "track_app_version" : version ?? "",
             "track_app_name" : appName ?? "",
             "deviceModel" :  deviceModel ,
-            "track_os_version" : iOSVersion
-        ]
+            "track_os_version" : iOSVersion,
+            "track_app_size": appSizeInMegaBytes()
+            ] as [String : Any]
         mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
     }
     //tracking thong tin ca nhan

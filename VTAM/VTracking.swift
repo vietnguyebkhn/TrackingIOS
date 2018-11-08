@@ -11,6 +11,7 @@ import UIKit
 @objc open class VTracking : NSObject  {
     var mTrackingFunction : TrackingFunction!
     var mConfigFunction : ConfigFunction?
+  
     private static var sharedVTTracking: VTracking = {
     
         let vTracking = VTracking()
@@ -30,18 +31,21 @@ import UIKit
     //Ham thiet lap cac config ban dau cua app
     @objc open func configure() {
         //load cac thiet lap config tu file tracking-info.plist
-        
+        var trackingCode = [String: AnyObject]()
         if let fileUrl = Bundle.main.url(forResource: "SDK-config", withExtension: "plist"),
             let data = try? Data(contentsOf: fileUrl) {
             if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! NSDictionary { // [String: Any] which ever it is
                 print(result)
+                
+                print(result["tracking_code"])
+                trackingCode["tracking_code"] = result["tracking_code"] as AnyObject
+                print(trackingCode)
                 mConfigFunction?.logToFile(key: VEventType.kTrackingConfig, params: result)
                 
                
 //                urlBase = result
             }
         }
-        
     }
     //ham tracking cua app
     @objc open func trackingEvent(eventType: String, params: NSDictionary?) {

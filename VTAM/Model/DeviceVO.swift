@@ -17,7 +17,7 @@ class DeviceVO{
     var track_sim_provider = ""
     var track_sim_type = ""
     var track_app_name = ""
-    var track_app_size = ""
+    var track_app_size = 0.0
     var track_app_version = ""
     var trackDeviceMode = ""
     init() {}
@@ -31,7 +31,7 @@ class DeviceVO{
         track_sim_provider = data ["track_sim_provider"] as? String ?? ""
         track_sim_type = data ["track_sim_type"] as? String ?? ""
         track_app_name = data ["track_app_name"] as? String ?? ""
-        track_app_size = data ["track_app_size"] as? String ?? ""
+        track_app_size = data ["track_app_size"] as? Double ?? 0
         track_app_version = data ["track_app_version"] as? String ?? ""
         trackDeviceMode = data ["deviceModel"] as? String ?? ""
     }

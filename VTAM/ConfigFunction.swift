@@ -34,7 +34,26 @@ class ConfigFunction {
         let tempData = data
         switch key {
         case VEventType.kTrackingConfig:
-            tempData.trackingCode = params?.value(forKey: VEventType.kTrackingCode) as! String
+            var mConfigFunction : ConfigFunction?
+
+            var trackingCode = [String: AnyObject]()
+            if let fileUrl = Bundle.main.url(forResource: "SDK-config", withExtension: "plist"),
+                let data = try? Data(contentsOf: fileUrl) {
+                if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! NSDictionary { // [String: Any] which ever it is
+                   // print(result)
+                    
+                   // print(result["tracking_code"])
+                    trackingCode["tracking_code"] = result["tracking_code"] as AnyObject
+                    print(trackingCode)
+                    mConfigFunction?.logToFile(key: VEventType.kTrackingConfig, params: result)
+                    tempData.trackingCode = (result["tracking_code"] as AnyObject) as! String
+                    
+                    //                urlBase = result
+                }
+               
+            }
+            
+            VEventType
             break
         case VEventType.kTrackDeviceInfo:
             tempData.deviceInfos = DeviceVO(data: params as! [String : AnyObject])
@@ -161,6 +180,79 @@ class ConfigFunction {
         }
     }
     
+    func HTTPsendRequest(request: URLRequest,
+                         callback: @escaping (Error?, String?) -> Void) {
+        let task = URLSession.shared.dataTask(with: request) { (data, res, err) in
+            if (err != nil) {
+                callback(err,nil)
+            } else {
+                callback(nil, String(data: data!, encoding: String.Encoding.utf8))
+            
+            }
+        }
+        task.resume()
+    }
+    
+    func HTTPPostJSON(url: String,  data: Data,
+                      callback: @escaping (Error?, String?) -> Void) {
+        
+        var request = URLRequest(url: URL(string: url)!)
+        
+        request.httpMethod = "POST"
+        request.addValue("application/json",forHTTPHeaderField: "Content-Type")
+    //    request.addValue("application/json",forHTTPHeaderField: "Accept")
+        request.httpBody = data
+        HTTPsendRequest(request: request, callback: callback)
+    }
+    
+    func sendDataToServer(){
+        var data: TrackingVO?
+        data = readDataFromFile(fileName: mFileName)
+       print(data?.toJsonSTring())
+//        let DataTrackingData = try?  JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+//        let DataTrackingDataJson = try? JSONSerialization.jsonObject(with: DataTrackingData!, options: .mutableLeaves)
+//        let result = DataTrackingDataJson as? [String: AnyObject] ?? nil
+        let session = URLSession.shared
+
+      //  let jsonData = try? JSONSerialization.data(withJSONObject: data)
+        let url = URL(string: "http://sdk.myitsol.com/log-event")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: data?.toJsonSTring(), options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+       // request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        //create dataTask using the session object to send data to the server
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+            
+            guard error == nil else {
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
+            do {
+                //create json object from data
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    print(json)
+                    // handle json...
+                }
+                
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
+    }
+    
     //True can phai zip, failed: van co the ghi dc
     func checkSizeLogFile(file: URL) {
         var logFileSize : UInt64 = 0
@@ -168,9 +260,9 @@ class ConfigFunction {
         do{
             let fileDic = try fm.attributesOfItem(atPath: file.path) as NSDictionary
             logFileSize += fileDic.fileSize()
-            if logFileSize >= 102400 {
-                zipFile(file: file)
-                removeFile(file: file)
+            if logFileSize < 102400 {
+                sendDataToServer()
+
             }else{
                 print("Log file chua du size")
             }
