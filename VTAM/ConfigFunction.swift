@@ -40,6 +40,7 @@ class ConfigFunction {
             tempData.deviceInfos = DeviceVO(data: params as! [String : AnyObject])
             break
         case VEventType.kTrackLocation:
+            
             let trackingData = TrackingDataVO()
             trackingData.eventType = VEventType.kTrackLocation
             trackingData.eventTime = getCurrentTime()
@@ -54,6 +55,23 @@ class ConfigFunction {
             }
             trackingData.eventDatas.append(eventData!)
          //   print(eventData?.toJsonString())
+            tempData.trackingDatas.append(trackingData)
+            break
+        case VEventType.kTrackEventButtonClick:
+            let trackingData = TrackingDataVO()
+            trackingData.eventType = VEventType.kTrackEventButtonClick
+            trackingData.eventTime = getCurrentTime()
+            //lay event
+            
+            var eventData : EventDataVO?
+            if params != nil {
+                eventData = EventDataVO(data: params as! [String: AnyObject])
+            }
+            else {
+                eventData = EventDataVO()
+            }
+            trackingData.eventDatas.append(eventData!)
+            //   print(eventData?.toJsonString())
             tempData.trackingDatas.append(trackingData)
             break
         default:

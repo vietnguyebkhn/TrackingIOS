@@ -11,6 +11,7 @@ import Foundation
 class  EventDataVO {
     var property = ""
     var value = ""
+
     //var tempData: [[String: AnyObject]]?
     var params = [String: AnyObject]()
 
@@ -28,7 +29,6 @@ class  EventDataVO {
                 print(" params = \(params)")
             }
     }
-    
     func toJsonString() -> [String : Any] {
         
         return params
