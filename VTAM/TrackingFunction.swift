@@ -87,7 +87,8 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
-        let eventType = VEventType.kTrackPersonalInfo
+        mConfigFunction.logToFile(key: VEventType.kTrackPersonalInfo, params: params)
+
         
     }
     

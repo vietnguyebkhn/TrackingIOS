@@ -71,6 +71,8 @@ import UIKit
         case VEventType.kTrackAppSize:
             mTrackingFunction.appSizeInMegaBytes()
             break
+        case VEventType.kTrackPersonalInfo:
+            mTrackingFunction.trackPersonalInfo(params: params)
         default:
             break
         }
