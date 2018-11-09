@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>tracking_code</key>
-	<string>123333333</string>
+	<string>Viettel.DemoSwift</string>
 	<key>data_server_url</key>
 	<string>https://vtam-sdk.viettel.com.vn</string>
 </dict>

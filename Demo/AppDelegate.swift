@@ -30,12 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                      "lng": String(mLastLocation?.coordinate.longitude ?? 0)]
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackLocation, params: params)
         
-        let paramsButton: NSDictionary = ["hihi": 1,
-                                          "haha": 2,
-                                          "huhu": 3,
-                                          "ahihi": 4,
-                                          "alskjdasd":5]
-        VTracking.shared().trackingEvent(eventType: VEventType.kTrackEventButtonClick, params: paramsButton)
+        let paramsPersonal: NSDictionary = ["personalId": "12121212121",
+                                          "personalName": "Viet NT",
+                                          "personalEmail": "Vietnt@itsol.com"
+                                          ]
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackPersonalInfo, params: paramsPersonal)
         return true
     }
 

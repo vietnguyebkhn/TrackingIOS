@@ -52,7 +52,9 @@ class ConfigFunction {
                 }
                
             }
-            
+            tempData.PackageId = "viettel.sdk.tracking"
+            tempData.sentDatetime = getCurrentTime()
+            tempData.RequestId = "123123"
 //            VEventType
             break
         case VEventType.kTrackDeviceInfo:

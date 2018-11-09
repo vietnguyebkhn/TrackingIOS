@@ -77,7 +77,11 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "appName" : appName ?? "",
             "deviceModel" :  deviceModel ,
             "osVersion" : iOSVersion,
-            "appSize": appSizeInMegaBytes()
+            "appSize": appSizeInMegaBytes(),
+            "simProvider": "Viettel",
+            "simMisdn": "098989898989",
+            "simType": "simType",
+            "osName": "iOS"
             ] as [String : Any]
         mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
     }

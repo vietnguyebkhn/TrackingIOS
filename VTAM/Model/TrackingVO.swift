@@ -15,6 +15,7 @@ class TrackingVO {
     var RequestId = ""
     var  deviceInfos = DeviceVO()
     var trackingDatas = [TrackingDataVO]()
+    var sentDatetime = ""
     
     init(){}
     
@@ -22,6 +23,7 @@ class TrackingVO {
         trackingCode = data["trackingCode"] as? String ?? ""
         PackageId = data["packageId"] as? String ?? ""
         RequestId = data["requestId"] as? String ?? ""
+        sentDatetime = data["sentDatetime"] as? String ?? ""
         
         guard let deviceInfosArr = data["deviceInfo"] as? [String: Any] ?? nil else {
             print("Khong the doc")
@@ -89,7 +91,7 @@ class TrackingVO {
             trackingDataJson.append(obj.toJsonString1())
         }
         parameters["trackingData"] = trackingDataJson
-        
+        parameters["sentDatetime"] = sentDatetime
         return parameters
     }
 }
