@@ -23,8 +23,6 @@ class TrackingDataVO {
             print("Khong the doc")
             return
         }
-        
-        
         do {
                     let DataEventData = try  JSONSerialization.data(withJSONObject: eventDataArr, options: .prettyPrinted)
                     let DataEventDataJson = try JSONSerialization.jsonObject(with: DataEventData, options: .mutableLeaves)
@@ -33,25 +31,8 @@ class TrackingDataVO {
             } catch {
                 
             }
-        
     }
  
-//    func toJsonString() -> [String: Any] {
-//        var parameters = [String: Any]()
-//        parameters["event-type"] = eventType
-//        parameters["object-name"] = objectName
-//        parameters["event-time"] = eventTime
-//        
-//      //  var eventDataJson = [[String : Any]]()
-////        eventDatas.forEach { (obj) in
-////            eventDataJson.append(obj.toJsonString())
-////        }
-//        
-//        parameters["event-data"] = eventDatas.toJsonString()
-//
-//        return parameters
-//    }
-    
     func toJsonString1() -> [String: Any] {
         var parameters = [String: Any]()
         parameters["eventType"] = eventType

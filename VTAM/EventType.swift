@@ -20,9 +20,9 @@ import Foundation
     @objc public static let kTrackAppStart = "track_app_start"
     @objc public static let kTrackAppUninstall = "track_app_uninstall"
     @objc public static let kTrackAppCrash = "track_app_crash"
-    @objc public static let kTrackEventWindowOpen = "track_event_window_open"
+    @objc public static let kTrackScreenOpen = "track_event_window_open"
+    @objc public static let kTrackScreenClose = "track_event_window_close"
     @objc public static let kTrackEventButtonClick = "track_event_button_click"
-    @objc public static let kTrackEventWindowClose = "track_event_window_close"
     @objc public static let kTrackAppClose = "track_app_close"
     @objc public static let kTrackAppSize = "track_app_size"
     

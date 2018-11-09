@@ -262,7 +262,6 @@ class ConfigFunction {
             logFileSize += fileDic.fileSize()
             if logFileSize < 102400 {
                 sendDataToServer()
-
             }else{
                 print("Log file chua du size")
             }

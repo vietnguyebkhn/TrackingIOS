@@ -62,24 +62,24 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         var systemInfo = utsname()
         uname(&systemInfo)
         
-        var build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        var version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        var appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
-        var deviceModel = withUnsafeBytes(of: &systemInfo.machine) { (rawPtr) -> String in
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
+        let deviceModel = withUnsafeBytes(of: &systemInfo.machine) { (rawPtr) -> String in
             let ptr = rawPtr.baseAddress!.assumingMemoryBound(to: CChar.self)
             return String(cString: ptr)
         }
-        var iOSVersion = UIDevice.current.systemVersion
-        
+        let iOSVersion = UIDevice.current.systemVersion as String
+       
         let deviceInfo = [
             "branchName" : build ?? "",
             "appVersion" : version ?? "",
             "appName" : appName ?? "",
             "deviceModel" :  deviceModel ,
-            "osVersion" : iOSVersion,
+            "osVersion" : iOSVersion ,
             "appSize": appSizeInMegaBytes()
-            ] as [String : Any]
-        mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
+            ] as NSDictionary
+        mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo)
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
@@ -100,8 +100,6 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         if getFirstInstallStatus() == false {
             setFirstInstallStatus(firstInstall: true)
             let dict = ["tracking_app_install": getFirstInstallStatus()]
-//            VEventType.itemEventData.append(dict)
-//            VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
             mConfigFunction.logToFile(key: VEventType.kTrackAppInstall, params: dict as NSDictionary)
         }
 //        else {
@@ -139,18 +137,21 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
 //        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
 //        mConfigFunction.logToFile(key: VEventType.kTrackAppStart, params: dict as NSDictionary)
     }
-    
-    //"track_event_window_open": Mở màn hình
-    func trackEventWindowOpen(params: NSDictionary?) {
-        
+     let status = true
+    //Mở màn hình
+    func trackScreenOpen() {
+        let statusDict = ["trackEventWindowOpen": status]
     }
-    
+    //Đóng màn hình
+    func trackScreenClose(){
+        let statusDict = ["trackEventWindowClose": status]
+         mConfigFunction.logToFile(key: VEventType.kTrackScreenOpen, params: statusDict as NSDictionary )
+    }
     //"track_event_button_click": Click button, link
 //    var count = 0
     func trackEventButtonClick(params: NSDictionary?){
         mConfigFunction.logToFile(key: VEventType.kTrackEventButtonClick, params: params)
 //        var dict = [String: AnyObject]()
-//        dict["haha"] = ["hihi"] as AnyObject
 //        count = count + 1
 //        let dict = ["track_event_button_click":"tap \(count) times!!"]
 //        VEventType.itemEventData.append(dict)
@@ -159,10 +160,6 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
 //        print("Tap on this button: \(count) times!!")
     }
     
-    //"track_event_window_close": Đóng màn hình
-    func trackEventWindowClose(params: NSDictionary?) {
-        
-    }
     
     //"track_app_close": Đóng hẳn app (kill)
     func setAppCloseStatus(appStart: Bool) {
@@ -178,8 +175,6 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
 //        let dict = ["track-app-close":getAppCloseStatus()]
 //        VEventType.itemEventData.append(dict)
 //        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-        
-        
         
 //        setAppStartStatus(appStart: false)
 //        let dic = ["track-app-start":getAppStartStatus()]
@@ -226,8 +221,8 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
                 totalSize += size
             }
         }
-        print(totalSize)
-        return totalSize
+        let totalSizeMB : Float64 = totalSize/1000000
+        return totalSizeMB
     }
 
 }

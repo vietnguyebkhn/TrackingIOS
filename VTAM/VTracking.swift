@@ -71,6 +71,12 @@ import UIKit
         case VEventType.kTrackAppSize:
             mTrackingFunction.appSizeInMegaBytes()
             break
+        case VEventType.kTrackScreenOpen:
+            mTrackingFunction.trackScreenOpen()
+            break
+        case VEventType.kTrackScreenClose:
+            mTrackingFunction.trackScreenClose()
+            break
         default:
             break
         }

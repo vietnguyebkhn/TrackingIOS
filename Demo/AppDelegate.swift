@@ -20,22 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VTracking.shared().configure()
        // var mLocationManager: CLLocationManager?
         var mLastLocation: CLLocation?
-//        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppStart, params: [:])
-//        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppInstall, params: [:])
-        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppSize , params: [:])
-        
-        VTracking.shared().trackingEvent(eventType: VEventType.kTrackDeviceInfo , params: [:])
-        
         let params : NSDictionary = ["lat": String(mLastLocation?.coordinate.latitude ?? 0),
                                      "lng": String(mLastLocation?.coordinate.longitude ?? 0)]
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackLocation, params: params)
-        
-        let paramsButton: NSDictionary = ["hihi": 1,
-                                          "haha": 2,
-                                          "huhu": 3,
-                                          "ahihi": 4,
-                                          "alskjdasd":5]
-        VTracking.shared().trackingEvent(eventType: VEventType.kTrackEventButtonClick, params: paramsButton)
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackEventButtonClick, params: [:])
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppStart, params: [:])
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppInstall, params: [:])
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackDeviceInfo , params: [:])
         return true
     }
 
@@ -47,14 +38,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        print("quit")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        print("bla")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//        print("bla2")
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
