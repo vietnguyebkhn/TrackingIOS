@@ -27,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppStart, params: [:])
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackAppInstall, params: [:])
         VTracking.shared().trackingEvent(eventType: VEventType.kTrackDeviceInfo , params: [:])
+        
+        let paramsPersonal: NSDictionary = ["personalId": "12121212121",
+                                          "personalName": "Viet NT",
+                                          "personalEmail": "Vietnt@itsol.com"
+                                          ]
+        VTracking.shared().trackingEvent(eventType: VEventType.kTrackPersonalInfo, params: paramsPersonal)
         return true
     }
 

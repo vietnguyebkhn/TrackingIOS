@@ -41,7 +41,7 @@ class DeviceVO{
         parameters["trackdeviceid"] = track_deviceid
         parameters["branchName"] = track_branch_name
         parameters["osVersion"] = track_os_version
-        parameters["osVersion"] = track_os_name
+        parameters["osName"] = track_os_name
         parameters["simMisdn"] = track_sim_misdn
         parameters["simProvider"] = track_sim_provider
         parameters["simType"] = track_sim_type

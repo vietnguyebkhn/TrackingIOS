@@ -52,7 +52,9 @@ class ConfigFunction {
                 }
                
             }
-            
+            tempData.PackageId = "viettel.sdk.tracking"
+            tempData.sentDatetime = getCurrentTime()
+            tempData.RequestId = "123123"
 //            VEventType
             break
         case VEventType.kTrackDeviceInfo:
@@ -61,6 +63,7 @@ class ConfigFunction {
         case VEventType.kTrackLocation:
             
             let trackingData = TrackingDataVO()
+            trackingData.objectName = "link"
             trackingData.eventType = VEventType.kTrackLocation
             trackingData.eventTime = getCurrentTime()
             //lay event
@@ -77,6 +80,7 @@ class ConfigFunction {
             break
         case VEventType.kTrackEventButtonClick:
             let trackingData = TrackingDataVO()
+            trackingData.objectName = "link"
             trackingData.eventType = VEventType.kTrackEventButtonClick
             trackingData.eventTime = getCurrentTime()
             //lay event
@@ -91,6 +95,26 @@ class ConfigFunction {
             trackingData.eventDatas = eventData!
 
 //            trackingData.eventDatas.append(eventData!)
+            //   print(eventData?.toJsonString())
+            tempData.trackingDatas.append(trackingData)
+            break
+        case VEventType.kTrackPersonalInfo:
+            let trackingData = TrackingDataVO()
+            trackingData.objectName = "button"
+            trackingData.eventType = VEventType.kTrackPersonalInfo
+            trackingData.eventTime = getCurrentTime()
+            //lay event
+            
+            var eventData : EventDataVO?
+            if params != nil {
+                eventData = EventDataVO(data: params as! [String: AnyObject])
+            }
+            else {
+                eventData = EventDataVO()
+            }
+            trackingData.eventDatas = eventData!
+            
+            //            trackingData.eventDatas.append(eventData!)
             //   print(eventData?.toJsonString())
             tempData.trackingDatas.append(trackingData)
             break

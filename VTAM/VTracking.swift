@@ -77,6 +77,9 @@ import UIKit
         case VEventType.kTrackScreenClose:
             mTrackingFunction.trackScreenClose()
             break
+        case VEventType.kTrackPersonalInfo:
+            mTrackingFunction.trackPersonalInfo(params: params)
+            break
         default:
             break
         }

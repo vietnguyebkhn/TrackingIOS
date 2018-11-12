@@ -76,17 +76,21 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "appVersion" : version ?? "",
             "appName" : appName ?? "",
             "deviceModel" :  deviceModel ,
-            "osVersion" : iOSVersion ,
-            "appSize": appSizeInMegaBytes()
-            ] as NSDictionary
-        mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo)
+            "osVersion" : iOSVersion,
+            "appSize": appSizeInMegaBytes(),
+            "simProvider": "Viettel",
+            "simMisdn": "098989898989",
+            "simType": "simType",
+            "osName": "iOS"
+            ] as [String : Any]
+        mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
-        let eventType = VEventType.kTrackPersonalInfo
+        mConfigFunction.logToFile(key: VEventType.kTrackPersonalInfo, params: params)
+
         
     }
-    
     
     //tracking cai app
     var defaults = UserDefaults.standard
