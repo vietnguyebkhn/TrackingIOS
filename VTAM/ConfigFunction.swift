@@ -32,6 +32,7 @@ class ConfigFunction {
     
     private func fillData(key: String, params: NSDictionary?, data: TrackingVO) -> TrackingVO {
         let tempData = data
+        let trackingData = TrackingDataVO()
         switch key {
         case VEventType.kTrackingConfig:
             var mConfigFunction : ConfigFunction?
@@ -39,48 +40,41 @@ class ConfigFunction {
             var trackingCode = [String: AnyObject]()
             if let fileUrl = Bundle.main.url(forResource: "SDK-config", withExtension: "plist"),
                 let data = try? Data(contentsOf: fileUrl) {
-                if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! NSDictionary { // [String: Any] which ever it is
-                   // print(result)
-                    
-                   // print(result["tracking_code"])
+                if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! NSDictionary {
+             /Users/nguyenviet/coding/vtam/VTAM/ConfigFunction.swift
                     trackingCode["trackingCode"] = result["tracking_code"] as AnyObject
-                    print(trackingCode)
                     mConfigFunction?.logToFile(key: VEventType.kTrackingConfig, params: result)
                     tempData.trackingCode = (result["tracking_code"] as AnyObject) as! String
                     
-                    //                urlBase = result
                 }
                
             }
             tempData.PackageId = "viettel.sdk.tracking"
             tempData.sentDatetime = getCurrentTime()
-            tempData.RequestId = "123123"
-//            VEventType
             break
         case VEventType.kTrackDeviceInfo:
             tempData.deviceInfos = DeviceVO(data: params as! [String : AnyObject])
             break
         case VEventType.kTrackLocation:
             
-            let trackingData = TrackingDataVO()
-            trackingData.objectName = "link"
+            trackingData.objectName = ""
             trackingData.eventType = VEventType.kTrackLocation
             trackingData.eventTime = getCurrentTime()
             //lay event
             var eventData : EventDataVO?
+            
             if params != nil {
                 eventData = EventDataVO(data: params! as! [String : AnyObject])
             } else {
                 eventData = EventDataVO()
             }
+            
             trackingData.eventDatas = eventData!
-            //    trackingData.eventDatas.append(eventData!)
-
             tempData.trackingDatas.append(trackingData)
             break
         case VEventType.kTrackEventButtonClick:
-            let trackingData = TrackingDataVO()
-            trackingData.objectName = "link"
+            
+            trackingData.objectName = ""
             trackingData.eventType = VEventType.kTrackEventButtonClick
             trackingData.eventTime = getCurrentTime()
             //lay event
@@ -93,30 +87,89 @@ class ConfigFunction {
                 eventData = EventDataVO()
             }
             trackingData.eventDatas = eventData!
+            
             tempData.trackingDatas.append(trackingData)
             break
-        case VEventType.kTrackPersonalInfo:
-            let trackingData = TrackingDataVO()
-            trackingData.objectName = "button"
-            trackingData.eventType = VEventType.kTrackPersonalInfo
+        case VEventType.kTrackScreenOpen:
+            
+            trackingData.objectName = ""
+            trackingData.eventType = VEventType.kTrackScreenOpen
             trackingData.eventTime = getCurrentTime()
-            //lay event
             
             var eventData : EventDataVO?
             if params != nil {
-                eventData = EventDataVO(data: params as! [String: AnyObject])
-            }
-            else {
+                eventData = EventDataVO(data: params as! [String : AnyObject] )
+            }else{
                 eventData = EventDataVO()
             }
             trackingData.eventDatas = eventData!
+            
+            tempData.trackingDatas.append(trackingData)
+            break
+        case VEventType.kTrackScreenClose:
+            
+            trackingData.objectName = ""
+            trackingData.eventType = VEventType.kTrackScreenClose
+            trackingData.eventTime = getCurrentTime()
+            
+            var eventData : EventDataVO?
+            if params != nil {
+                eventData = EventDataVO(data: params as! [String : AnyObject] )
+            }else{
+                eventData = EventDataVO()
+            }
+            trackingData.eventDatas = eventData!
+            
+            tempData.trackingDatas.append(trackingData)
+            break
+        case VEventType.kTrackAppInstall:
+            trackingData.objectName = ""
+            trackingData.eventType = VEventType.kTrackAppInstall
+            trackingData.eventTime = getCurrentTime()
+            
+            var eventData : EventDataVO?
+            if params != nil {
+                eventData = EventDataVO(data: params as! [String : AnyObject] )
+            }else{
+                eventData = EventDataVO()
+            }
+            trackingData.eventDatas = eventData!
+            
+            tempData.trackingDatas.append(trackingData)
+            break
+        case VEventType.kTrackAppStart:
+            trackingData.objectName = ""
+            trackingData.eventType = VEventType.kTrackAppStart
+            trackingData.eventTime = getCurrentTime()
+            
+            var eventData : EventDataVO?
+            if params != nil {
+                eventData = EventDataVO(data: params as! [String : AnyObject] )
+            }else{
+                eventData = EventDataVO()
+            }
+            trackingData.eventDatas = eventData!
+            
+            tempData.trackingDatas.append(trackingData)
+            break
+        case VEventType.kTrackAppClose:
+            trackingData.objectName = ""
+            trackingData.eventType = VEventType.kTrackAppClose
+            trackingData.eventTime = getCurrentTime()
+            
+            var eventData : EventDataVO?
+            if params != nil {
+                eventData = EventDataVO(data: params as! [String : AnyObject] )
+            }else{
+                eventData = EventDataVO()
+            }
+            trackingData.eventDatas = eventData!
+            
             tempData.trackingDatas.append(trackingData)
             break
         default:
-            print("params = \(String(describing: params))")
             break
         }
-        
         return tempData
     }
     
@@ -150,7 +203,6 @@ class ConfigFunction {
                 if let trackingDataJson = jsonResult as? [String : AnyObject] {
                     // doc data tu json vao object
                     let trackingData = TrackingVO(data: trackingDataJson)
-                    print("trackingData = \(trackingData.toJsonSTring1())")
                     return trackingData
                 }
             }catch{
@@ -195,32 +247,9 @@ class ConfigFunction {
             data = fillData(key: key, params: params, data: data!)
             //ghi du lieu moi vao file
             writeToFile(data: data!, fileName: mFileName)
+        }else{
+            writeToFile(data: data!, fileName: mFileName)
         }
-    }
-    
-    func HTTPsendRequest(request: URLRequest,
-                         callback: @escaping (Error?, String?) -> Void) {
-        let task = URLSession.shared.dataTask(with: request) { (data, res, err) in
-            if (err != nil) {
-                callback(err,nil)
-            } else {
-                callback(nil, String(data: data!, encoding: String.Encoding.utf8))
-            
-            }
-        }
-        task.resume()
-    }
-
-    func HTTPPostJSON(url: String,  data: Data,
-                      callback: @escaping (Error?, String?) -> Void) {
-        
-        var request = URLRequest(url: URL(string: url)!)
-        
-        request.httpMethod = "POST"
-        request.addValue("application/json",forHTTPHeaderField: "Content-Type")
-    //    request.addValue("application/json",forHTTPHeaderField: "Accept")
-        request.httpBody = data
-        HTTPsendRequest(request: request, callback: callback)
     }
     
     func sendDataToServer(){
@@ -228,19 +257,18 @@ class ConfigFunction {
         data = readDataFromFile(fileName: mFileName)
         let session = URLSession.shared
 
-      //  let jsonData = try? JSONSerialization.data(withJSONObject: data)
         let url = URL(string: "http://sdk.myitsol.com/log-event")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: data?.toJsonSTring1(), options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+            request.httpBody = try JSONSerialization.data(withJSONObject: data?.toJsonSTring1(), options: .prettyPrinted)
             
         } catch let error {
             print(error.localizedDescription)
         }
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-       // request.addValue("application/json", forHTTPHeaderField: "Accept")
+       
         
         //create dataTask using the session object to send data to the server
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
@@ -267,16 +295,14 @@ class ConfigFunction {
         task.resume()
     }
     
-    //True can phai zip, failed: van co the ghi dc
     func checkSizeLogFile(file: URL) {
         var logFileSize : UInt64 = 0
         let fm = FileManager.default
         do{
             let fileDic = try fm.attributesOfItem(atPath: file.path) as NSDictionary
             logFileSize += fileDic.fileSize()
-            if logFileSize < 102400 {
+            if logFileSize >= 102400 {
                 sendDataToServer()
-
             }else{
                 print("Log file chua du size")
             }
@@ -284,7 +310,6 @@ class ConfigFunction {
             print(error)
         }
     }
-    
     //ham xoa file
     func removeFile(file: URL) {
         do{
@@ -293,7 +318,6 @@ class ConfigFunction {
             print("Khong xoa duoc")
         }
     }
-    
     //Ham zip file
     func zipFile(file: URL)  {
             do {

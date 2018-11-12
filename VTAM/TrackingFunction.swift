@@ -62,28 +62,28 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         var systemInfo = utsname()
         uname(&systemInfo)
         
-        var build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        var version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        var appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
-        var deviceModel = withUnsafeBytes(of: &systemInfo.machine) { (rawPtr) -> String in
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
+        let deviceModel = withUnsafeBytes(of: &systemInfo.machine) { (rawPtr) -> String in
             let ptr = rawPtr.baseAddress!.assumingMemoryBound(to: CChar.self)
             return String(cString: ptr)
         }
-        var iOSVersion = UIDevice.current.systemVersion
-        
+        let iOSVersion = UIDevice.current.systemVersion as String
+       
         let deviceInfo = [
             "branchName" : build ?? "",
             "appVersion" : version ?? "",
             "appName" : appName ?? "",
             "deviceModel" :  deviceModel ,
             "osVersion" : iOSVersion,
-            "appSize": appSizeInMegaBytes(),
-            "simProvider": "Viettel",
-            "simMisdn": "098989898989",
-            "simType": "simType",
+            "appSize": "\(appSizeInMegaBytes()) byte",
+            "simProvider": "",
+            "simMisdn": "",
+            "simType": "",
             "osName": "iOS"
-            ] as [String : Any]
-        mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo as NSDictionary )
+            ] as NSDictionary
+        mConfigFunction.logToFile(key: VEventType.kTrackDeviceInfo, params: deviceInfo)
     }
     //tracking thong tin ca nhan
     func trackPersonalInfo(params: NSDictionary?) {
@@ -91,7 +91,6 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
 
         
     }
-    
     
     //tracking cai app
     var defaults = UserDefaults.standard
@@ -104,19 +103,11 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     func trackAppInstall(params: NSDictionary?){
         if getFirstInstallStatus() == false {
             setFirstInstallStatus(firstInstall: true)
-            let dict = ["tracking_app_install": getFirstInstallStatus()]
-//            VEventType.itemEventData.append(dict)
-//            VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-            mConfigFunction.logToFile(key: VEventType.kTrackAppInstall, params: dict as NSDictionary)
+            let dict = ["trackAppInstall": getFirstInstallStatus()] as NSDictionary
+            mConfigFunction.logToFile(key: VEventType.kTrackAppInstall, params: dict)
+        }else{
+            return
         }
-//        else {
-//            let dict = ["tracking_app_install": getFirstInstallStatus()]
-//            VEventType.itemEventData.append(dict)
-//            VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-//            mConfigFunction.logToFile(key: VEventType.kTrackAppInstall, params: dict as NSDictionary)
-//            return
-//        }
-        
     }
     
     //tracking go app
@@ -130,69 +121,37 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
     }
     
     // "track_app_start": Mở app chạy mới
-    func setAppStartStatus(appStart: Bool) {
-        defaults.set(appStart, forKey: "appStart")
-    }
-    func getAppStartStatus() -> Bool {
-        return defaults.object(forKey: "appStart") as? Bool ?? false
-    }
     func trackAppStart(params: NSDictionary?) {
-        setAppStartStatus(appStart: true)
-        mConfigFunction.logToFile(key: VEventType.kTrackAppStart, params: params)
-//        let dict = ["track-app-start":getAppStartStatus()]
-//        VEventType.itemEventData.append(dict)
-//        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-//        mConfigFunction.logToFile(key: VEventType.kTrackAppStart, params: dict as NSDictionary)
-    }
-    
-    //"track_event_window_open": Mở màn hình
-    func trackEventWindowOpen(params: NSDictionary?) {
-        
-    }
-    
-    //"track_event_button_click": Click button, link
-//    var count = 0
-    func trackEventButtonClick(params: NSDictionary?){
-        mConfigFunction.logToFile(key: VEventType.kTrackEventButtonClick, params: params)
-//        var dict = [String: AnyObject]()
-//        dict["haha"] = ["hihi"] as AnyObject
-//        count = count + 1
-//        let dict = ["track_event_button_click":"tap \(count) times!!"]
-//        VEventType.itemEventData.append(dict)
-//        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-//        mConfigFunction.logToFile(key: VEventType.kTrackEventButtonClick, params: dict as NSDictionary)
-//        print("Tap on this button: \(count) times!!")
-    }
-    
-    //"track_event_window_close": Đóng màn hình
-    func trackEventWindowClose(params: NSDictionary?) {
-        
+        let dict = ["trackAppStart":true] as NSDictionary
+        mConfigFunction.logToFile(key: VEventType.kTrackAppStart, params: dict)
     }
     
     //"track_app_close": Đóng hẳn app (kill)
-    func setAppCloseStatus(appStart: Bool) {
-        defaults.set(appStart, forKey: "appStart")
-    }
-    func getAppCloseStatus() -> Bool {
-        return defaults.object(forKey: "appStart") as? Bool ?? false
-    }
     func trackAppClose(params: NSDictionary?) {
-        mConfigFunction.logToFile(key: VEventType.kTrackAppClose, params: params)
-        
-//        setAppCloseStatus(appStart: true)
-//        let dict = ["track-app-close":getAppCloseStatus()]
-//        VEventType.itemEventData.append(dict)
-//        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-        
-        
-        
-//        setAppStartStatus(appStart: false)
-//        let dic = ["track-app-start":getAppStartStatus()]
-//        VEventType.itemEventData.append(dic)
-//        VEventType.jsonObj["tracking-data"] = VEventType.itemEventData
-//        mConfigFunction.logToFile(params: dic as NSDictionary)
+        let dict = ["trackAppStart":false,
+                    "trackAppClose":true] as NSDictionary
+        mConfigFunction.logToFile(key: VEventType.kTrackAppClose, params: dict)
     }
-     func bytesIn(directory: String) -> Float64? {
+    //Mở màn hình
+    func trackScreenOpen() {
+        let statusDict = ["trackEventWindowOpen":true,
+                          "trackEventWindowClose":false] as NSDictionary
+        mConfigFunction.logToFile(key: VEventType.kTrackScreenOpen, params: statusDict)
+    }
+    //Đóng màn hình
+    func trackScreenClose(){
+        let statusDict = ["trackEventWindowClose": true,
+                          "trackEventWindowOpen":false] as NSDictionary
+        mConfigFunction.logToFile(key: VEventType.kTrackScreenClose, params: statusDict)
+    }
+    // Button Click
+    var count = 0
+    func trackEventButtonClick(params: NSDictionary?){
+        count = count + 1
+        let dict = ["trackEventButtonClick": count] as NSDictionary
+        mConfigFunction.logToFile(key: VEventType.kTrackEventButtonClick, params: dict)
+    }
+     func bytesIn(directory: String) ->  UInt64? {
         let fm = FileManager.default
         guard let subdirectories = try? fm.subpathsOfDirectory(atPath: directory) as NSArray else {
             return nil
@@ -207,9 +166,9 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
                 print("err getting attributes of file \(fileName): \(err.localizedDescription)")
             }
         } 
-        return Float64(size)
+        return UInt64(size)
     }
-    func appSizeInMegaBytes() -> Float64 {
+    func appSizeInMegaBytes() -> UInt64 {
         // create list of directories
         var paths = [Bundle.main.bundlePath]
         let docDirDomain = FileManager.SearchPathDirectory.documentDirectory
@@ -225,13 +184,12 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
         paths.append(NSTemporaryDirectory() as String) // temp directory
         
         // combine sizes
-        var totalSize: Float64 = 0
+        var totalSize: UInt64 = 0
         for path in paths {
             if let size = bytesIn(directory: path) {
                 totalSize += size
             }
         }
-        print(totalSize)
         return totalSize
     }
 
