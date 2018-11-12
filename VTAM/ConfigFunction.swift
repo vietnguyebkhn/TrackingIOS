@@ -93,9 +93,6 @@ class ConfigFunction {
                 eventData = EventDataVO()
             }
             trackingData.eventDatas = eventData!
-
-//            trackingData.eventDatas.append(eventData!)
-            //   print(eventData?.toJsonString())
             tempData.trackingDatas.append(trackingData)
             break
         case VEventType.kTrackPersonalInfo:
@@ -113,9 +110,6 @@ class ConfigFunction {
                 eventData = EventDataVO()
             }
             trackingData.eventDatas = eventData!
-            
-            //            trackingData.eventDatas.append(eventData!)
-            //   print(eventData?.toJsonString())
             tempData.trackingDatas.append(trackingData)
             break
         default:
@@ -216,7 +210,7 @@ class ConfigFunction {
         }
         task.resume()
     }
-    
+
     func HTTPPostJSON(url: String,  data: Data,
                       callback: @escaping (Error?, String?) -> Void) {
         
@@ -232,10 +226,6 @@ class ConfigFunction {
     func sendDataToServer(){
         var data: TrackingVO?
         data = readDataFromFile(fileName: mFileName)
-      // print(data?.toJsonSTring())
-//        let DataTrackingData = try?  JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-//        let DataTrackingDataJson = try? JSONSerialization.jsonObject(with: DataTrackingData!, options: .mutableLeaves)
-//        let result = DataTrackingDataJson as? [String: AnyObject] ?? nil
         let session = URLSession.shared
 
       //  let jsonData = try? JSONSerialization.data(withJSONObject: data)
