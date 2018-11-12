@@ -12,7 +12,6 @@ class TrackingVO {
     var baseUrl = "https://vtam-sdk.viettel.com.vn"
     var trackingCode = ""
     var  PackageId = ""
-    var RequestId = ""
     var  deviceInfos = DeviceVO()
     var trackingDatas = [TrackingDataVO]()
     var sentDatetime = ""
@@ -22,7 +21,6 @@ class TrackingVO {
     init(data: [String: AnyObject]) {
         trackingCode = data["trackingCode"] as? String ?? ""
         PackageId = data["packageId"] as? String ?? ""
-        RequestId = data["requestId"] as? String ?? ""
         sentDatetime = data["sentDatetime"] as? String ?? ""
         
         guard let deviceInfosArr = data["deviceInfo"] as? [String: Any] ?? nil else {
@@ -50,7 +48,6 @@ class TrackingVO {
                 let DataTrackingDataJson = try JSONSerialization.jsonObject(with: DataTrackingData, options: .mutableLeaves)
                 let result = DataTrackingDataJson as? [String: AnyObject] ?? nil
                 let  TrackingData = TrackingDataVO(data: result!)
-                //  tripnearbys.append(tripnearby)
                 trackingDatas.append(TrackingData)
             } catch {
                 
@@ -58,32 +55,12 @@ class TrackingVO {
         }
         
     }
-    
-//    func toJsonSTring() -> [String: Any] {
-//        
-//        var parameters = [String: Any]()
-//
-//        parameters["tracking-code"] = trackingCode
-//        parameters["package-id"] = PackageId
-//        parameters["request-id"] = RequestId
-//        parameters["device-info"] = deviceInfos.toJsonString()
-//        
-//        var trackingDataJson = [[String : Any]]()
-//        trackingDatas.forEach { (obj) in
-//            trackingDataJson.append(obj.toJsonString())
-//        }
-//        parameters["tracking-data"] = trackingDataJson
-//        
-//        return parameters
-//    }
-//    
     func toJsonSTring1() -> [String: Any] {
         
         var parameters = [String: Any]()
         
         parameters["trackingCode"] = trackingCode
         parameters["packageId"] = PackageId
-        parameters["requestId"] = RequestId
         parameters["deviceInfo"] = deviceInfos.toJsonString1()
         
         var trackingDataJson = [[String : Any]]()
