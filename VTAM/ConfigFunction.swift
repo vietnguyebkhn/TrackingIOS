@@ -30,6 +30,48 @@ class ConfigFunction {
         return dateString
     }
     
+    @objc func Print(){
+        print("5s in ra dong nay 1 lan")
+    }
+    
+    @objc func PrintFunc(){
+        print("Dong nay in ra moi 5s neu gui len server bi loi")
+    }
+    
+    @objc func TimeOutPrint(){
+        print("Day la dong gui sau 3 lan bi loi")
+    }
+    
+    var timer = Timer()
+    
+    @objc func DataInterval(){
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.Print), userInfo: nil, repeats: true)
+//        var data_retry_times = 3
+//     //   var timer = Timer()
+//        sendDataToServer { [weak self] (data, response, error) in
+//            guard let strongself = self else {
+//                return
+//            }
+//            if error == nil {
+//               // print(response)
+//
+//               // print(strongself.timer)
+//
+//            } else {
+//                data_retry_times = data_retry_times - 1
+//                if data_retry_times != 0 {
+//                    Timer.scheduledTimer(timeInterval: 5, target: strongself, selector: #selector(strongself.PrintFunc), userInfo: nil, repeats: true)
+//                } else {
+//                    data_retry_times = 3
+//                    Timer.scheduledTimer(timeInterval: 10, target: strongself, selector: #selector(strongself.TimeOutPrint), userInfo: nil, repeats: true)
+//                }
+//
+//            }
+//        }
+
+    }
+    
+    
     private func fillData(key: String, params: NSDictionary?, data: TrackingVO) -> TrackingVO {
         let tempData = data
         let trackingData = TrackingDataVO()
@@ -41,7 +83,6 @@ class ConfigFunction {
             if let fileUrl = Bundle.main.url(forResource: "SDK-config", withExtension: "plist"),
                 let data = try? Data(contentsOf: fileUrl) {
                 if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! NSDictionary {
-             /Users/nguyenviet/coding/vtam/VTAM/ConfigFunction.swift
                     trackingCode["trackingCode"] = result["tracking_code"] as AnyObject
                     mConfigFunction?.logToFile(key: VEventType.kTrackingConfig, params: result)
                     tempData.trackingCode = (result["tracking_code"] as AnyObject) as! String
@@ -186,6 +227,7 @@ class ConfigFunction {
                     // doc data tu json vao object
                     let trackingData = TrackingVO(data: trackingDataJson)
                     print("trackingData = \(trackingData.toJsonSTring1())")
+                 //   DataInterval()
                     return trackingData
                 }
             } catch {
@@ -225,6 +267,7 @@ class ConfigFunction {
             print(documentDirectory.path)
             let data = try JSONSerialization.data(withJSONObject: data.toJsonSTring1(), options: [])
             try! data.write(to: fileURL)
+           
             checkSizeLogFile(file: fileURL)
         } catch {
             print(error)
@@ -252,18 +295,20 @@ class ConfigFunction {
         }
     }
     
-    func sendDataToServer(){
+    @objc func sendDataToServer(completed: @escaping(_ data: Data?,_ response: URLResponse?,_ error: Error?) -> Void){
+        
         var data: TrackingVO?
         data = readDataFromFile(fileName: mFileName)
         let session = URLSession.shared
+       // var err: Error?
 
         let url = URL(string: "http://sdk.myitsol.com/log-event")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: data?.toJsonSTring1(), options: .prettyPrinted)
-            
         } catch let error {
+            completed(nil, nil, error)
             print(error.localizedDescription)
         }
         
@@ -284,7 +329,9 @@ class ConfigFunction {
             do {
                 //create json object from data
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    completed(data, response, nil)
                     print(json)
+                    
                     // handle json...
                 }
                 
@@ -302,7 +349,7 @@ class ConfigFunction {
             let fileDic = try fm.attributesOfItem(atPath: file.path) as NSDictionary
             logFileSize += fileDic.fileSize()
             if logFileSize >= 102400 {
-                sendDataToServer()
+                DataInterval()
             }else{
                 print("Log file chua du size")
             }
@@ -310,6 +357,7 @@ class ConfigFunction {
             print(error)
         }
     }
+    
     //ham xoa file
     func removeFile(file: URL) {
         do{

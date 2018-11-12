@@ -77,7 +77,7 @@ class TrackingFunction : NSObject,CLLocationManagerDelegate {
             "appName" : appName ?? "",
             "deviceModel" :  deviceModel ,
             "osVersion" : iOSVersion,
-            "appSize": "\(appSizeInMegaBytes()) byte",
+            "appSize": appSizeInMegaBytes(),
             "simProvider": "",
             "simMisdn": "",
             "simType": "",
