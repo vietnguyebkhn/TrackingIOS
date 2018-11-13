@@ -14,6 +14,8 @@ class ConfigFunction {
     var mPathFile : URL?
     var mPathZip : URL?
     var mFileName = ""
+    var mTimer: Timer?
+    var TIME_TO_CALL_SERVER : Double = 5
     
     init() {
         let defaults = UserDefaults.standard
@@ -37,53 +39,21 @@ class ConfigFunction {
     var data_retry_times = 3
     var check = false
     
-    @objc func PrintFunc(){
-            print("gui loi lan thu \(4 - data_retry_times)")
-            data_retry_times = data_retry_times - 1
-            if data_retry_times == 0 {
-               // print(TimeOutPrint())
-                data_retry_times = 3
-                TimeOutPrint()
-
-            }
+    @objc func callToServer() {
+        print("gui len server)\(String(describing: mPathFile))")
         
+        if mPathFile != nil && checkSizeLogFile(file: mPathFile!) {
+            //goi ham gui data len sever o day
+            
+        }
     }
     
-    @objc func TimeOutPrint() {
-        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.Print), userInfo: nil, repeats: true)
+    //Ham dinh ky goi len server
+    func makeTimeToCallServer() {
+        if mTimer == nil {
+            self.mTimer = Timer.scheduledTimer(timeInterval: TIME_TO_CALL_SERVER, target: self, selector: #selector(self.callToServer), userInfo: nil, repeats: true)
+        }
     }
-    
-    var mTimer: Timer?
-    
-    @objc func DataInterval(){
-        
-        self.mTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.PrintFunc), userInfo: nil, repeats: true)
-        
-//        var data_retry_times = 3
-//     //   var timer = Timer()
-//        sendDataToServer { [weak self] (data, response, error) in
-//            guard let strongself = self else {
-//                return
-//            }
-//            if error == nil {
-//               // print(response)
-//
-//               // print(strongself.timer)
-//
-//            } else {
-//                data_retry_times = data_retry_times - 1
-//                if data_retry_times != 0 {
-//                    Timer.scheduledTimer(timeInterval: 5, target: strongself, selector: #selector(strongself.PrintFunc), userInfo: nil, repeats: true)
-//                } else {
-//                    data_retry_times = 3
-//                    Timer.scheduledTimer(timeInterval: 10, target: strongself, selector: #selector(strongself.TimeOutPrint), userInfo: nil, repeats: true)
-//                }
-//
-//            }
-//        }
-
-    }
-    
     
     private func fillData(key: String, params: NSDictionary?, data: TrackingVO) -> TrackingVO {
         let tempData = data
@@ -280,8 +250,8 @@ class ConfigFunction {
             print(documentDirectory.path)
             let data = try JSONSerialization.data(withJSONObject: data.toJsonSTring1(), options: [])
             try! data.write(to: fileURL)
-           DataInterval()
-            checkSizeLogFile(file: fileURL)
+//           DataInterval()
+//            checkSizeLogFile(file: fileURL)
         } catch {
             print(error)
         }
@@ -356,7 +326,7 @@ class ConfigFunction {
         task.resume()
     }
     
-    func checkSizeLogFile(file: URL) {
+    func checkSizeLogFile(file: URL) -> Bool {
         var logFileSize : UInt64 = 0
         let fm = FileManager.default
         do{
@@ -364,13 +334,16 @@ class ConfigFunction {
             logFileSize += fileDic.fileSize()
             if logFileSize >= 102400 {
               // DataInterval()
-            }else{
-                
+                return true
+            }else {                
                 print("Log file chua du size")
+                return false
             }
         }catch{
             print(error)
         }
+        
+        return false
     }
     
     //ham xoa file
