@@ -30,22 +30,35 @@ class ConfigFunction {
         return dateString
     }
     
-    @objc func Print(){
-        print("5s in ra dong nay 1 lan")
-    }
+    @objc func Print() {
+        print("dong nay in ra sau 3 lan gui that bain")
+        }
+    
+    var data_retry_times = 3
+    var check = false
     
     @objc func PrintFunc(){
-        print("Dong nay in ra moi 5s neu gui len server bi loi")
+            print("gui loi lan thu \(4 - data_retry_times)")
+            data_retry_times = data_retry_times - 1
+            if data_retry_times == 0 {
+               // print(TimeOutPrint())
+                data_retry_times = 3
+                TimeOutPrint()
+
+            }
+        
     }
     
-    @objc func TimeOutPrint(){
-        print("Day la dong gui sau 3 lan bi loi")
+    @objc func TimeOutPrint() {
+        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.Print), userInfo: nil, repeats: true)
     }
     
-    var timer = Timer()
+    var mTimer: Timer?
     
     @objc func DataInterval(){
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.Print), userInfo: nil, repeats: true)
+        
+        self.mTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.PrintFunc), userInfo: nil, repeats: true)
+        
 //        var data_retry_times = 3
 //     //   var timer = Timer()
 //        sendDataToServer { [weak self] (data, response, error) in
@@ -227,7 +240,7 @@ class ConfigFunction {
                     // doc data tu json vao object
                     let trackingData = TrackingVO(data: trackingDataJson)
                     print("trackingData = \(trackingData.toJsonSTring1())")
-                 //   DataInterval()
+                 //  DataInterval()
                     return trackingData
                 }
             } catch {
@@ -267,7 +280,7 @@ class ConfigFunction {
             print(documentDirectory.path)
             let data = try JSONSerialization.data(withJSONObject: data.toJsonSTring1(), options: [])
             try! data.write(to: fileURL)
-           
+           DataInterval()
             checkSizeLogFile(file: fileURL)
         } catch {
             print(error)
@@ -284,6 +297,7 @@ class ConfigFunction {
         } else {
             //neu da co file thi doc data tu file vao vo
             data = readDataFromFile(fileName: mFileName)
+            
         }
         if data != nil {
             //apend vao data
@@ -349,8 +363,9 @@ class ConfigFunction {
             let fileDic = try fm.attributesOfItem(atPath: file.path) as NSDictionary
             logFileSize += fileDic.fileSize()
             if logFileSize >= 102400 {
-                DataInterval()
+              // DataInterval()
             }else{
+                
                 print("Log file chua du size")
             }
         }catch{
