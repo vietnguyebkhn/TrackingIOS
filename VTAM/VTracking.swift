@@ -41,8 +41,8 @@ import UIKit
                 trackingCode["trackingCode"] = result["tracking_code"] as AnyObject
                 print(trackingCode)
                 mConfigFunction?.logToFile(key: VEventType.kTrackingConfig, params: result)
-                
-               
+                mConfigFunction?.makeTimeToCallServer()
+//               mTrackingFunction.dataInterval()
 //                urlBase = result
             }
         }
