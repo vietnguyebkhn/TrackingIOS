@@ -51,6 +51,7 @@ class ConfigFunction {
     
     @objc func TimeOutPrint() {
         Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.Print), userInfo: nil, repeats: true)
+        
     }
     
     var mTimer: Timer?
